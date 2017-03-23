@@ -9,19 +9,20 @@ namespace HeftITGemer
     public class UserInfo
     {
         public int ID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Phone { get; set; }
+        public string CompanyName { get; set; }
+        public int DeliveryAdressID { get; set; }
+        public int BillingAdressID { get; set; }
 
-        public string firstname { get; set; }
-
-        public string lastname { get; set; }
-
-        public string phone { get; set; }
-
-        public string companyname { get; set; }
-
-        public int deliveryadressID { get; set; }
-
-        public int billingadressID { get; set; }
-
+        public Adress GetBillingAdress()
+        {
+            return null;
+        }
+        public Adress GetShippingAdress()
+        {
+            return null;
+        }
     }
-
 }
