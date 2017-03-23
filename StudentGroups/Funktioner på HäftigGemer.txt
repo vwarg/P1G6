@@ -1,0 +1,27 @@
+Funktioner på hemsidan
+**********************
+
+
+Admin
+*****
+- Logga in
+	Registrera konto
+	Glömt lösenord
+- CRUD på varor
+- CRUD på användare
+- Enkel CMS --> Ändra bakgrundsbild på sidan och eventuellt en eller flera temafärger (färdiga färgteman att välja på?) - Motivering: För att kunna köra jultema/påsktema
+- Kommunikation/chatt med kunder
+
+
+User
+****
+- cRud (endast Read) på varor - kräver inte inloggning
+- Söka efter vara - efter varunummer, namn, kategori??
+- CRUD på egen kundkorg
+- CRUD på egna ordrar
+- cRud på orderstatus
+- cRud på tidigare ordrar
+- Dela vara på social medier
+- cRUd på eget konto - ändra faktureringsadress, kontaktperson m.m.
+* Kommunikation/chatt med admin
+* Betygsätta mottagen vara
