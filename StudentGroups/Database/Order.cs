@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HeftITGemer
 {
-    public class Orders
+    public class Order
     {
         public int ID { get; set; }
         public int UserID { get; set; }
@@ -17,5 +17,11 @@ namespace HeftITGemer
         public DateTime DateProcessed { get; set; }
         public DateTime DateFulfilled { get; set; }
         public int Status { get; set; }
+
+        public List<OrderToProduct> GetRows()
+        {
+            // SELECT * FROM OrderToProduct WHERE orderID = {ID}
+            return null;
+        }
     }
 }
