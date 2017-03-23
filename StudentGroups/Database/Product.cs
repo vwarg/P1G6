@@ -23,5 +23,29 @@ namespace HeftITGemer
         public int ManufacturerID { get; set; }
         public string ManufacturerProductNumber { get; set; }
         public int CategoryID { get; set; }
+
+        //Konstruktor för alla parametrar i klassen       
+        public Product(int id, string name, string shortDescription, string description, int parentProduct, float price, int countPerUnit, int quantity, string comment, string image, string video, int status, int manufacturerID, string manufacturerProductNumber, int categoryID)
+        {
+            ID = id;
+            Name = name;
+            ShortDescription = shortDescription;
+            Description = description;
+            ParentProduct = parentProduct;
+            Price = price;
+            CountPerUnit = countPerUnit;
+            Quantity = quantity;
+            Comment = comment;
+            Image = image;
+            Video = video;
+            Status = status;
+            ManufacturerID = manufacturerID;
+            ManufacturerProductNumber = manufacturerProductNumber
+            CategoryID = categoryID;
+        }
+
     }
+
+
+
 }
