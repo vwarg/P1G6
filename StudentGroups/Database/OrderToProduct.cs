@@ -10,13 +10,13 @@ namespace HeftITGemer
     {
         public int ID { get; set; }
 
-        public int productID { get; set; }
+        public int ProductID { get; set; }
 
-        public int orderID { get; set; }
+        public int OrderID { get; set; }
 
-        public int quantity { get; set; }
+        public int Quantity { get; set; }
 
-        public float price { get; set; }
+        public float Price { get; set; }
 
     }
 }

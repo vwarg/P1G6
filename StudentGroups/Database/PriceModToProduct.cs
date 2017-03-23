@@ -10,9 +10,9 @@ namespace HeftITGemer
     {
         public int ID { get; set; }
 
-        public int productID { get; set; }
+        public int ProductID { get; set; }
 
-        public int modifierID { get; set; }
+        public int ModifierID { get; set; }
 
     }
 }

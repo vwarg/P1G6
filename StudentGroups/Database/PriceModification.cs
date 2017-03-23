@@ -10,15 +10,15 @@ namespace HeftITGemer
     {
         public int ID { get; set; }
 
-        public int? categoryID { get; set; }
+        public int? CategoryID { get; set; }
 
-        public float? modifierPercent { get; set; }
+        public float? ModifierPercent { get; set; }
 
-        public float? modifierAbsolute { get; set; }
+        public float? ModifierAbsolute { get; set; }
 
-        public DateTime? dateStarts { get; set; }
+        public DateTime? DateStarts { get; set; }
 
-        public DateTime? dateEnds { get; set; }
+        public DateTime? DateEnds { get; set; }
 
     }
 }

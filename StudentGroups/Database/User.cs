@@ -10,15 +10,21 @@ namespace HeftITGemer
     {
         public int ID { get; set; }
 
-        public string email { get; set; }
+        public string Email { get; set; }
 
-        public string password { get; set; }
+        public string Password { get; set; }
 
-        public int contactinfo { get; set; }
+        public int ContactInfo { get; set; }
 
-        public byte isCompany { get; set; }
+        public byte IsCompany { get; set; }
 
-        public int status { get; set; }
+        public int Status { get; set; }
+
+        public UserInfo GetInfo()
+        {
+            return null;
+        }
+
 
     }
 }

@@ -10,17 +10,17 @@ namespace HeftITGemer
     {
         public int ID { get; set; }
 
-        public string country { get; set; }
+        public string Country { get; set; }
 
-        public string city { get; set; }
+        public string City { get; set; }
 
-        public string street { get; set; }
+        public string Street { get; set; }
 
-        public string zip { get; set; }
+        public string Zip { get; set; }
 
-        public string phone { get; set; }
+        public string Phone { get; set; }
 
-        public string department { get; set; }
+        public string Department { get; set; }
 
     }
 

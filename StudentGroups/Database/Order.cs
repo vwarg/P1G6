@@ -10,21 +10,21 @@ namespace HeftITGemer
     {
         public int ID { get; set; }
 
-        public int userID { get; set; }
+        public int UserID { get; set; }
 
-        public int billingadressID { get; set; }
+        public int BillingAdressID { get; set; }
 
-        public int deliveryadressID { get; set; }
+        public int DeliveryAdressID { get; set; }
 
-        public float total_price { get; set; }
+        public float TotalPrice { get; set; }
 
-        public DateTime dateCreated { get; set; }
+        public DateTime DateCreated { get; set; }
 
-        public DateTime dateProcessed { get; set; }
+        public DateTime DateProcessed { get; set; }
 
-        public DateTime dateFulfilled { get; set; }
+        public DateTime DateFulfilled { get; set; }
 
-        public int status { get; set; }
+        public int Status { get; set; }
 
     }
 }
