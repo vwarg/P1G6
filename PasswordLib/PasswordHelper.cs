@@ -15,7 +15,12 @@ namespace PasswordLib
             return result;
         }
 
-        
+        public static bool MatchesHash(string input, string hash)
+        {
+            return Sodium.PasswordHash.ScryptHashStringVerify(hash, input);   
+        }
+
+
 
         private static string ByteArrayToString(byte[] ba)
         {
