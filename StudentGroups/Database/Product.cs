@@ -40,7 +40,7 @@ namespace HeftITGemer
             Video = video;
             Status = status;
             ManufacturerID = manufacturerID;
-            ManufacturerProductNumber = manufacturerProductNumber
+            ManufacturerProductNumber = manufacturerProductNumber;
             CategoryID = categoryID;
         }
 
