@@ -21,8 +21,8 @@ namespace StudentGroups.Util
              *          #2: ManufacturerProductNumber
              *          #3: Name
              *          #4: Description / ShortDescription
-             *          #5: Manufacturer
-             *          #6: Category
+             *          #5: Manufacturer.Name
+             *          #6: Category.Name
              *          
              *          Exact > Contains > Fuzzy (threshold: 2)
              */
@@ -38,10 +38,10 @@ namespace StudentGroups.Util
         {
             var found = new List<Product>();
             // #1
-            found.AddRange(all.Where(p => p.ID.ToString().Contains(searchFor)));
+            // found.AddRange(all.Where(p => p.ID.ToString().Contains(searchFor))); Logic error, should not match ID on contains
 
             // #2
-            found.AddRange(all.Where(p => p.ManufacturerProductNumber.Contains(searchFor)));
+            // found.AddRange(all.Where(p => p.ManufacturerProductNumber.Contains(searchFor))); same as above
 
             // #3
             found.AddRange(all.Where(p => p.Name.Contains(searchFor)));
@@ -59,10 +59,10 @@ namespace StudentGroups.Util
             var found = new List<Product>();
             int thresh = 2;
             // #1
-            found.AddRange(all.Where(p => DamerauLevenshteinDistance(p.ID.ToString(),searchFor, thresh) < int.MaxValue));
+            // found.AddRange(all.Where(p => DamerauLevenshteinDistance(p.ID.ToString(),searchFor, thresh) < int.MaxValue)); logic error, should not fuzzy-match ID
 
             // #2
-            found.AddRange(all.Where(p => DamerauLevenshteinDistance(p.ManufacturerProductNumber, searchFor, thresh) < int.MaxValue));
+            // found.AddRange(all.Where(p => DamerauLevenshteinDistance(p.ManufacturerProductNumber, searchFor, thresh) < int.MaxValue)); same as above
 
             // #3
             found.AddRange(all.Where(p => DamerauLevenshteinDistance(p.Name, searchFor, thresh) < int.MaxValue));
