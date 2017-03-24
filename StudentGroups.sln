@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentGroups", "StudentGroups\StudentGroups.csproj", "{A5EE9912-C2D4-47F6-B11E-C886A3ADCD0A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordLib", "PasswordLib\PasswordLib.csproj", "{7E364D61-2895-466A-B9A5-F4BB873FF717}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A5EE9912-C2D4-47F6-B11E-C886A3ADCD0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5EE9912-C2D4-47F6-B11E-C886A3ADCD0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5EE9912-C2D4-47F6-B11E-C886A3ADCD0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E364D61-2895-466A-B9A5-F4BB873FF717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E364D61-2895-466A-B9A5-F4BB873FF717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E364D61-2895-466A-B9A5-F4BB873FF717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E364D61-2895-466A-B9A5-F4BB873FF717}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
