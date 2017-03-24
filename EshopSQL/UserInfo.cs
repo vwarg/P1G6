@@ -35,7 +35,7 @@ namespace HeftITGemer
 
         }
 
-        public void AddUserInfo(string firstname, string lastname, string phone, string companyname, int deliveryadressID, int billingadressID)
+        public static int AddUserInfo(string firstname, string lastname, string phone, string companyname, int deliveryadressID, int billingadressID)
         {
             SqlConnection myConnection = new SqlConnection(source);
             int newID = 0;
@@ -59,13 +59,13 @@ namespace HeftITGemer
                 SqlParameter newCompanyName = new SqlParameter("@companyname", SqlDbType.VarChar);
                 newCompanyName.Value = companyname;
 
-                SqlParameter newDeliveryAdressId = new SqlParameter("@deliveryadressID", SqlDbType.VarChar);
+                SqlParameter newDeliveryAdressId = new SqlParameter("@deliveryadressID", SqlDbType.Int);
                 newDeliveryAdressId.Value = deliveryadressID;
 
-                SqlParameter newBillingAdressId = new SqlParameter("@billingAdressID", SqlDbType.VarChar);
+                SqlParameter newBillingAdressId = new SqlParameter("@billingAdressID", SqlDbType.Int);
                 newBillingAdressId.Value = billingadressID;
 
-                SqlParameter newUserInfoId = new SqlParameter("@userinfoID ", SqlDbType.VarChar);
+                SqlParameter newUserInfoId = new SqlParameter("@userinfoID ", SqlDbType.Int);
                 newUserInfoId.Direction = ParameterDirection.Output;
 
                 myCommand.Parameters.Add(newFirstName);
@@ -83,11 +83,13 @@ namespace HeftITGemer
             }
             catch (Exception ex) {Console.WriteLine(ex.Message);}
             finally {myConnection.Close();}
+
+            return newID;
         }
 
-        public void AddUserInfo(UserInfo userinfo)
+        public static int AddUserInfo(UserInfo userinfo)
         {
-            //TODO
+            return AddUserInfo(userinfo.Firstname, userinfo.Lastname, userinfo.Phone, userinfo.Companyname, userinfo.DeliveryadressID, userinfo.BillingadressID);
         }
 
         public static void UpdateUserInfo(int id, string firstname, string lastname, string phone, string companyname, int deliveryadressID, int billingadressID)

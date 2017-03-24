@@ -22,7 +22,7 @@ namespace EshopSQL
             {
                 myConnection.Open();
 
-                SqlCommand myCommand = new SqlCommand($"select * from User where email = {email}", myConnection);
+                SqlCommand myCommand = new SqlCommand($"select * from Users where email = '{email}'", myConnection);
                 SqlDataReader myReader = myCommand.ExecuteReader();
 
                 while (myReader.Read())
@@ -49,13 +49,14 @@ namespace EshopSQL
         {
             SqlConnection myConnection = new SqlConnection(source);
             SqlDataReader myReader = null;
-
+            bool result = false;
             try
             {
                 myConnection.Open();
 
-                SqlCommand myCommand = new SqlCommand($"select email from User where email = {email}", myConnection);
+                SqlCommand myCommand = new SqlCommand($"select email from Users where email = '{email}'", myConnection);
                 myReader = myCommand.ExecuteReader();
+                result = myReader.HasRows;
 
             }
             catch (Exception ex)
@@ -67,11 +68,11 @@ namespace EshopSQL
                 myConnection.Close();
             }
 
-            return myReader.HasRows;
+            return result;
 
         }
 
-        public static int AddUser(string email, string password)
+        public static int AddUser(string email, string password, int userInfo = -1)
         {
             int newID = 0;
 
@@ -90,14 +91,18 @@ namespace EshopSQL
                     SqlParameter newEmail = new SqlParameter("@email", SqlDbType.VarChar);
                     newEmail.Value = email;
 
+                    SqlParameter contactID = new SqlParameter("@contactID", SqlDbType.Int);
+                    contactID.Value = userInfo;
+
                     SqlParameter newPassword = new SqlParameter("@password", SqlDbType.VarChar);
                     newPassword.Value = password;
 
-                    SqlParameter newUserID = new SqlParameter("@newID", SqlDbType.VarChar);
+                    SqlParameter newUserID = new SqlParameter("@newID", SqlDbType.Int);
                     newUserID.Direction = ParameterDirection.Output;
 
                     myCommand.Parameters.Add(newEmail);
                     myCommand.Parameters.Add(newPassword);
+                    myCommand.Parameters.Add(contactID);
                     myCommand.Parameters.Add(newUserID);
 
                     myCommand.ExecuteNonQuery();
@@ -117,6 +122,31 @@ namespace EshopSQL
             return newID;
         }
 
+        public static int UpdateUser(User u)
+        {
+            SqlConnection myConnection = new SqlConnection(source);
+            int affectedRows = 0;
+            
+
+            try
+            {
+                myConnection.Open();
+
+                SqlCommand myCommand = new SqlCommand($"update Users set status = {u.Status}, contactinfo = {u.Contactinfo}, where email = {u.Email}", myConnection);
+                affectedRows = myCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+
+            return affectedRows;
+        }
+
         private static int ChangeUserStatus(string email, int status)
         {
             SqlConnection myConnection = new SqlConnection(source);
@@ -131,7 +161,7 @@ namespace EshopSQL
             {
                 myConnection.Open();
 
-                SqlCommand myCommand = new SqlCommand($"update User set status = {status} where email = {email}", myConnection);
+                SqlCommand myCommand = new SqlCommand($"update Users set status = {status} where email = '{email}'", myConnection);
                 affectedRows = myCommand.ExecuteNonQuery();
             }
             catch (Exception ex)

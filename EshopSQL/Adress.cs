@@ -34,7 +34,10 @@ namespace HeftITGemer
         {
 
         }
-
+        public static int AddAdress(Adress a)
+        {
+            return AddAdress(a.Country, a.City, a.Street, a.Zip, a.Phone, a.Department);
+        }
         public static int AddAdress(string country, string city, string street, string zip, string phone, string department)
         {
             int newAdressID = 0;
@@ -66,7 +69,7 @@ namespace HeftITGemer
                 SqlParameter newDepartment = new SqlParameter("@department", SqlDbType.VarChar);
                 newDepartment.Value = department;
 
-                SqlParameter adressID = new SqlParameter("@adressID", SqlDbType.VarChar);
+                SqlParameter adressID = new SqlParameter("@adressID", SqlDbType.Int);
                 adressID.Direction = ParameterDirection.Output;
 
                 myCommand.Parameters.Add(newCountry);
