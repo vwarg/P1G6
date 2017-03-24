@@ -11,7 +11,7 @@ namespace PasswordLib
         public static string GetHash(string input)
         {
             var result = "";
-            result = Sodium.PasswordHash.ScryptHashString(input, Sodium.PasswordHash.Strength.Medium); //result = ByteArrayToString(Sodium.CryptoHash.Hash(input));
+            result = Sodium.PasswordHash.ScryptHashString(input, Sodium.PasswordHash.Strength.Medium);
             return result;
         }
 
