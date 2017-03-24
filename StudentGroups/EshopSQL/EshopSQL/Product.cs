@@ -51,6 +51,35 @@ namespace HeftITGemer
 
         public Product() { }
 
+        public static Product GetProductById(int productId)
+        {
+            Product product = null;
+
+            SqlConnection myConnection = new SqlConnection(source);
+
+            try
+            {
+                myConnection.Open();
+
+                SqlCommand myCommand = new SqlCommand($"select * from Product where ID = {productId}", myConnection);
+                SqlDataReader myReader = myCommand.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                product = new Product((int)myReader["ID"], myReader["name"].ToString(), myReader["short_description"].ToString(), 
+                        myReader["description"].ToString(), (int)myReader["parentProduct"], (float)myReader["price"], 
+                        (int)myReader["countPerUnit"], (int)myReader["quantity"], myReader["comment"].ToString(),
+                        myReader["image"].ToString(), myReader["video"].ToString(), (int)myReader["status"], (int)myReader["manufacturerID"],
+                        myReader["manufacturer_productnumber"].ToString(), (int)myReader["categoryID"]);
+                }
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            finally { myConnection.Close(); }
+
+            return product;
+        }
+
+
         public static int AddProduct(string name, string shortDescription, string description, int parentProduct, float price, int countPerUnit, int quantity, string comment, string image, string video, int status, int manufacturerID, string manufacturerProductNumber, int categoryID)
         {
             int newID = 0;
@@ -83,13 +112,13 @@ namespace HeftITGemer
                 SqlParameter newCountPerUnit = new SqlParameter("@countPerUnit", SqlDbType.Int);
                 newCountPerUnit.Value = countPerUnit;
 
-                SqlParameter newQuantity= new SqlParameter("@quantity", SqlDbType.Int);
+                SqlParameter newQuantity = new SqlParameter("@quantity", SqlDbType.Int);
                 newQuantity.Value = quantity;
 
                 SqlParameter newComment = new SqlParameter("@comment", SqlDbType.Text);
                 newComment.Value = comment;
 
-                SqlParameter newImage= new SqlParameter("@image", SqlDbType.Text);
+                SqlParameter newImage = new SqlParameter("@image", SqlDbType.Text);
                 newImage.Value = image;
 
                 SqlParameter newVideo = new SqlParameter("@video", SqlDbType.Text);
@@ -131,7 +160,7 @@ namespace HeftITGemer
                 newID = (int)newDescription.Value;
 
             }
-            catch (Exception ex) { Console.WriteLine(ex.Message);}
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
             finally { myConnection.Close(); }
 
             return newID;
