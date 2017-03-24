@@ -19,6 +19,7 @@ namespace StudentGroups
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            /*
             int size = -1;
             List
             DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
@@ -36,6 +37,7 @@ namespace StudentGroups
             }
             Console.WriteLine(size); // <-- Shows file size in debugging mode.
             Console.WriteLine(result); // <-- For debugging use.
+            */
         }
     }
 }
