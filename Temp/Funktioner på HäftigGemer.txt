@@ -17,6 +17,10 @@ User
 ****
 - cRud (endast Read) på varor - kräver inte inloggning
 - Söka efter vara - efter varunummer, namn, kategori??
+	 -- \Util\ProductSearchUtil.cs, sök implementerat på ID, 
+			tillverkarens artikelnummer, namn, beskrivning, 
+			tillverkarnamn och kategorinamn (i den ordningen). 
+			För textfälten finns även en fuzzy-match, vilken innebär att om man exempelvis söker på "geN" får man resultat för geM.
 - CRUD på egen kundkorg
 - CRUD på egna ordrar
 - cRud på orderstatus
