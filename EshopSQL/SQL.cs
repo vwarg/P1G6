@@ -16,9 +16,44 @@ namespace EshopSQL
     public class SQL
     {
         const string source = "Data Source =.; Initial Catalog = EHandel; Integrated Security = True";
+        private static List<User> userCache = new List<User>();
+
+        public static void UpdateUserCache()
+        {
+            userCache.Clear();
+            SqlConnection myConnection = new SqlConnection(source);
+
+            try
+            {
+                myConnection.Open();
+
+                SqlCommand getUser = new SqlCommand($"select * from Users", myConnection);
+                SqlDataReader myReader = getUser.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    var user = new User((int)myReader["ID"], myReader["email"].ToString(),
+                        myReader["password"].ToString(), (int)myReader["contactinfo"], (byte)myReader["isCompany"],
+                        (int)myReader["status"]);
+                    var a = user.Info.BillingAdress;
+                    a = user.Info.DeliveryAdress;
+                    userCache.Add(user);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }
 
         public static User GetUserByEmail(string email)
         {
+            /*
             User user = null;
 
             SqlConnection myConnection = new SqlConnection(source);
@@ -48,6 +83,31 @@ namespace EshopSQL
             }
 
             return user;
+            */
+            User usr = userCache.Where(u => u.Email == email).FirstOrDefault();
+            if (usr != null)
+            {
+                return usr;
+            }
+            else
+            {
+                UpdateUserCache();
+                return userCache.Where(u => u.Email == email).FirstOrDefault();
+            }
+        }
+
+        public static User GetUserByID(int userId)
+        {
+            User usr = userCache.Where(u => u.ID == userId).FirstOrDefault();
+            if (usr != null)
+            {
+                return usr;
+            }
+            else
+            {
+                UpdateUserCache();
+                return userCache.Where(u => u.ID == userId).FirstOrDefault();
+            }
         }
 
         public static UserInfo GetUserInfoByID(int userInfoID)
@@ -88,6 +148,8 @@ namespace EshopSQL
 
         public static bool DoesUserExist(string email)
         {
+            
+            /*
             SqlConnection myConnection = new SqlConnection(source);
             SqlDataReader myReader = null;
             bool result = false;
@@ -107,9 +169,9 @@ namespace EshopSQL
             finally
             {
                 myConnection.Close();
-            }
+            } */
 
-            return result;
+            return userCache.Exists(u => u.Email == email);
 
         }
 
@@ -160,6 +222,7 @@ namespace EshopSQL
                     myConnection.Close();
                 }
             }
+            UpdateUserCache();
             return newID;
         }
 
@@ -167,7 +230,7 @@ namespace EshopSQL
         {
             SqlConnection myConnection = new SqlConnection(source);
             int affectedRows = 0;
-            
+
 
             try
             {
@@ -184,7 +247,7 @@ namespace EshopSQL
             {
                 myConnection.Close();
             }
-
+            UpdateUserCache();
             return affectedRows;
         }
 
@@ -238,7 +301,7 @@ namespace EshopSQL
             toAdd.Email = email;
             toAdd.Password = PasswordHelper.GetHash(password);
             UserInfo userInfo = ui;
-            if(userInfo == null)
+            if (userInfo == null)
             {
                 userInfo = new UserInfo("", "", "", "", -1, -1);
                 Adress a = new Adress("", "", "", "", "", "");
@@ -265,7 +328,7 @@ namespace EshopSQL
             toAdd.Contactinfo = uiid;
             int uid = AddUser(toAdd.Email, toAdd.Password, toAdd.Contactinfo);
             toAdd.ID = uid;
-
+            UpdateUserCache();
             return toAdd;
         }
 
@@ -277,12 +340,65 @@ namespace EshopSQL
         public static bool TryLogin(string email, string password)
         {
             User u = GetUserByEmail(email);
-            if(u == null)
+            if (u == null)
             {
                 return false;
             }
             return Login(u, password);
         }
 
+        public static List<Product> GetProductsInOrder(Order o)
+        {
+            return GetProductsInOrder(o.ID);
+        }
+        public static List<Product> GetProductsInOrder(int orderId)
+        {
+            List<Product> l = new List<Product>();
+
+            SqlConnection myConnection = new SqlConnection(source);
+
+            try
+            {
+                myConnection.Open();
+                Product prod;
+                SqlCommand getProductsInOrder = new SqlCommand($"select p.*, op.quantity AS numInOrder from Products as p INNER JOIN OrderToProduct as op ON op.productID = p.ID WHERE op.orderID = {orderId}", myConnection);
+                SqlDataReader otpReader = getProductsInOrder.ExecuteReader();
+                while (otpReader.Read())
+                {
+                    int num = (int)otpReader["numInOrder"];
+                    for (int i = 0; i < num; i++)
+                    {
+                        prod = new Product();
+                        prod.ID = (int)otpReader["ID"];
+                        prod.Name = otpReader["name"].ToString();
+                        prod.ShortDescription = otpReader["short_description"].ToString();
+                        prod.Description = otpReader["description"].ToString();
+                        prod.ParentProduct = (int)otpReader["parentProduct"];
+                        prod.Price = (float)Convert.ToDouble(otpReader["price"]);
+                        prod.CountPerUnit = (int)otpReader["countPerUnit"];
+                        prod.Quantity = (int)otpReader["quantity"];
+                        prod.Comment = otpReader["comment"].ToString();
+                        prod.Image = otpReader["image"].ToString();
+                        prod.Video = otpReader["video"].ToString();
+                        prod.Status = (int)otpReader["status"];
+                        prod.ManufacturerID = (int)otpReader["manufacturerID"];
+                        prod.ManufacturerProductNumber = otpReader["manufacturer_productnumber"].ToString();
+                        prod.CategoryID = (int)otpReader["categoryID"];
+
+                        l.Add(prod);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+
+            return l;
+        }
     }
 }
