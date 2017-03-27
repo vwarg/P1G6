@@ -13,8 +13,10 @@ namespace TestStuff
     {
         static void Main(string[] args)
         {
-            TestUserFlow();
-            TestProductFlow();
+            //TestUserFlow();
+            //TestProductFlow();
+            //TestOrderFlow();
+            Console.WriteLine("Tests done. Press any key to exit.");
             Console.ReadKey();
         }
 
@@ -37,6 +39,13 @@ namespace TestStuff
             Product pr = new Product(-1, "Testprodukt", "Test", "Längre test", -1, 37.5f, 2, 100, "", "", "", 1, mid, "8", cid);
             int pid = Product.AddProduct(pr);
             Console.WriteLine($"Product ID {pid} added.");
+        }
+
+        static void TestOrderFlow()
+        {
+            List<Product> l = SQL.GetProductsInOrder(1513);
+            Console.WriteLine($"l.Count == {l.Count} (Should be 4!)");
+            Console.WriteLine($"l[0].Name = {l[0].Name}");
         }
     }
 }

@@ -314,5 +314,62 @@ namespace EshopSQL
             return Login(u, password);
         }
 
+        public static List<Product> GetProductsInOrder(Order o)
+        {
+            return GetProductsInOrder(o.ID);
+        }
+        public static List<Product> GetProductsInOrder(int orderId)
+        {
+            List<Product> l = new List<Product>();
+
+            SqlConnection myConnection = new SqlConnection(source);
+
+            try
+            {
+                myConnection.Open();
+                Product prod;
+                SqlCommand getProductsInOrder = new SqlCommand($"select p.*, op.quantity AS numInOrder from Products as p INNER JOIN OrderToProduct as op ON op.productID = p.ID WHERE op.orderID = {orderId}", myConnection);
+                SqlDataReader otpReader = getProductsInOrder.ExecuteReader();
+                while (otpReader.Read())
+                {
+                    int num = (int)otpReader["numInOrder"];
+                    for(int i = 0; i < num; i++)
+                    {
+                        //prod = new Product((int)otpReader["ID"], otpReader["name"].ToString(), otpReader["short_description"].ToString(), otpReader["description"].ToString(), 
+                        //(int)otpReader["parentProduct"], (float)otpReader["price"], (int)otpReader["countPerUnit"], 
+                        //(int)otpReader["quantity"], otpReader["comment"].ToString(), otpReader["image"].ToString(), otpReader["video"].ToString(), 
+                        //(int)otpReader["status"], (int)otpReader["manufacturerID"], otpReader["manufacturer_productnumber"].ToString(), (int)otpReader["categoryID"]);
+                        prod = new Product();
+                        prod.ID = (int)otpReader["ID"];
+                        prod.Name = otpReader["name"].ToString();
+                        prod.ShortDescription = otpReader["short_description"].ToString();
+                        prod.Description = otpReader["description"].ToString();
+                        prod.ParentProduct = (int)otpReader["parentProduct"];
+                        prod.Price = (float)Convert.ToDouble(otpReader["price"]);
+                        prod.CountPerUnit = (int)otpReader["countPerUnit"];
+                        prod.Quantity = (int)otpReader["quantity"];
+                        prod.Comment = otpReader["comment"].ToString();
+                        prod.Image = otpReader["image"].ToString();
+                        prod.Video = otpReader["video"].ToString();
+                        prod.Status = (int)otpReader["status"];
+                        prod.ManufacturerID = (int)otpReader["manufacturerID"];
+                        prod.ManufacturerProductNumber = otpReader["manufacturer_productnumber"].ToString();
+                        prod.CategoryID = (int)otpReader["categoryID"];
+
+                        l.Add(prod);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+
+            return l;
+        }
     }
 }
