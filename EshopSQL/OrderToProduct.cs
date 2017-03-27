@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace HeftITGemer
 {
+    /// <summary>
+    /// OrderToProduct
+    /// </summary>
     public class OrderToProduct
     {
         public int ID { get; set; }

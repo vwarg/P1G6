@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace EshopSQL
 {
+    /// <summary>
+    /// User
+    /// </summary>
     public class User
     {
         public int ID { get; set; }

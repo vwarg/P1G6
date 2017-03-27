@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace HeftITGemer
 {
+    /// <summary>
+    /// Category
+    /// </summary>
     public class Manufacturer
     {
         public int ID { get; set; }

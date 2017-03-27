@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace EshopSQL
 {
+    /// <summary>
+    /// SQL
+    /// </summary>
     public class SQL
     {
         const string source = "Data Source =.; Initial Catalog = EHandel; Integrated Security = True";

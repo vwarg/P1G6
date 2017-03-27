@@ -8,6 +8,7 @@ namespace HeftITGemer
 {
     public class Category
     {
+        // This is a comment
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

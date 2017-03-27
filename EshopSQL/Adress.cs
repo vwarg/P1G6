@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace HeftITGemer
 {
+    /// <summary>
+    /// Adress
+    /// </summary>
     public class Adress
     {
         const string source = "Data Source =.; Initial Catalog = EHandel; Integrated Security = True";
