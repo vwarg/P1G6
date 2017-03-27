@@ -16,11 +16,13 @@ namespace Web._services.Login
             if(!SQL.TryLogin(Request.Form["email"], Request.Form["password"]))
             {
                 Response.StatusCode = 403;
+                Response.Write("403\r\n");
                 Response.End();
             }
             else
             {
                 Response.StatusCode = 200;
+                Response.Write("200\r\n");
                 Response.End();
             }
         }
