@@ -112,11 +112,27 @@ namespace HeftITGemer
             
         }
 
+        /*public static void UpdateOrder(int orderId)
+        {
+            //Uppdaterar en adress. Ange id till billingAdressId eller deliveryAdressId
+            SqlConnection myConnection = new SqlConnection(source);
+
+            try
+            {
+                myConnection.Open();
+                SqlCommand myCommand = new SqlCommand($"UPDATE Adress SET country = '{country}', city = '{city}', street = '{street}', zip = '{zip}', phone = '{phone}', department = '{department}' WHERE ID = '{id}'", myConnection);
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            finally { myConnection.Close(); }
+        }
+        */
+
         #region ORDER STATUS
         private static int ChangeOrderStatus(int id, int status)
         {
 
-            //0=skapad, 1=proccesing, 2=paid 3=shipped OBS Förslag
+            //0=skapad, 1=proccesed, 2=fullfilled OBS Förslag
             SqlConnection myConnection = new SqlConnection(source);
             int affectedRows = 0;
 
@@ -138,24 +154,33 @@ namespace HeftITGemer
             return affectedRows;
         }
 
-        public static int OrderCreated(int id)
+        public static int OrderProcessed(int id, DateTime dateProcessed)
         {
-            return ChangeOrderStatus(id, 0);
-        }
+            SqlConnection myConnection = new SqlConnection(source);
+            try
+            {
+                myConnection.Open();
+                SqlCommand myCommand = new SqlCommand($"update Orders set dateProcessed = {dateProcessed} where ID = {id}", myConnection);
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            finally { myConnection.Close(); }
 
-        public static int OrderProcessing(int id)
-        {
             return ChangeOrderStatus(id, 1);
         }
 
-        public static int OrderPaid(int id)
+        public static int OrderFulfilled(int id, DateTime dateFulfilled)
         {
-            return ChangeOrderStatus(id, 2);
-        }
+            SqlConnection myConnection = new SqlConnection(source);
+            try
+            {
+                myConnection.Open();
+                SqlCommand myCommand = new SqlCommand($"update Orders set dateFulfilled = {dateFulfilled} where ID = {id}", myConnection);
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            finally { myConnection.Close(); }
 
-        public static int OrderShipped(int id)
-        {
-            return ChangeOrderStatus(id, 3);
+            return ChangeOrderStatus(id, 2);
+
         }
         #endregion
     }
