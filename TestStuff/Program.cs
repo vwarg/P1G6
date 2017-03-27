@@ -13,7 +13,10 @@ namespace TestStuff
     {
         static void Main(string[] args)
         {
-            //TestUserFlow();
+            Console.WriteLine("Cache init...");
+            SQL.UpdateUserCache();
+            Console.WriteLine("Cache init done.");
+            TestUserFlow();
             //TestProductFlow();
             //TestOrderFlow();
             Console.WriteLine("Tests done. Press any key to exit.");
