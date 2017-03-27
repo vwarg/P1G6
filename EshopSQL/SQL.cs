@@ -126,6 +126,20 @@ namespace EshopSQL
             }
         }
 
+        public static User GetUserByID(int userId)
+        {
+            User usr = userCache.Where(u => u.ID == userId).FirstOrDefault();
+            if (usr != null)
+            {
+                return usr;
+            }
+            else
+            {
+                UpdateUserCache();
+                return userCache.Where(u => u.ID == userId).FirstOrDefault();
+            }
+        }
+
         public static UserInfo GetUserInfoByID(int userInfoID)
         {
             UserInfo ui = null;
