@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HeftITGemer;
+using PasswordLib;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -12,6 +14,36 @@ namespace EshopSQL
     {
         const string source = "Data Source =.; Initial Catalog = EHandel; Integrated Security = True";
 
+        public static Adress GetAdressByID(int adressId)
+        {
+            Adress a = null;
+            SqlConnection myConnection = new SqlConnection(source);
+
+            try
+            {
+                myConnection.Open();
+
+                SqlCommand getAdress = new SqlCommand($"select * from Adress where ID = '{adressId}'", myConnection);
+                SqlDataReader myReader = getAdress.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    a = new Adress(myReader["country"].ToString(), myReader["city"].ToString(), myReader["street"].ToString(), myReader["zip"].ToString(), myReader["phone"].ToString(), myReader["department"].ToString());
+                    a.ID = adressId;
+                }
+
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return a;
+        }
+
         public static User GetUserByEmail(string email)
         {
             User user = null;
@@ -22,8 +54,8 @@ namespace EshopSQL
             {
                 myConnection.Open();
 
-                SqlCommand myCommand = new SqlCommand($"select * from Users where email = '{email}'", myConnection);
-                SqlDataReader myReader = myCommand.ExecuteReader();
+                SqlCommand getUser = new SqlCommand($"select * from Users where email = '{email}'", myConnection);
+                SqlDataReader myReader = getUser.ExecuteReader();
 
                 while (myReader.Read())
                 {
@@ -43,6 +75,42 @@ namespace EshopSQL
             }
 
             return user;
+        }
+
+        public static UserInfo GetUserInfoByID(int userInfoID)
+        {
+            UserInfo ui = null;
+
+            SqlConnection myConnection = new SqlConnection(source);
+
+            try
+            {
+                myConnection.Open();
+
+                SqlCommand getContactInfo = new SqlCommand($"select * from UserInfo where ID = {userInfoID}", myConnection);
+                SqlDataReader ciReader = getContactInfo.ExecuteReader();
+                while (ciReader.Read())
+                {
+                    ui = new UserInfo();
+                    ui.Firstname = ciReader["firstname"].ToString();
+                    ui.Lastname = ciReader["lastname"].ToString();
+                    ui.ID = (int)ciReader["ID"];
+                    ui.Phone = ciReader["phone"].ToString();
+                    ui.Companyname = ciReader["companyname"].ToString();
+                    ui.DeliveryadressID = (int)ciReader["deliveryadressID"];
+                    ui.BillingadressID = (int)ciReader["billingadressID"];
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+
+            return ui;
         }
 
         public static bool DoesUserExist(string email)
@@ -191,6 +259,42 @@ namespace EshopSQL
             return ChangeUserStatus(email, 2);
         }
 
+        public static User AddUser(string email, string password, UserInfo ui = null)
+        {
+            User toAdd = new User();
+            toAdd.Email = email;
+            toAdd.Password = PasswordHelper.GetHash(password);
+            UserInfo userInfo = ui;
+            if(userInfo == null)
+            {
+                userInfo = new UserInfo("", "", "", "", -1, -1);
+                Adress a = new Adress("", "", "", "", "", "");
+                int aid = Adress.AddAdress(a);
+                userInfo.BillingadressID = aid;
+                userInfo.DeliveryadressID = aid;
+            }
+            int uiid = UserInfo.AddUserInfo(userInfo);
+            toAdd.Contactinfo = uiid;
+            int uid = AddUser(toAdd.Email, toAdd.Password, toAdd.Contactinfo);
+            toAdd.ID = uid;
+
+            return toAdd;
+        }
+
+        public static bool Login(User u, string enteredPassword)
+        {
+            return PasswordHelper.MatchesHash(enteredPassword, u.Password);
+        }
+
+        public static bool TryLogin(string email, string password)
+        {
+            User u = GetUserByEmail(email);
+            if(u == null)
+            {
+                return false;
+            }
+            return Login(u, password);
+        }
 
     }
 }

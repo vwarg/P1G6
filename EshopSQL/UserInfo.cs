@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EshopSQL;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -19,6 +20,23 @@ namespace HeftITGemer
         public string Companyname { get; set; }
         public int DeliveryadressID { get; set; }
         public int BillingadressID { get; set; }
+        private Adress da;
+        private Adress ba;
+        public Adress DeliveryAdress
+        {
+            get
+            {
+                return da ?? (da = SQL.GetAdressByID(DeliveryadressID));
+            }
+        }
+        public Adress BillingAdress
+        {
+            get
+            {
+                return ba ?? (ba = SQL.GetAdressByID(BillingadressID));
+            }
+        }
+
 
         public UserInfo(string firstname, string lastname, string phone, string companyname, int deliveryadressID, int billingadressID)
         {
@@ -81,8 +99,8 @@ namespace HeftITGemer
                 newID = (int)newUserInfoId.Value;
 
             }
-            catch (Exception ex) {Console.WriteLine(ex.Message);}
-            finally {myConnection.Close();}
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            finally { myConnection.Close(); }
 
             return newID;
         }
@@ -103,7 +121,7 @@ namespace HeftITGemer
                 SqlCommand myCommand = new SqlCommand($"update UserInfo set firstname = '{firstname}', lastname = '{lastname}', phone = '{phone}', companyname = '{companyname}', deliveryadressID = '{deliveryadressID}', billingadressID = '{billingadressID}' where ID={id} ", myConnection);
                 myCommand.ExecuteNonQuery();
             }
-            catch (Exception ex){ Console.WriteLine(ex.Message);}
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
             finally { myConnection.Close(); }
         }
 

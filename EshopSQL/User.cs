@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HeftITGemer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +15,17 @@ namespace EshopSQL
         public int Contactinfo { get; set; }
         public byte IsCompany { get; set; }
         public int Status { get; set; }
+        private UserInfo ui;
+        public UserInfo Info
+        {
+            get
+            {
+                
+                return ui ?? (ui = SQL.GetUserInfoByID(Contactinfo));
+            }
+        }
 
-        public User (int id, string email, string password, int contactinfo, byte isCompany, int status)
+        public User(int id, string email, string password, int contactinfo, byte isCompany, int status)
         {
             ID = id;
             Email = email;
@@ -25,9 +35,9 @@ namespace EshopSQL
             Status = status;
         }
 
-        public User ()
+        public User()
         {
-            
+
         }
     }
 }

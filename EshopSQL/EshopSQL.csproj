@@ -53,6 +53,12 @@
     <Compile Include="User.cs" />
     <Compile Include="UserInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PasswordLib\PasswordLib.csproj">
+      <Project>{7e364d61-2895-466a-b9a5-f4bb873ff717}</Project>
+      <Name>PasswordLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

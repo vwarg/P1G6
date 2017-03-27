@@ -22,7 +22,7 @@ namespace TestStuff
 
             SQL.AddUser("test@email.com", "PASSW", uiid);
             User u = SQL.GetUserByEmail("test@email.com");
-            //User u = new User(-1, "test@email.com", "PASSW", -1, 0, 1);
+            Console.WriteLine(u.Info.BillingAdress.City); 
             Console.ReadKey();
         }
     }
