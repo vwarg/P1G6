@@ -83,7 +83,7 @@ namespace HeftITGemer
         public static void AddProductToOrder(int productId, int orderId, int quantity)
         {
             SqlConnection myConnection = new SqlConnection(source);
-            int newOrdrId = 0;
+            int newOrdrId = 0; 
 
             try
             {
