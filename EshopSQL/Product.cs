@@ -68,11 +68,11 @@ namespace HeftITGemer
 
                 while (myReader.Read())
                 {
-                product = new Product((int)myReader["ID"], myReader["name"].ToString(), myReader["short_description"].ToString(), 
-                        myReader["description"].ToString(), (int)myReader["parentProduct"], (float)myReader["price"], 
-                        (int)myReader["countPerUnit"], (int)myReader["quantity"], myReader["comment"].ToString(),
-                        myReader["image"].ToString(), myReader["video"].ToString(), (int)myReader["status"], (int)myReader["manufacturerID"],
-                        myReader["manufacturer_productnumber"].ToString(), (int)myReader["categoryID"]);
+                    product = new Product((int)myReader["ID"], myReader["name"].ToString(), myReader["short_description"].ToString(),
+                            myReader["description"].ToString(), (int)myReader["parentProduct"], (float)myReader["price"],
+                            (int)myReader["countPerUnit"], (int)myReader["quantity"], myReader["comment"].ToString(),
+                            myReader["image"].ToString(), myReader["video"].ToString(), (int)myReader["status"], (int)myReader["manufacturerID"],
+                            myReader["manufacturer_productnumber"].ToString(), (int)myReader["categoryID"]);
                 }
             }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
@@ -80,7 +80,6 @@ namespace HeftITGemer
 
             return product;
         }
-
 
         public static int AddProduct(string name, string shortDescription, string description, int parentProduct, float price, int countPerUnit, int quantity, string comment, string image, string video, int status, int manufacturerID, string manufacturerProductNumber, int categoryID)
         {
@@ -168,6 +167,11 @@ namespace HeftITGemer
             return newID;
         }
 
+        public static int AddProduct(Product p)
+        {
+            return AddProduct(p.Name, p.ShortDescription, p.Description, p.ParentProduct, p.Price, p.CountPerUnit, p.Quantity, p.Comment, p.Image, p.Video, p.Status, p.ManufacturerID, p.ManufacturerProductNumber, p.CategoryID);
+        }
+
         private static int ChangeProductStatus(int id, int status)
         {
             SqlConnection myConnection = new SqlConnection(source);
@@ -207,6 +211,23 @@ namespace HeftITGemer
             return ChangeProductStatus(id, 1);
         }
 
+        public static void UpdateProduct(int id, string name, string shortDescription, string description, int parentProduct, float price, int countPerUnit, int quantity, string comment, string image, string video, int status, int manufacturerID, string manufacturerProductNumber, int categoryID)
+        {
+            SqlConnection myConnection = new SqlConnection(source);
 
+            try
+            {
+                myConnection.Open();
+                SqlCommand myCommand = new SqlCommand($"UPDATE Products SET  name = '{name}', shortDescription = '{shortDescription}', description = '{description}', parentProduct = '{parentProduct}', price = '{price}', countPerUnit = '{countPerUnit}', quantity = '{quantity}', comment = '{comment}', image = '{image}', video = '{video}', status = '{status}, 'manufacturerID = '{manufacturerID}', manufacturerProductNumber = '{manufacturerProductNumber}', categoryID = '{categoryID}' WHERE ID = '{id}'", myConnection);
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            finally { myConnection.Close(); }
+        }
+
+        public static void UpdateProduct(Product p)
+        {
+            UpdateProduct(p.ID, p.Name, p.ShortDescription, p.Description, p.ParentProduct, p.Price, p.CountPerUnit, p.Quantity, p.Comment, p.Image, p.Video, p.Status, p.ManufacturerID, p.ManufacturerProductNumber, p.CategoryID);
+        }
     }
 }

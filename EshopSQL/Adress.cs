@@ -37,10 +37,12 @@ namespace HeftITGemer
         {
 
         }
+
         public static int AddAdress(Adress a)
         {
             return AddAdress(a.Country, a.City, a.Street, a.Zip, a.Phone, a.Department);
         }
+
         public static int AddAdress(string country, string city, string street, string zip, string phone, string department)
         {
             int newAdressID = 0;
@@ -108,16 +110,11 @@ namespace HeftITGemer
             try
             {
                 myConnection.Open();
-                SqlCommand myCommand = new SqlCommand($"UPDATE Adress SET  country = '{country}', city = '{city}', street = '{street}', zip = '{zip}', phone = '{phone}', department = '{department}' WHERE ID = '{id}'", myConnection);
+                SqlCommand myCommand = new SqlCommand($"UPDATE Adress SET country = '{country}', city = '{city}', street = '{street}', zip = '{zip}', phone = '{phone}', department = '{department}' WHERE ID = '{id}'", myConnection);
                 myCommand.ExecuteNonQuery();
             }
-            catch (Exception ex) { Console.WriteLine(ex.Message);}
-            finally {myConnection.Close();}
-        }
-
-        public override string ToString()
-        {
-            return $"Adress: Country: {Country}, City: {City}, Street: {Street}, Zip: {Zip}, Phone: {Phone}, Department: {Department}";
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            finally { myConnection.Close(); }
         }
     }
 }
