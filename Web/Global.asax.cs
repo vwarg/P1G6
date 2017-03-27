@@ -20,6 +20,7 @@ namespace Web
             string path = Environment.GetEnvironmentVariable("PATH");
             string binDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Bin");
             Environment.SetEnvironmentVariable("PATH", path + ";" + binDir);
+            EshopSQL.SQL.UpdateUserCache();
         }
     }
 }

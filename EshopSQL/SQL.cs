@@ -18,7 +18,7 @@ namespace EshopSQL
         const string source = "Data Source =.; Initial Catalog = EHandel; Integrated Security = True";
         private static List<User> userCache = new List<User>();
 
-        private static void UpdateUserCache()
+        public static void UpdateUserCache()
         {
             userCache.Clear();
             SqlConnection myConnection = new SqlConnection(source);
