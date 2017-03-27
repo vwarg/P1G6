@@ -16,6 +16,40 @@ namespace EshopSQL
     public class SQL
     {
         const string source = "Data Source =.; Initial Catalog = EHandel; Integrated Security = True";
+        private static List<User> userCache = new List<User>();
+
+        private static void UpdateUserCache()
+        {
+            userCache.Clear();
+            SqlConnection myConnection = new SqlConnection(source);
+
+            try
+            {
+                myConnection.Open();
+
+                SqlCommand getUser = new SqlCommand($"select * from Users", myConnection);
+                SqlDataReader myReader = getUser.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    var user = new User((int)myReader["ID"], myReader["email"].ToString(),
+                        myReader["password"].ToString(), (int)myReader["contactinfo"], (byte)myReader["isCompany"],
+                        (int)myReader["status"]);
+                    var a = user.Info.BillingAdress;
+                    a = user.Info.DeliveryAdress;
+                    userCache.Add(user);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }
 
         public static Adress GetAdressByID(int adressId)
         {
@@ -49,6 +83,7 @@ namespace EshopSQL
 
         public static User GetUserByEmail(string email)
         {
+            /*
             User user = null;
 
             SqlConnection myConnection = new SqlConnection(source);
@@ -78,6 +113,17 @@ namespace EshopSQL
             }
 
             return user;
+            */
+            User usr = userCache.Where(u => u.Email == email).FirstOrDefault();
+            if (usr != null)
+            {
+                return usr;
+            }
+            else
+            {
+                UpdateUserCache();
+                return userCache.Where(u => u.Email == email).FirstOrDefault();
+            }
         }
 
         public static UserInfo GetUserInfoByID(int userInfoID)
@@ -118,6 +164,8 @@ namespace EshopSQL
 
         public static bool DoesUserExist(string email)
         {
+            
+            /*
             SqlConnection myConnection = new SqlConnection(source);
             SqlDataReader myReader = null;
             bool result = false;
@@ -137,9 +185,9 @@ namespace EshopSQL
             finally
             {
                 myConnection.Close();
-            }
+            } */
 
-            return result;
+            return userCache.Exists(u => u.Email == email);
 
         }
 
@@ -190,6 +238,7 @@ namespace EshopSQL
                     myConnection.Close();
                 }
             }
+            UpdateUserCache();
             return newID;
         }
 
@@ -197,7 +246,7 @@ namespace EshopSQL
         {
             SqlConnection myConnection = new SqlConnection(source);
             int affectedRows = 0;
-            
+
 
             try
             {
@@ -214,7 +263,7 @@ namespace EshopSQL
             {
                 myConnection.Close();
             }
-
+            UpdateUserCache();
             return affectedRows;
         }
 
@@ -268,7 +317,7 @@ namespace EshopSQL
             toAdd.Email = email;
             toAdd.Password = PasswordHelper.GetHash(password);
             UserInfo userInfo = ui;
-            if(userInfo == null)
+            if (userInfo == null)
             {
                 userInfo = new UserInfo("", "", "", "", -1, -1);
                 Adress a = new Adress("", "", "", "", "", "");
@@ -295,7 +344,7 @@ namespace EshopSQL
             toAdd.Contactinfo = uiid;
             int uid = AddUser(toAdd.Email, toAdd.Password, toAdd.Contactinfo);
             toAdd.ID = uid;
-
+            UpdateUserCache();
             return toAdd;
         }
 
@@ -307,7 +356,7 @@ namespace EshopSQL
         public static bool TryLogin(string email, string password)
         {
             User u = GetUserByEmail(email);
-            if(u == null)
+            if (u == null)
             {
                 return false;
             }
@@ -333,12 +382,8 @@ namespace EshopSQL
                 while (otpReader.Read())
                 {
                     int num = (int)otpReader["numInOrder"];
-                    for(int i = 0; i < num; i++)
+                    for (int i = 0; i < num; i++)
                     {
-                        //prod = new Product((int)otpReader["ID"], otpReader["name"].ToString(), otpReader["short_description"].ToString(), otpReader["description"].ToString(), 
-                        //(int)otpReader["parentProduct"], (float)otpReader["price"], (int)otpReader["countPerUnit"], 
-                        //(int)otpReader["quantity"], otpReader["comment"].ToString(), otpReader["image"].ToString(), otpReader["video"].ToString(), 
-                        //(int)otpReader["status"], (int)otpReader["manufacturerID"], otpReader["manufacturer_productnumber"].ToString(), (int)otpReader["categoryID"]);
                         prod = new Product();
                         prod.ID = (int)otpReader["ID"];
                         prod.Name = otpReader["name"].ToString();
