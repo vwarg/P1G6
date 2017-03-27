@@ -111,6 +111,11 @@ namespace HeftITGemer
             catch (Exception ex) { Console.WriteLine(ex.Message);}
             finally {myConnection.Close();}
         }
+
+        public override string ToString()
+        {
+            return $"Country: {Country}, City: {City}, Street: {Street}, Zip: {Zip}, Phone: {Phone}, Department: {Department}";
+        }
     }
 }
 

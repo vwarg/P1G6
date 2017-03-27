@@ -125,7 +125,19 @@ namespace HeftITGemer
             finally { myConnection.Close(); }
         }
 
-
+        public override string ToString()
+        {
+            var str = "";
+            var nl = Environment.NewLine;
+            str += $"ID: {ID}" + nl;
+            str += $"FirstName: {Firstname}" + nl;
+            str += $"LastName: {Lastname}" + nl;
+            str += $"Phone: {Phone}" + nl;
+            str += $"CompanyName: {Companyname}" + nl;
+            str += $"DeliveryAdress: {DeliveryAdress.ToString()}" + nl;
+            str += $"BillingAdress: {BillingAdress.ToString()}" + nl;
+            return str;
+        }
 
     }
 

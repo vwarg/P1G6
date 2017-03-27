@@ -273,6 +273,21 @@ namespace EshopSQL
                 userInfo.BillingadressID = aid;
                 userInfo.DeliveryadressID = aid;
             }
+            else
+            {
+                if (userInfo.DeliveryadressID < 0)
+                {
+                    Adress a = new Adress("", "", "", "", "", "");
+                    int aid = Adress.AddAdress(a);
+                    userInfo.DeliveryadressID = aid;
+                }
+                if (userInfo.BillingadressID < 0)
+                {
+                    Adress a = new Adress("", "", "", "", "", "");
+                    int aid = Adress.AddAdress(a);
+                    userInfo.BillingadressID = aid;
+                }
+            }
             int uiid = UserInfo.AddUserInfo(userInfo);
             toAdd.Contactinfo = uiid;
             int uid = AddUser(toAdd.Email, toAdd.Password, toAdd.Contactinfo);

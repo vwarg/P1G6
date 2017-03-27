@@ -20,7 +20,7 @@ namespace EshopSQL
         {
             get
             {
-                
+
                 return ui ?? (ui = SQL.GetUserInfoByID(Contactinfo));
             }
         }
@@ -38,6 +38,21 @@ namespace EshopSQL
         public User()
         {
 
+        }
+
+        public override string ToString()
+        {
+            var nl = Environment.NewLine;
+            var str = "User: " + nl;
+            str += $"ID: {ID}" + nl;
+            str += $"Email: {Email}" + nl;
+            str += $"Password: {Password}" + nl;
+            str += $"IsCompany: {IsCompany}" + nl;
+            str += $"Status: {Status}" + nl;
+            str += $"UserInfo: {nl}";
+            str += $"{Info.ToString()}";
+
+            return str;
         }
     }
 }
