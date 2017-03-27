@@ -127,8 +127,8 @@ namespace HeftITGemer
 
         public override string ToString()
         {
-            var str = "";
             var nl = Environment.NewLine;
+            var str = "UserInfo: "+nl;
             str += $"ID: {ID}" + nl;
             str += $"FirstName: {Firstname}" + nl;
             str += $"LastName: {Lastname}" + nl;

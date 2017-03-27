@@ -114,7 +114,7 @@ namespace HeftITGemer
 
         public override string ToString()
         {
-            return $"Country: {Country}, City: {City}, Street: {Street}, Zip: {Zip}, Phone: {Phone}, Department: {Department}";
+            return $"Adress: Country: {Country}, City: {City}, Street: {Street}, Zip: {Zip}, Phone: {Phone}, Department: {Department}";
         }
     }
 }

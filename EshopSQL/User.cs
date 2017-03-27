@@ -49,7 +49,7 @@ namespace EshopSQL
             str += $"Password: {Password}" + nl;
             str += $"IsCompany: {IsCompany}" + nl;
             str += $"Status: {Status}" + nl;
-            str += $"UserInfo: {nl}";
+            str += $"Info: {nl}";
             str += $"{Info.ToString()}";
 
             return str;

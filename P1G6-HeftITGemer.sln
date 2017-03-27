@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EshopSQL", "EshopSQL\EshopSQL.csproj", "{42E08890-9FCD-461C-95E7-68C24B1EB3FF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestStuff", "TestStuff\TestStuff.csproj", "{918E78A0-6E00-419E-8C36-00A6D10BD5BB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7E364D61-2895-466A-B9A5-F4BB873FF717} = {7E364D61-2895-466A-B9A5-F4BB873FF717}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

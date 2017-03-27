@@ -15,14 +15,11 @@ namespace TestStuff
             Adress a = new Adress("Sweden", "Karlstad", "Signalhornsgatan 66", "65634", "0", " ");
             int aid = Adress.AddAdress(a);
             UserInfo ui = new UserInfo("Test", "Testsson", "0", " ", aid, aid);
-
-            ui.BillingadressID = aid;
-            ui.DeliveryadressID = aid;
-            int uiid = UserInfo.AddUserInfo(ui);
-
-            SQL.AddUser("test@email.com", "PASSW", uiid);
-            User u = SQL.GetUserByEmail("test@email.com");
-            Console.WriteLine(u.ToString()); 
+            
+            User u = SQL.AddUser("test@email.com", "PASSW", ui);
+            //User u = SQL.GetUserByEmail("test@email.com");
+            Console.WriteLine($"User has password PSSWD? {SQL.Login(u, "PSSWD")}");
+            Console.WriteLine($"User has password PASSW? {SQL.Login(u, "PASSW")}");
             Console.ReadKey();
         }
     }
