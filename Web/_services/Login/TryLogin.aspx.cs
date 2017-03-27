@@ -23,6 +23,7 @@ namespace Web._services.Login
             {
                 Response.StatusCode = 200;
                 Response.Write("200\r\n");
+                Session["User"] = SQL.GetUserByEmail(Request.Form["email"]);
                 Response.End();
             }
         }
