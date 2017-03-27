@@ -93,7 +93,7 @@ namespace HeftITGemer
 
                 myCommand.Parameters.Add(newName);
                 myCommand.Parameters.Add(newDescription);
-                myCommand.Parameters.Add(parentCategory);
+                myCommand.Parameters.Add(newParentCategory);
                 myCommand.Parameters.Add(newCategoryId);
 
                 myCommand.ExecuteNonQuery();

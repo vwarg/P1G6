@@ -158,7 +158,7 @@ namespace HeftITGemer
 
                 myCommand.ExecuteNonQuery();
 
-                newID = (int)newDescription.Value;
+                newID = (int)newProductId.Value;
 
             }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
