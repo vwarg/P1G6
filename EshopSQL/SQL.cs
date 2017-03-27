@@ -17,36 +17,6 @@ namespace EshopSQL
     {
         const string source = "Data Source =.; Initial Catalog = EHandel; Integrated Security = True";
 
-        public static Adress GetAdressByID(int adressId)
-        {
-            Adress a = null;
-            SqlConnection myConnection = new SqlConnection(source);
-
-            try
-            {
-                myConnection.Open();
-
-                SqlCommand getAdress = new SqlCommand($"select * from Adress where ID = '{adressId}'", myConnection);
-                SqlDataReader myReader = getAdress.ExecuteReader();
-
-                while (myReader.Read())
-                {
-                    a = new Adress(myReader["country"].ToString(), myReader["city"].ToString(), myReader["street"].ToString(), myReader["zip"].ToString(), myReader["phone"].ToString(), myReader["department"].ToString());
-                    a.ID = adressId;
-                }
-
-            }
-            catch (Exception)
-            {
-
-            }
-            finally
-            {
-                myConnection.Close();
-            }
-            return a;
-        }
-
         public static User GetUserByEmail(string email)
         {
             User user = null;

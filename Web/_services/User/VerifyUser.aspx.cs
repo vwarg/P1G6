@@ -13,7 +13,7 @@ namespace Web._services.User
         {
             if (Session["User"] != null)
             {
-                EshopSQL.User u = (EshopSQL.User)Session["User"];
+                HeftITGemer.User u = (HeftITGemer.User)Session["User"];
                 Response.Write($"{u.ID}\r\n");
                 Response.End();
             }

@@ -25,21 +25,22 @@ namespace HeftITGemer
         public int BillingadressID { get; set; }
         private Adress da;
         private Adress ba;
+
+        // ?? = returnera om det inte är null annars gör det som är bakom
         public Adress DeliveryAdress
         {
             get
             {
-                return da ?? (da = SQL.GetAdressByID(DeliveryadressID));
+                return da ?? (da = Adress.GetAdressByID(DeliveryadressID));
             }
         }
         public Adress BillingAdress
         {
             get
             {
-                return ba ?? (ba = SQL.GetAdressByID(BillingadressID));
+                return ba ?? (ba = Adress.GetAdressByID(BillingadressID));
             }
         }
-
 
         public UserInfo(string firstname, string lastname, string phone, string companyname, int deliveryadressID, int billingadressID)
         {
