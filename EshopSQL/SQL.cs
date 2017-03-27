@@ -298,7 +298,7 @@ namespace EshopSQL
 
         public static bool Login(User u, string enteredPassword)
         {
-            return PasswordHelper.MatchesHash(enteredPassword, u.Password);
+            return PasswordHelper.MatchesHash(u.Password, enteredPassword);
         }
 
         public static bool TryLogin(string email, string password)

@@ -8,7 +8,7 @@
             return result;
         }
 
-        public static bool MatchesHash(string input, string hash)
+        public static bool MatchesHash(string hash, string input)
         {
             return Sodium.PasswordHash.ScryptHashStringVerify(hash, input);   
         }

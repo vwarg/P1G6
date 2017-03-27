@@ -1,5 +1,6 @@
 ﻿using EshopSQL;
 using HeftITGemer;
+using PasswordLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,12 @@ namespace TestStuff
             int aid = Adress.AddAdress(a);
             UserInfo ui = new UserInfo("Test", "Testsson", "0", " ", aid, aid);
             
-            User u = SQL.AddUser("test@email.com", "PASSW", ui);
+            User u = SQL.AddUser("toast@email.com", "PASSWO", ui);
+            User tst = SQL.GetUserByEmail("toast@email.com");
             //User u = SQL.GetUserByEmail("test@email.com");
-            Console.WriteLine($"User has password PSSWD? {SQL.Login(u, "PSSWD")}");
-            Console.WriteLine($"User has password PASSW? {SQL.Login(u, "PASSW")}");
+            
+            //Console.WriteLine($"HASH: {h} | PLAINTEXT: {p} -- hash matches plaintext? {PasswordHelper.MatchesHash(h, p)}");
+            Console.WriteLine($"User has password PASSWO? {SQL.Login(tst, "PASSWO")}");
             Console.ReadKey();
         }
     }

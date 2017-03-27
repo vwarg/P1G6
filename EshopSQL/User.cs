@@ -54,5 +54,7 @@ namespace EshopSQL
 
             return str;
         }
+
+        
     }
 }
