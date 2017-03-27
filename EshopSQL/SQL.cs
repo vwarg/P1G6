@@ -354,7 +354,7 @@ namespace EshopSQL
         public static List<Product> GetProductsInOrder(int orderId)
         {
             List<Product> l = new List<Product>();
-
+            
             SqlConnection myConnection = new SqlConnection(source);
 
             try

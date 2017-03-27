@@ -80,6 +80,45 @@ namespace HeftITGemer
             return newOrdrId;
         }
 
+        public static void AddProductToOrder(int productId, int orderId, int quantity)
+        {
+            SqlConnection myConnection = new SqlConnection(source);
+            int newOrdrId = 0;
+
+            try
+            {
+                myConnection.Open();
+
+                SqlCommand myCommand = new SqlCommand("AddOrder", myConnection);
+                myCommand.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter newUserId = new SqlParameter("@userId", SqlDbType.Int);
+                newUserId.Value = user;
+
+                SqlParameter newBillingAdressId = new SqlParameter("@billingAdressId", SqlDbType.Int);
+                newBillingAdressId.Value = user.Info.BillingadressID;
+
+                SqlParameter newDeliveryAdressID = new SqlParameter("@deliveryAdressID", SqlDbType.Int);
+                newDeliveryAdressID.Value = user.Info.DeliveryadressID;
+
+                SqlParameter newOrderId = new SqlParameter("@newOrderId ", SqlDbType.Int);
+                newOrderId.Direction = ParameterDirection.Output;
+
+                myCommand.Parameters.Add(newUserId);
+                myCommand.Parameters.Add(newBillingAdressId);
+                myCommand.Parameters.Add(newDeliveryAdressID);
+                myCommand.Parameters.Add(newOrderId);
+
+                myCommand.ExecuteNonQuery();
+
+                newOrdrId = (int)newOrderId.Value;
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            finally { myConnection.Close(); }
+
+            return newOrdrId;
+        }
+
         #region ORDER STATUS
         private static int ChangeOrderStatus(int id, int status)
         {
