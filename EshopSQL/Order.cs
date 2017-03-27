@@ -83,40 +83,33 @@ namespace HeftITGemer
         public static void AddProductToOrder(int productId, int orderId, int quantity)
         {
             SqlConnection myConnection = new SqlConnection(source);
-            int newOrdrId = 0; 
-
+            
             try
             {
                 myConnection.Open();
 
-                SqlCommand myCommand = new SqlCommand("AddOrder", myConnection);
+                SqlCommand myCommand = new SqlCommand("AddProductToOrder", myConnection);
                 myCommand.CommandType = CommandType.StoredProcedure;
 
-                SqlParameter newUserId = new SqlParameter("@userId", SqlDbType.Int);
-                newUserId.Value = user;
+                SqlParameter newProductId = new SqlParameter("@productId", SqlDbType.Int);
+                newProductId.Value = productId;
 
-                SqlParameter newBillingAdressId = new SqlParameter("@billingAdressId", SqlDbType.Int);
-                newBillingAdressId.Value = user.Info.BillingadressID;
+                SqlParameter newOrderId = new SqlParameter("@orderId", SqlDbType.Int);
+                newOrderId.Value = orderId;
 
-                SqlParameter newDeliveryAdressID = new SqlParameter("@deliveryAdressID", SqlDbType.Int);
-                newDeliveryAdressID.Value = user.Info.DeliveryadressID;
+                SqlParameter newQuantity = new SqlParameter("@quantity", SqlDbType.Int);
+                newQuantity.Value = quantity;
 
-                SqlParameter newOrderId = new SqlParameter("@newOrderId ", SqlDbType.Int);
-                newOrderId.Direction = ParameterDirection.Output;
-
-                myCommand.Parameters.Add(newUserId);
-                myCommand.Parameters.Add(newBillingAdressId);
-                myCommand.Parameters.Add(newDeliveryAdressID);
+                myCommand.Parameters.Add(newProductId);
                 myCommand.Parameters.Add(newOrderId);
+                myCommand.Parameters.Add(newQuantity);
 
                 myCommand.ExecuteNonQuery();
-
-                newOrdrId = (int)newOrderId.Value;
+                                
             }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
             finally { myConnection.Close(); }
-
-            return newOrdrId;
+            
         }
 
         #region ORDER STATUS
