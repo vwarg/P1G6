@@ -1037,6 +1037,53 @@ nav a:hover{
 		box-shadow: -2px -2px 0 #000;
 	}
 
+/* addproduct.html */
+#addProductSection{
+}
+	#addProductSection h3{
+		margin: 50px 0 0 0;
+	}
+	#addProductSection form{
+		margin: 50px 0;
+	}
+		#addProductSection input[type=text],
+		#addProductSection textarea{
+			display: block;
+			padding: 3px 6px;
+			margin: 12px auto;
+			border: none;
+			width: 80%;
+			height: 34px;
+			box-shadow: 0 0 3px #000;
+			outline: none;
+			transition: box-shadow .1s linear;
+		}
+		#addProductSection input[type=text]:focus,
+		#addProductSection textarea:focus{
+			box-shadow: 0 0 3px #aa9100;
+		}
+		#addProductSection textarea{
+			resize: none;
+			height: 100px;
+			font-family: helvetica;
+			font-size: 14px;
+		}
+		#addProductSection input[type=submit]{
+			margin: auto;
+			display: block;
+			border: none;
+			padding: 3px 6px;
+			box-shadow: 2px 2px 0 #000;
+			color: #000;
+			line-height: 30px;
+			vertical-align: middle;
+			transition: background .1s linear, box-shadow .1s linear;
+		}
+		#addProductSection input[type=submit]:hover{	
+			cursor: pointer;
+			background: #aa9100;
+			box-shadow: -2px -2px 0 #000;
+		}
 
 
 		
