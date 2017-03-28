@@ -446,7 +446,6 @@ namespace EshopSQL
                 {
                     if (!modReader.IsDBNull(0) && modReader.IsDBNull(1))
                     {
-                        //pct
                         var percent = 1 - (modReader.GetFloat(0) / 100);
                         prod.Price = prod.Price * percent;
                     }
