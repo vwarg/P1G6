@@ -313,6 +313,7 @@ input[type=text]{
 			padding: 30px 0 150px 0;
 		}
 			#cartEmptyCart,
+			#cartProceed,
 			#cartSendOrder{
 				float: left;
 				display: inline-block;
@@ -327,19 +328,74 @@ input[type=text]{
 				transition: background .1s linear, box-shadow .1s linear;
 			}
 				#cartEmptyCart:hover,
-				#cartSendOrder:hover{
+				#cartProceed:hover,
+			    #cartSendOrder:hover{
 					cursor: pointer;
 					background: #ff0000;
 					box-shadow: -2px -2px 0 #000;
 				}
+			#cartProceed,
 			#cartSendOrder{
 				float: right;
 				background: #00aa3c;
 				font-weight: bold;
 			}
-				#cartSendOrder:hover{
+				#cartProceed:hover,
+			    #cartSendOrder:hover{
 					background: #aa9100;
 				}
+            #cartSendOrder{
+				float: none;
+				margin: 40px auto;
+				display: block;
+				width: 40%;
+			}
+            #orderContactInfo{
+				display: none;
+			}
+				#orderContactInfo h3{
+					text-align: center;
+					margin-top: 60px;
+				}
+				#orderContactInfo input{
+					display: block;
+					padding: 3px 6px;
+					margin: 12px auto;
+					border: none;
+					width: calc(50% - 12px);
+					height: 34px;
+					box-shadow: 0 0 3px #000;
+					outline: none;
+					transition: box-shadow .1s linear;
+				}
+					#checkboxContainer{
+						text-align: center;
+						overflow: auto;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						margin: 10px 0 20px 0;
+					}
+						#billingAdressBox{
+							display: none;
+						}
+							#copyDeliveryAdressText{
+								height: 26px;
+							}
+							#copyDeliveryAdress{
+								margin-left: 12px;
+								width: 24px;
+								height: 24px;
+								border: 1px solid #000;
+								box-shadow: 0 0 2px #000;
+							}
+							#copyDeliveryAdress:hover{
+								cursor: pointer;
+								background-image: url(img/icons/checkmarkHover.svg);
+							}
+							.copyDeliveryAdressChecked{
+								background-image: url(img/icons/checkmark.svg);
+							}
 /* END cart-view */
 
 #mainContainer{

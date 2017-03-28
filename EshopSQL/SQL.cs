@@ -332,6 +332,35 @@ namespace EshopSQL
             return toAdd;
         }
 
+        public static Order GetActiveOrders(User u)
+        {
+            Order o = null;
+            SqlConnection myConnection = new SqlConnection(source);
+
+            try
+            {
+                myConnection.Open();
+
+                SqlCommand getOrder = new SqlCommand($"select * from Orders where userID = '{u.ID}' AND status = 0", myConnection);
+                SqlDataReader myReader = getOrder.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    o = new Order(myReader.GetInt32(0), myReader.GetInt32(1), myReader.GetInt32(2), myReader.GetInt32(3), myReader.GetFloat(4), myReader.GetDateTime(5), myReader.GetDateTime(6), myReader.GetDateTime(7), myReader.GetInt32(8));
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return o;
+        }
+
         public static bool Login(User u, string enteredPassword)
         {
             return PasswordHelper.MatchesHash(u.Password, enteredPassword);

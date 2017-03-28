@@ -22,7 +22,7 @@ $(document).ready(function () {
 	
 	// Order history show/hide
 	// TODO man ska kunna klicka på "login-knappen" när man är inloggad för att se ordrar
-	$('nav a').on('click', function(){
+	$('nav b').on('click', function(){
 		$('body').css('overflowY', 'hidden');
 		$('#overlayOrders').stop().fadeToggle();
 	});
@@ -120,6 +120,17 @@ $(document).ready(function () {
 		 // $(this). ta bort vara från kundkorgen
 	});
 	
+    /* Visa kontaktinfo - fälten bör vara förifyllda om användaren gjort en tidigare beställnin/registrerat uppgifterna */
+	$('#cartProceed').on('click', function () {
+	    $('#orderContactInfo').show();
+	    $('#cartFix').animate({ scrollTop: $('#orderContactInfo').position().top - 40 }, 500);
+	});
+
+	$('#copyDeliveryAdress').on('click', function () {
+	    $(this).toggleClass('copyDeliveryAdressChecked');
+	    $('#billingAdressBox').slideToggle();
+	    $('#cartFix').animate({ scrollTop: $('#billingAdressBox').position().top - 40 }, 500);
+	});
 	
 	// Calculate cart sum
 	function CalculateCartTotal(){

@@ -214,10 +214,25 @@
     <Content Include="img\products\binder.png" />
     <Content Include="img\products\binder_deluxe.png" />
     <Content Include="img\products\calculator.png" />
+    <Content Include="img\products\calc_advanded.png" />
+    <Content Include="img\products\calc_simple.png" />
     <Content Include="img\products\clamp_remover.png" />
     <Content Include="img\products\colored_pens.png" />
+    <Content Include="img\products\gem.png" />
+    <Content Include="img\products\gemBLUE.png" />
+    <Content Include="img\products\gemGREEN.png" />
+    <Content Include="img\products\gemRED.png" />
+    <Content Include="img\products\ha1.png" />
+    <Content Include="img\products\ha2.png" />
+    <Content Include="img\products\ha3.png" />
+    <Content Include="img\products\halslag1.png" />
+    <Content Include="img\products\halslag2.png" />
+    <Content Include="img\products\halslag3.png" />
     <Content Include="img\products\paperclips.png" />
     <Content Include="img\products\pens.png" />
+    <Content Include="img\products\pin1.png" />
+    <Content Include="img\products\pin2.png" />
+    <Content Include="img\products\pin3.png" />
     <Content Include="img\slider\deluxe_pen.jpg" />
     <Content Include="img\slider\organized.jpg" />
     <Content Include="img\slider\productivity.jpg" />
@@ -245,11 +260,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
     <Content Include="JSTester.html" />
+    <Content Include="Productlist.aspx" />
     <Content Include="Scripts\LoginHandler.js" />
     <Content Include="Storelocation.aspx" />
     <Content Include="Help.aspx" />
     <Content Include="_services\Login\LogOut.aspx" />
     <Content Include="_services\Login\TryLogin.aspx" />
+    <Content Include="_services\Order\AddProductToOrder.aspx" />
     <Content Include="_services\Products\GetProducts.aspx" />
     <Content Include="_services\User\AddAdress.aspx" />
     <Content Include="_services\User\AddUserInfo.aspx" />
@@ -439,6 +456,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Productlist.aspx.cs">
+      <DependentUpon>Productlist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Productlist.aspx.designer.cs">
+      <DependentUpon>Productlist.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -489,6 +513,13 @@
     </Compile>
     <Compile Include="_services\Login\TryLogin.aspx.designer.cs">
       <DependentUpon>TryLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_services\Order\AddProductToOrder.aspx.cs">
+      <DependentUpon>AddProductToOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_services\Order\AddProductToOrder.aspx.designer.cs">
+      <DependentUpon>AddProductToOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="_services\Products\GetProducts.aspx.cs">
       <DependentUpon>GetProducts.aspx</DependentUpon>
