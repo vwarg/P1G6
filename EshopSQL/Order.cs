@@ -105,7 +105,14 @@ namespace HeftITGemer
                 myCommand.Parameters.Add(newQuantity);
 
                 myCommand.ExecuteNonQuery();
-                                
+
+                SqlCommand updateOTP = new SqlCommand($"UPDATE OrderToProduct SET price = {SQL.GetAllProducts().First(p => p.ID == productId).Price.ToString().Replace(',', '.')} WHERE productID = {productId} AND orderID = {orderId}", myConnection);
+
+                updateOTP.ExecuteNonQuery();
+
+                SqlCommand updateOrder = new SqlCommand($"UPDATE Orders SET total_price += {Product.GetProductById(productId).Price} WHERE ID = {orderId}", myConnection);
+
+                updateOrder.ExecuteNonQuery();
             }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
             finally { myConnection.Close(); }
@@ -121,7 +128,11 @@ namespace HeftITGemer
             {
                 myConnection.Open();
 
-                SqlCommand updateOrder = new SqlCommand($"UPDATE OrderToProduct SET quantity += {quantityToAdd}, price += {Product.GetProductById(productId).Price} WHERE productID = {productId} AND orderID = {orderId}", myConnection);
+                SqlCommand updateOTP = new SqlCommand($"UPDATE OrderToProduct SET quantity += {quantityToAdd}, price += {Product.GetProductById(productId).Price} WHERE productID = {productId} AND orderID = {orderId}", myConnection);
+
+                updateOTP.ExecuteNonQuery();
+
+                SqlCommand updateOrder = new SqlCommand($"UPDATE Orders SET total_price += {Product.GetProductById(productId).Price} WHERE ID = {orderId}", myConnection);
 
                 updateOrder.ExecuteNonQuery();
 
