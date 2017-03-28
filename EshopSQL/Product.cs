@@ -31,6 +31,24 @@ namespace HeftITGemer
         public int ManufacturerID { get; set; }
         public string ManufacturerProductNumber { get; set; }
         public int CategoryID { get; set; }
+        public Product Parent
+        {
+            get
+            {
+                if(ParentProduct > 0)
+                {
+                    return GetProductById(ParentProduct);
+                }
+                return null;
+            }
+        }
+        public Manufacturer Manufacturer
+        {
+            get
+            {
+                return Manufacturer.GetManufacturerById(ManufacturerID);
+            }
+        }
 
         //Konstruktor för alla parametrar i klassen       
         public Product(int id, string name, string shortDescription, string description, int parentProduct, float price, int countPerUnit, int quantity, string comment, string image, string video, int status, int manufacturerID, string manufacturerProductNumber, int categoryID)
@@ -230,6 +248,27 @@ namespace HeftITGemer
         public static void UpdateProduct(Product p)
         {
             UpdateProduct(p.ID, p.Name, p.ShortDescription, p.Description, p.ParentProduct, p.Price, p.CountPerUnit, p.Quantity, p.Comment, p.Image, p.Video, p.Status, p.ManufacturerID, p.ManufacturerProductNumber, p.CategoryID);
+        }
+
+        public string ToJson()
+        {
+            var json = "{";
+            json += $"\"ID\": \"{ID}\",";
+            json += $"\"Name\": \"{Name}\",";
+            json += $"\"ShortDescription\": \"{ShortDescription}\",";
+            json += $"\"Description\": \"{Description}\",";
+            json += $"\"Price\": \"{Price}\",";
+            json += $"\"CountPerUnit\": \"{CountPerUnit}\",";
+            json += $"\"Quantity\": \"{Quantity}\",";
+            json += $"\"Image\": \"{Image}\",";
+            json += $"\"Video\": \"{Video}\",";
+            json += $"\"Status\": \"{Status}\",";
+            json += $"\"ManufacturerName\": \"{Manufacturer.Name}\",";
+            json += $"\"ManufacturerURL\": \"{Manufacturer.Url}\",";
+            json += $"\"CategoryID\": \"{CategoryID}\"";
+
+            json += "}";
+            return json;
         }
     }
 }
