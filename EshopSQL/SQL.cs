@@ -17,6 +17,7 @@ namespace EshopSQL
     {
         const string source = "Data Source =.; Initial Catalog = EHandel; Integrated Security = True";
         private static List<User> userCache = new List<User>();
+        private static List<Product> productCache = new List<Product>();
 
         public static void UpdateUserCache()
         {
@@ -399,6 +400,65 @@ namespace EshopSQL
             }
 
             return l;
+        }
+
+
+        public static List<Product> GetProductsInCategory(Category c)
+        {
+            return GetProductsInCategory(c.ID);
+        }
+        public static List<Product> GetProductsInCategory(int categoryId)
+        {
+            return GetAllProducts().Where(p => p.CategoryID == categoryId).ToList();
+        }
+
+        public static List<Product> GetAllProducts()
+        {
+            if(productCache.Count > 0)
+            {
+                return productCache;
+            }
+
+            SqlConnection myConnection = new SqlConnection(source);
+
+            try
+            {
+                myConnection.Open();
+                Product prod;
+                SqlCommand getProductsInOrder = new SqlCommand($"select * from Products", myConnection);
+                SqlDataReader otpReader = getProductsInOrder.ExecuteReader();
+                while (otpReader.Read())
+                {
+                    prod = new Product();
+                    prod.ID = (int)otpReader["ID"];
+                    prod.Name = otpReader["name"].ToString();
+                    prod.ShortDescription = otpReader["short_description"].ToString();
+                    prod.Description = otpReader["description"].ToString();
+                    prod.ParentProduct = (int)otpReader["parentProduct"];
+                    prod.Price = (float)Convert.ToDouble(otpReader["price"]);
+                    prod.CountPerUnit = (int)otpReader["countPerUnit"];
+                    prod.Quantity = (int)otpReader["quantity"];
+                    prod.Comment = otpReader["comment"].ToString();
+                    prod.Image = otpReader["image"].ToString();
+                    prod.Video = otpReader["video"].ToString();
+                    prod.Status = (int)otpReader["status"];
+                    prod.ManufacturerID = (int)otpReader["manufacturerID"];
+                    prod.ManufacturerProductNumber = otpReader["manufacturer_productnumber"].ToString();
+                    prod.CategoryID = (int)otpReader["categoryID"];
+
+                    productCache.Add(prod);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+
+            return productCache;
         }
 
         public static List<Product> UpdateCurrentPricesForProducts(List<Product> lst)
