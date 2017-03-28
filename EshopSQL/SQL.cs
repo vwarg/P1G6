@@ -403,12 +403,7 @@ namespace EshopSQL
 
         public static List<Product> UpdateCurrentPricesForProducts(List<Product> lst)
         {
-            List<Product> l = new List<Product>();
-            foreach (var p in lst)
-            {
-                l.Add(UpdateCurrentPricesForProduct(p));
-            }
-            return l;
+            return UpdateCurrentPricesForProducts(lst, DateTime.Now);
         }
         public static List<Product> UpdateCurrentPricesForProducts(List<Product> lst, DateTime dt)
         {
