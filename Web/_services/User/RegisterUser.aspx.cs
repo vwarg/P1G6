@@ -18,14 +18,14 @@ namespace Web._services.User
 
             if (Session["User"] != null)
             {
-                HeftITGemer.User u = (HeftITGemer.User)Session["User"];
-                 User user = new User(Request.Form["firstname"], Request.Form["lastname"], Request.Form["phone"], Request.Form["companyname"], -1, -1); //adress FÅR EJ vara -1. MÅSTE ha ID tack vare FK.
+                /*HeftITGemer.User u = (HeftITGemer.User)Session["User"];
+                // User user = new User(Request.Form["firstname"], Request.Form["lastname"], Request.Form["phone"], Request.Form["companyname"], -1, -1); //adress FÅR EJ vara -1. MÅSTE ha ID tack vare FK.
                 int uiid = UserInfo.AddUserInfo(userinfo);
                 u.Contactinfo = uiid;
                 Session["User"] = u;
                 Response.Write($"{userinfo.ID}\r\n");
                 Response.StatusCode = 200;
-                Response.End();
+                Response.End(); */
             }
             else
             {

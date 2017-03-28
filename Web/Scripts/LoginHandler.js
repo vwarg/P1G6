@@ -1,6 +1,15 @@
-﻿function LoginAttempt(email, password) {
+﻿function IsLoggedIn(callbackOnFail) {
+    $.get("/_services/User/VerifyUser").done(function (data) {
+        LoginSuccessful();
+        console.log("DITT ID ÄR " + data);
+    }).fail(function () {
+        callbackOnFail();
+    });
+}
+
+function LoginAttempt(email, password) {
     console.log("fick in " + email + " & " + password);
-    IsLoggedin(function () {
+    IsLoggedIn(function () {
         var jqxhr = $.post("/_services/Login/TryLogin", { email: email, password: password })
               .done(function () {
                   IsLoggedIn(function () { console.log("Mistakes were made."); });
@@ -11,7 +20,6 @@
               });
     });
 }
-
 function AddUserInfo(firstname, lastname, phone, companyname) {
     console.log("fick in " + firstname + " & " + lastname + " & " + phone + " & " + companyname);
     IsLoggedin(function () {
@@ -41,14 +49,7 @@ function AddAdress(country, city, street, zip, phone, department) {
 }
 
 
-function IsLoggedIn(callbackOnFail) {
-    $.get("/_services/User/VerifyUser").done(function (data) {
-        LoginSuccessful();
-        console.log("DITT ID ÄR " + data);
-    }).fail(function () {
-        callbackOnFail();
-    });
-}
+
 function LoginSuccessful() {
     //$("#result").text("Successful.");
     console.log("ALLT GICK BRA!!");

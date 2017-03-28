@@ -20,7 +20,23 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link type="text/css" property="stylesheet" rel="stylesheet" href="css/unslider.css" />
+    <link type="text/css" property="stylesheet" rel="stylesheet" href="css/unslider-dots.css" />
+    <link type="text/css" property="stylesheet" rel="stylesheet" href="css/style.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/unslider-min.js"></script>
+    <script src="js/my_scripts.js"></script>
+    <script src="Scripts/LoginHandler.js"></script>
+    <script>
 
+        function TryLogin() {
+            console.log($('#loginForm input[type=email]').val());
+            LoginAttempt($('#loginForm input[type=email]').val(), $('#loginForm input[type=password]').val());
+
+        }
+
+        IsLoggedIn(function () { });
+    </script>
 </head>
 <body>
     <form runat="server">
@@ -29,7 +45,6 @@
                 <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 <%--Framework Scripts--%>
                 <asp:ScriptReference Name="MsAjaxBundle" />
-                <asp:ScriptReference Name="jquery" />
                 <asp:ScriptReference Name="bootstrap" />
                 <asp:ScriptReference Name="respond" />
                 <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
@@ -41,12 +56,12 @@
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
+
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
 
     </form>
-    <script src="Scripts/LoginHandler.js"></script>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="overlay" id="overlayLogin">
             <div class="overlayContent">
@@ -116,7 +131,7 @@
                             Pärmar - Blandade färger
 					
                                 <span class="cartProdDescExtra">Blå
-						</span>
+                                </span>
                         </div>
                         <div class="cartProdQuanBox">
                             <div class="cartDecreaseQuan">-</div>
@@ -138,7 +153,7 @@
                             Pärmar - Blandade färger
 					
                                 <span class="cartProdDescExtra">Röd
-						</span>
+                                </span>
                         </div>
                         <div class="cartProdQuanBox">
                             <div class="cartDecreaseQuan">-</div>
@@ -160,7 +175,7 @@
                             Casio Miniräknare
 					
                                 <span class="cartProdDescExtra">Avancerad
-						</span>
+                                </span>
                         </div>
                         <div class="cartProdQuanBox">
                             <div class="cartDecreaseQuan">-</div>
@@ -358,7 +373,7 @@
                 </div>
                 <nav>
                     <a href="#">Hem</a>
-                    <a href="#">Produkter</a>
+                    <a href="/Productlist">Produkter</a>
                     <a href="#">Spotlight</a>
                     <a href="#">Kampanjer</a>
                 </nav>
@@ -434,21 +449,6 @@
         </footer>
     </div>
 
-    <link type="text/css" property="stylesheet" rel="stylesheet" href="css/unslider.css" />
-    <link type="text/css" property="stylesheet" rel="stylesheet" href="css/unslider-dots.css" />
-    <link type="text/css" property="stylesheet" rel="stylesheet" href="css/style.css" />
-    <script src="js/jquery.js"></script>
-    <script src="js/unslider-min.js"></script>
-    <script src="js/my_scripts.js"></script>
-    <script>
 
-        function TryLogin() {
-            console.log($('#loginForm input[type=email]').val());
-            LoginAttempt($('#loginForm input[type=email]').val(), $('#loginForm input[type=password]').val());
-
-        }
-
-        IsLoggedIn(function () { });
-    </script>
 </body>
 </html>

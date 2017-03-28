@@ -28,6 +28,14 @@ namespace HeftITGemer
             }
         }
 
+        public Order ActiveOrder
+        {
+            get
+            {
+                return SQL.GetActiveOrders(this);
+            }
+        }
+
         public User(int id, string email, string password, int contactinfo, byte isCompany, int status)
         {
             ID = id;

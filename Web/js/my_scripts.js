@@ -22,7 +22,7 @@ $(document).ready(function () {
 	
 	// Order history show/hide
 	// TODO man ska kunna klicka på "login-knappen" när man är inloggad för att se ordrar
-	$('nav a').on('click', function(){
+	$('nav b').on('click', function(){
 		$('body').css('overflowY', 'hidden');
 		$('#overlayOrders').stop().fadeToggle();
 	});

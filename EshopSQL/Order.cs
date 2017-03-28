@@ -112,6 +112,25 @@ namespace HeftITGemer
             
         }
 
+
+        public static void IncreaseQuantityOfProduct(int productId, int orderId, int quantityToAdd)
+        {
+            SqlConnection myConnection = new SqlConnection(source);
+
+            try
+            {
+                myConnection.Open();
+
+                SqlCommand updateOrder = new SqlCommand($"UPDATE OrderToProduct SET quantity += {quantityToAdd} WHERE productID = {productId} AND orderID = {orderId}", myConnection);
+
+                updateOrder.ExecuteNonQuery();
+
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            finally { myConnection.Close(); }
+
+        }
+
         /*public static void UpdateOrder(int orderId)
         {
             //Uppdaterar en adress. Ange id till billingAdressId eller deliveryAdressId
