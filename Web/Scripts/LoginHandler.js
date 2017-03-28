@@ -26,6 +26,20 @@ function AddUserInfo(firstname, lastname, phone, companyname) {
     });
 }
 
+function AddAdress(country, city, street, zip, phone, department) {
+    console.log("fick in " + country + " & " + city + " & " + street + " & " + zip + " & " + phone + " & " + department);
+    IsLoggedin(function () {
+        var jqaa = $.post("/_services/Login/AddAdress", { country: country, city: city, street: street, zip: zip, phone: phone, department: department})
+              .done(function () {
+                  IsLoggedIn(function () { console.log("Mistakes were made."); });
+                  $('#overlayLogin').stop().fadeToggle();
+              })
+              .fail(function () {
+                  LoginFailed();
+              });
+    });
+}
+
 
 function IsLoggedIn(callbackOnFail) {
     $.get("/_services/User/VerifyUser").done(function (data) {
