@@ -12,7 +12,7 @@ function RenderProducts(productsArray) {
             var name = productsArray[i].Name;
             var pid = productsArray[i].ID;
             var price = productsArray[i].Price.replace(",", ".");
-            var divContent = '<div class="productBox" id="product_' + pid + '"><img src="' + imageUrl + '" alt="" /><p class="productName">' + name + '</p><p class="productPrice">' + parseFloat(price).toFixed(2).replace(".", ",") + ':-</p><form>';
+            var divContent = '<div class="productBox" id="product_' + pid + '"><img src="/img/products/' + imageUrl + '" alt="" /><p class="productName">' + name + '</p><p class="productPrice">' + parseFloat(price).toFixed(2).replace(".", ",") + ':-</p><form>';
             divContent += '<select name="variation" disabled></select><input type="button" name="addToCart" value="+" onclick="AddToCart(' + pid + ', false);" /></form></div>';
             parent.html(parent.html() + divContent);
         }
