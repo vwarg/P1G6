@@ -19,11 +19,11 @@ namespace HeftITGemer
         public byte IsCompany { get; set; }
         public int Status { get; set; }
         private UserInfo ui;
+
         public UserInfo Info
         {
             get
             {
-
                 return ui ?? (ui = SQL.GetUserInfoByID(Contactinfo));
             }
         }
@@ -43,6 +43,14 @@ namespace HeftITGemer
             Password = password;
             Contactinfo = contactinfo;
             IsCompany = isCompany;
+            Status = status;
+        }
+
+        public User(string email, string password, int contactinfo, int status)
+        {
+            Email = email;
+            Password = password;
+            Contactinfo = contactinfo;
             Status = status;
         }
 

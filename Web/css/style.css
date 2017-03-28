@@ -313,6 +313,7 @@ input[type=text]{
 			padding: 30px 0 150px 0;
 		}
 			#cartEmptyCart,
+			#cartProceed,
 			#cartSendOrder{
 				float: left;
 				display: inline-block;
@@ -327,19 +328,28 @@ input[type=text]{
 				transition: background .1s linear, box-shadow .1s linear;
 			}
 				#cartEmptyCart:hover,
-				#cartSendOrder:hover{
+				#cartProceed:hover,
+			    #cartSendOrder:hover{
 					cursor: pointer;
 					background: #ff0000;
 					box-shadow: -2px -2px 0 #000;
 				}
+			#cartProceed,
 			#cartSendOrder{
 				float: right;
 				background: #00aa3c;
 				font-weight: bold;
 			}
-				#cartSendOrder:hover{
+				#cartProceed:hover,
+			    #cartSendOrder:hover{
 					background: #aa9100;
 				}
+            #cartSendOrder{
+				float: none;
+				margin: 40px auto;
+				display: block;
+				width: 40%;
+			}
             #orderContactInfo{
 				display: none;
 			}

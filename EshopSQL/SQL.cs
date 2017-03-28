@@ -232,7 +232,6 @@ namespace EshopSQL
             SqlConnection myConnection = new SqlConnection(source);
             int affectedRows = 0;
 
-
             try
             {
                 myConnection.Open();

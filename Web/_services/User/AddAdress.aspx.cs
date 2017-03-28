@@ -23,6 +23,7 @@ namespace Web._services.User
                 ui.BillingadressID = baid;
                 ui.DeliveryadressID = baid;
 
+                Session["User"] = ui;
                 Response.Write($"{adress.ID} \r\n");
                 Response.StatusCode = 200;
                 Response.End();
