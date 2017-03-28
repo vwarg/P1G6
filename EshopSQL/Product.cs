@@ -82,7 +82,7 @@ namespace HeftITGemer
             {
                 myConnection.Open();
 
-                SqlCommand myCommand = new SqlCommand($"select * from Product where ID = {productId}", myConnection);
+                SqlCommand myCommand = new SqlCommand($"select * from Products where ID = {productId}", myConnection);
                 SqlDataReader myReader = myCommand.ExecuteReader();
 
                 while (myReader.Read())
