@@ -10,8 +10,23 @@
                   LoginFailed();
               });
     });
-
 }
+
+function AddUserInfo(firstname, lastname, phone, companyname) {
+    console.log("fick in " + firstname + " & " + lastname + " & " + phone + " & " + companyname);
+    IsLoggedin(function () {
+        var jqau = $.post("/_services/Login/AddUserInfo", { email: firstname, password: password })
+              .done(function () {
+                  IsLoggedIn(function () { console.log("Mistakes were made."); });
+                  $('#overlayLogin').stop().fadeToggle();
+              })
+              .fail(function () {
+                  LoginFailed();
+              });
+    });
+}
+
+
 function IsLoggedIn(callbackOnFail) {
     $.get("/_services/User/VerifyUser").done(function (data) {
         LoginSuccessful();
