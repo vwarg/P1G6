@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EshopSQL;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -163,7 +164,7 @@ namespace HeftITGemer
             }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
             finally { myConnection.Close(); }
-
+            SQL.UpdateProductCache();
             return newID;
         }
 
@@ -197,7 +198,7 @@ namespace HeftITGemer
             {
                 myConnection.Close();
             }
-
+            SQL.UpdateProductCache();
             return affectedRows;
         }
 
@@ -223,6 +224,7 @@ namespace HeftITGemer
             }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
             finally { myConnection.Close(); }
+            SQL.UpdateProductCache();
         }
 
         public static void UpdateProduct(Product p)
