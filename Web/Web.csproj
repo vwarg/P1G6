@@ -251,6 +251,7 @@
     <Content Include="_services\Login\LogOut.aspx" />
     <Content Include="_services\Login\TryLogin.aspx" />
     <Content Include="_services\Products\GetProducts.aspx" />
+    <Content Include="_services\User\AddAdress.aspx" />
     <Content Include="_services\User\AddUserInfo.aspx" />
     <Content Include="_services\User\RegisterUser.aspx" />
     <Content Include="_services\User\VerifyUser.aspx" />
@@ -509,6 +510,13 @@
     </Compile>
     <Compile Include="_services\User\RegisterUser.aspx.designer.cs">
       <DependentUpon>RegisterUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_services\User\AddAdress.aspx.cs">
+      <DependentUpon>AddAdress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_services\User\AddAdress.aspx.designer.cs">
+      <DependentUpon>AddAdress.aspx</DependentUpon>
     </Compile>
     <Compile Include="_services\User\VerifyUser.aspx.cs">
       <DependentUpon>VerifyUser.aspx</DependentUpon>
