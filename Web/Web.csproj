@@ -216,6 +216,10 @@
     <Content Include="img\products\calculator.png" />
     <Content Include="img\products\clamp_remover.png" />
     <Content Include="img\products\colored_pens.png" />
+    <Content Include="img\products\gem.png" />
+    <Content Include="img\products\gemBLUE.png" />
+    <Content Include="img\products\gemGREEN.png" />
+    <Content Include="img\products\gemRED.png" />
     <Content Include="img\products\paperclips.png" />
     <Content Include="img\products\pens.png" />
     <Content Include="img\slider\deluxe_pen.jpg" />

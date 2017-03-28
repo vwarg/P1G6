@@ -208,8 +208,43 @@
                     </div>
                     <div id="cartEndStep">
                         <div id="cartEmptyCart">Töm varukorg</div>
-                        <div id="cartSendOrder">Skicka beställning</div>
+                        <div id="cartProceed">Skicka beställning</div>
                     </div>
+
+                    <div id="orderContactInfo">
+					<form>
+						<h3>Kontaktuppgifter</h3>
+						<input type="text" name="firstname" placeholder="Förnamn" requested />
+						<input type="text" name="lastname" placeholder="Efternamn" requested />
+						<input type="text" name="phonenumber" placeholder="Telefonnummer" requested />
+						<input type="text" name="companyName" placeholder="Företagsnamn (ej obligatorisk)" />
+					
+						<h3>Leveransadress</h3>
+						<input type="text" name="street" placeholder="Gatuadress" requested />
+						<input type="text" name="zipcode" placeholder="Postnummer" requested />
+						<input type="text" name="city" placeholder="Stad" requested />
+						<input type="text" name="country" placeholder="Land" requested />
+						<input type="text" name="department" placeholder="Avdelning (ej obligatorisk)" />
+						<input type="text" name="phone" placeholder="Telefonnummer (ej obligatorisk)" />
+						
+						<h3>Fakturaadress</h3> 
+						<div id="checkboxContainer">
+							<div id="copyDeliveryAdressText">Skiljd från ovan</div>
+							<div id="copyDeliveryAdress"></div>
+						</div>
+						<div id="billingAdressBox">
+							<input type="text" name="street" placeholder="Gatuadress" requested />
+							<input type="text" name="zipcode" placeholder="Postnummer" requested />
+							<input type="text" name="city" placeholder="Stad" requested />
+							<input type="text" name="country" placeholder="Land" requested />
+							<input type="text" name="department" placeholder="Avdelning (ej obligatorisk)" />
+							<input type="text" name="phone" placeholder="Telefonnummer (ej obligatorisk)" />
+							<input type="text" name="message" placeholder="Referens / Meddelande" />
+						</div>
+					</form>
+					
+					<div id="cartSendOrder">Skicka beställning</div>
+				</div>
                 </div>
             </div>
         </div>
