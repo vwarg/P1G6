@@ -14,8 +14,15 @@ namespace Web._services.User
         {
             if (Session["User"] != null)
             {
+                HeftITGemer.UserInfo ui = (HeftITGemer.UserInfo)Session["User"];
+
                 Adress adress = new Adress(Request.Form["country"], Request.Form["city"], Request.Form["street"], Request.Form["zip"], Request.Form["phone"], Request.Form["department"]);
-                int aid = Adress.AddAdress(adress);
+
+                int baid = Adress.AddAdress(adress);
+
+                ui.BillingadressID = baid;
+                ui.DeliveryadressID = baid;
+
                 Response.Write($"{adress.ID} \r\n");
                 Response.StatusCode = 200;
                 Response.End();
