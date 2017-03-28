@@ -400,5 +400,55 @@ namespace EshopSQL
 
             return l;
         }
+
+        public static List<Product> UpdateCurrentPricesForProducts(List<Product> lst)
+        {
+            List<Product> l = new List<Product>();
+            foreach (var p in lst)
+            {
+                l.Add(UpdateCurrentPricesForProduct(p));
+            }
+            return l;
+        }
+        public static Product UpdateCurrentPricesForProduct(Product p)
+        {
+            return UpdateCurrentPricesForProduct(p.ID);
+        }
+        public static Product UpdateCurrentPricesForProduct(int productId)
+        {
+
+            Product prod = Product.GetProductById(productId);
+            SqlConnection myConnection = new SqlConnection(source);
+
+            try
+            {
+                myConnection.Open();
+                SqlCommand getModifiers = new SqlCommand($"select pm.modifierPercent AS pct, pm.modifierAbsolute AS abs from PriceModification as pm INNER JOIN PriceModToProduct as pmp ON pmp.modifierID = pm.ID WHERE pmp.productID = {productId} AND dateStarts <= GETDATE() AND dateEnds >= GETDATE()", myConnection);
+                SqlDataReader modReader = getModifiers.ExecuteReader();
+                while (modReader.Read())
+                {
+                    if (!modReader.IsDBNull(0) && modReader.IsDBNull(1))
+                    {
+                        //pct
+                        var percent = 1 - (modReader.GetFloat(0) / 100);
+                        prod.Price = prod.Price * percent;
+                    }
+                    else if (modReader.IsDBNull(0) && !modReader.IsDBNull(1))
+                    {
+                        prod.Price -= modReader.GetFloat(1);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+
+            return prod;
+        }
     }
 }
