@@ -421,6 +421,9 @@ input[type=text]{
 		#searchBox{
 			width: 34%;
 		}
+        #searchBox form, #searchBoxMobile form{
+			position: relative;
+		}
 			#searchBox input[type=text], #searchBoxMobile input[type=text]{
 				border: none;
 				height: 40px;
@@ -433,7 +436,9 @@ input[type=text]{
 					width: 30px;
 					height: 30px;
 					padding: 5px;
-					margin: 5px 5px 5px -40px;
+					position: absolute;
+					    top: 25px;
+					    right: 13px;
 					background: none;
 					background-color: #82bb33;
 					background-image: url(../img/icons/search.svg);
@@ -636,7 +641,7 @@ input[type=text]{
 						*/
 						display: none;
 					}
-					.productBox input[type=submit]{
+					.productBox input[type=button]{
 						width: 40px;
 						height: 40px;
 						float: right;
@@ -647,7 +652,7 @@ input[type=text]{
 						background-position: center center;
 						transition: background-color .1s linear;
 					}
-					.productBox input[type=submit]:hover{
+					.productBox input[type=button]:hover{
 						cursor: pointer;
 					}
 	footer{
