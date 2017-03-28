@@ -1,17 +1,24 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Web.SiteMaster" %>
 
 <!DOCTYPE html>
+<!--
 
+
+<body>
+	
+
+
+
+    -->
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title>Kontorsprylar AB</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
@@ -38,39 +45,288 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
+    </form>
+    <script src="Scripts/LoginHandler.js"></script>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="overlay" id="overlayLogin">
+            <div class="overlayContent">
+                <div id="overlayTextBox">
+                    <div class="overlayClose" id="closeLogin"></div>
+                    <form id="loginForm">
+                        <input type="email" name="email" placeholder="E-post" required />
+                        <input type="password" name="password" placeholder="Lösenord" required />
+                        <input type="button" name="sendLoginRequest" value="Logga in" onclick="TryLogin()" />
+                    </form>
+                    <form id="registerForm">
+                        <input type="email" name="email" placeholder="E-post" required />
+                        <input type="password" name="password" placeholder="Lösenord" required />
+                        <input type="password" name="password" placeholder="Upprepa lösenordet" required />
+                        <input type="submit" name="sendRegisterRequest" value="Registrera konto" />
+                    </form>
+                    <form id="addContactInfo">
+                        <input name="firstName" placeholder="Förnamn" required />
+                        <input name="lastName" placeholder="Efternamn" required />
+                        <input type="submit" name="sendRegisterRequest" value="Ange kontaktinfo" />
+                    </form>
+                    <form id="forgottenForm">
+                        <input type="email" name="email" placeholder="E-post" required />
+                        <input type="submit" name="sendNewPasswordRequest" value="Begär nytt lösenord" />
+                    </form>
+                    <div>
+                        <p id="toggleLogin">Logga in</p>
+                        <p id="toggleRegister">Registrera konto</p>
+                        <p id="toggleForgotten">Glömt lösenord</p>
+                    </div>
                 </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
-                    </ul>
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
-                        <AnonymousTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Register">Register</a></li>
-                                <li><a runat="server" href="~/Account/Login">Log in</a></li>
-                            </ul>
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                                <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                                </li>
-                            </ul>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
+            </div>
+        </div>
+
+        <div class="overlay" id="overlayCart">
+            <div class="overlayContent" id="cartFix">
+                <div id="overlayCartBox">
+                    <div class="overlayClose" id="closeCart"></div>
+                    <h2>Din varukorg</h2>
+                    <hr class="overlayLine" />
+                    <div class="cartArticle">
+                        <div class="cartProdImg">
+                            <img src="img/products/paperclips.png" alt="Paperclips" />
+                        </div>
+                        <div class="cartProdDesc">
+                            Gem - blandade färger (500-pack)
+					
+                                <span></span>
+                        </div>
+                        <div class="cartProdQuanBox">
+                            <div class="cartDecreaseQuan">-</div>
+                            <input type="text" maxlength="3" value="1" class="cartProdQuan" />
+                            <div class="cartIncreaseQuan">+</div>
+                            <div class="cartTrashItem"></div>
+                        </div>
+                        <div class="cartProdPriceTotalBox">
+                            <p class="cartProdPriceTotal">9,90</p>
+                            <span class="cartProdPriceDiscount"></span>
+                        </div>
+                    </div>
+                    <hr class="overlayLine" />
+                    <div class="cartArticle">
+                        <div class="cartProdImg">
+                            <img src="img/products/binder.png" alt="Binder" />
+                        </div>
+                        <div class="cartProdDesc">
+                            Pärmar - Blandade färger
+					
+                                <span class="cartProdDescExtra">Blå
+						</span>
+                        </div>
+                        <div class="cartProdQuanBox">
+                            <div class="cartDecreaseQuan">-</div>
+                            <input type="text" maxlength="3" value="1" class="cartProdQuan" />
+                            <div class="cartIncreaseQuan">+</div>
+                            <div class="cartTrashItem"></div>
+                        </div>
+                        <div class="cartProdPriceTotalBox">
+                            <p class="cartProdPriceTotal">9,90</p>
+                            <span class="cartProdPriceDiscount"></span>
+                        </div>
+                    </div>
+                    <!-- Ingen <hr /> eftersom det fortfarande är samma "varutyp" -->
+                    <div class="cartArticle">
+                        <div class="cartProdImg">
+                            <img src="img/products/binder.png" alt="Binder" />
+                        </div>
+                        <div class="cartProdDesc">
+                            Pärmar - Blandade färger
+					
+                                <span class="cartProdDescExtra">Röd
+						</span>
+                        </div>
+                        <div class="cartProdQuanBox">
+                            <div class="cartDecreaseQuan">-</div>
+                            <input type="text" maxlength="3" value="1" class="cartProdQuan" />
+                            <div class="cartIncreaseQuan">+</div>
+                            <div class="cartTrashItem"></div>
+                        </div>
+                        <div class="cartProdPriceTotalBox">
+                            <p class="cartProdPriceTotal">9,90</p>
+                            <span class="cartProdPriceDiscount"></span>
+                        </div>
+                    </div>
+                    <hr class="overlayLine" />
+                    <div class="cartArticle">
+                        <div class="cartProdImg">
+                            <img src="img/products/calculator.png" alt="Calculator" />
+                        </div>
+                        <div class="cartProdDesc">
+                            Casio Miniräknare
+					
+                                <span class="cartProdDescExtra">Avancerad
+						</span>
+                        </div>
+                        <div class="cartProdQuanBox">
+                            <div class="cartDecreaseQuan">-</div>
+                            <input type="text" maxlength="3" value="1" class="cartProdQuan" />
+                            <div class="cartIncreaseQuan">+</div>
+                            <div class="cartTrashItem"></div>
+                        </div>
+                        <div class="cartProdPriceTotalBox">
+                            <p class="cartProdPriceTotal">49,90</p>
+                            <span class="cartProdPriceDiscount">-4,99</span>
+                        </div>
+                    </div>
+                    <hr class="overlayLine" />
+                    <div id="cartSumBox">
+                        <div id="cartSum">
+                            <span>Summa:</span>
+                            <span id="cartSumValue"></span>
+                        </div>
+                        <hr />
+                        <div id="cartDiscount">
+                            <span>Total rabatt:</span>
+                            <span id="cartDiscountValue"></span>
+                        </div>
+                        <hr />
+                        <div id="cartTax">
+                            <span>Moms:</span>
+                            <span id="cartTaxValue"></span>
+                        </div>
+                        <hr />
+                        <div id="cartRoundedTotal">
+                            <span>Öresavrundning:</span>
+                            <span id="cartRoundedTotalValue"></span>
+                        </div>
+                        <hr />
+                        <div id="cartDeliveryCost">
+                            <span>Fraktkostand:</span>
+                            49,00
+				
+                        </div>
+                        <hr />
+                        <div id="cartTotal">
+                            <span>Totalbelopp:</span>
+                            <span id="cartTotalValue"></span>
+                        </div>
+                    </div>
+                    <div id="cartEndStep">
+                        <div id="cartEmptyCart">Töm varukorg</div>
+                        <div id="cartSendOrder">Skicka beställning</div>
+                    </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="overlay" id="overlayOrders">
+            <div class="overlayContent" id="cartFix">
+                <div id="overlayOrdersBox">
+                    <div class="overlayClose" id="closeOrders"></div>
+                    <h2>Tidigare ordrar</h2>
+                    <hr class="overlayLine" />
+                    <div id="orders">
+                        <div class="orderBox" id="orderHeader">
+                            <div class="orderNumber">
+                                <p>Ordernr.</p>
+                            </div>
+                            <div class="orderDate">
+                                <p>Datum</p>
+                            </div>
+                            <div class="orderItems">
+                                <p>Artiklar</p>
+                            </div>
+                            <div class="orderTotal">
+                                <p>Belopp</p>
+                            </div>
+                        </div>
+                        <hr class="overlayLine" />
+                        <div class="orderBox">
+                            <div class="orderNumber">
+                                <p>1337</p>
+                            </div>
+                            <div class="orderDate">
+                                <p>2017-01-22</p>
+                            </div>
+                            <div class="orderItems">
+                                <p>22</p>
+                            </div>
+                            <div class="orderTotal">
+                                <p>2408,00</p>
+                            </div>
+                        </div>
+                        <hr class="overlayLine" />
+                        <div class="orderBox">
+                            <div class="orderNumber">
+                                <p>1338</p>
+                            </div>
+                            <div class="orderDate">
+                                <p>2017-01-22</p>
+                            </div>
+                            <div class="orderItems">
+                                <p>22</p>
+                            </div>
+                            <div class="orderTotal">
+                                <p>2408,00</p>
+                            </div>
+                        </div>
+                        <hr class="overlayLine" />
+                        <div class="orderBox">
+                            <div class="orderNumber">
+                                <p>1339</p>
+                            </div>
+                            <div class="orderDate">
+                                <p>2017-01-22</p>
+                            </div>
+                            <div class="orderItems">
+                                <p>22</p>
+                            </div>
+                            <div class="orderTotal">
+                                <p>2408,00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="overlayLine" />
+                </div>
+            </div>
+        </div>
+
+        <div id="mainContainer">
+            <header>
+                <div id="headerContent">
+                    <div id="logoBox">
+                    </div>
+                    <div id="searchBox">
+                        <form>
+                            <input type="text" name="searchPhrase" placeholder="Sök här" />
+                            <input type="submit" name="searchForIt" value="" />
+                        </form>
+                    </div>
+                    <div id="accountBox">
+                        <div id="loginButton">
+                            <img src="img/icons/profile.svg" alt="Ditt konto" />
+                            <p>Logga in</p>
+                        </div>
+                        <div id="mainCart">
+                            <div id="inCart">923</div>
+                            <div id="cartImg"></div>
+                        </div>
+                    </div>
+                    <div id="searchBoxMobile">
+                        <form>
+                            <input type="text" name="searchPhrase" placeholder="Sök här" />
+                            <input type="submit" name="searchForIt" value="" />
+                        </form>
+                    </div>
+                </div>
+            </header>
+            <div id="navBox">
+                <div id="hamburger">
+                    <div class="hamburgerLine"></div>
+                    <div class="hamburgerLine"></div>
+                    <div class="hamburgerLine"></div>
+                </div>
+                <nav>
+                    <a href="#">Hem</a>
+                    <a href="#">Produkter</a>
+                    <a href="#">Spotlight</a>
+                    <a href="#">Kampanjer</a>
+                </nav>
             </div>
         </div>
         <div class="container body-content">
@@ -78,9 +334,86 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <div id="footerContent">
+                    <div class="containerThreeItems">
+                        <div id="subscribeBox">
+                            <h3>Preummerera på nyhetsbrevet</h3>
+                            <form>
+                                <input type="text" name="subscriptionEmail" placeholder="Ange din e-post" />
+                                <input type="submit" name="subscriptionConfirm" value="Aktivera" />
+                            </form>
+                        </div>
+                        <div id="contactBox">
+                            <h3>Kundservice</h3>
+                            <a href="#">- Hjälp</a>
+                            <a href="#">- Butiker</a>
+                            <a href="#">- Mitt konto</a>
+                            <a href="#">- Frakt</a>
+                            <a href="#">- Om oss</a>
+                            <a href="#">- Kontakta oss</a>
+                        </div>
+                        <div id="socialmediaBox">
+                            <h3>Vi finns på</h3>
+                            <div>
+                                <a href="#" target="_blank">Facebook</a>
+                                <a href="#" target="_blank">Instagram</a>
+                                <a href="https://twitter.com/KontorsprylarAB" target="_blank">Twitter</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr />
+                    <h2>Vi är bäst och säkra</h2>
+
+                    <div class="containerThreeItems">
+                        <div id="diagramBox">
+                            <div id="diagramContainer"></div>
+                            <p>Försäljning 2016</p>
+                        </div>
+                        <div id="paymentBox">
+                            <a href="https://www.visa.se/" target="_blank" title="Visa">
+                                <img src="img/icons/logos/visa.svg" alt="Visa" /></a>
+                            <a href="https://www.mastercard.se/sv-se/konsument.html" target="_blank" title="Mastercard">
+                                <img src="img/icons/logos/mastercard.svg" alt="Mastercard" /></a>
+                            <a href="https://www.paypal.com/se/home" target="_blank" title="Paypal">
+                                <img src="img/icons/logos/paypal.svg" alt="Paypal" /></a>
+                            <a href="http://www.bitcoin.se/" target="_blank" title="Bitcoin">
+                                <img src="img/icons/logos/bitcoin.svg" alt="Bitcoin" /></a>
+                        </div>
+                        <div id="referenceBox">
+                            <div class="starCounter">
+                                <img class="star" src="img/icons/star.svg" alt="*" />
+                                <img class="star" src="img/icons/star.svg" alt="*" />
+                                <img class="star" src="img/icons/star.svg" alt="*" />
+                                <img class="star" src="img/icons/star_half.svg" alt="*" />
+                                <img class="star" src="img/icons/star_blank.svg" alt="*" />
+                            </div>
+                            <h3>Säker källa - 2017</h3>
+                            <p>2755 röster</p>
+                        </div>
+                    </div>
+
+                    <hr />
+                    <p id="endLine">&copy; Grupp 6 - 2017</p>
+                </div>
             </footer>
         </div>
-    </form>
+    </div>
+    <link type="text/css" property="stylesheet" rel="stylesheet" href="css/unslider.css" />
+        <link type="text/css" property="stylesheet" rel="stylesheet" href="css/unslider-dots.css" />
+        <link type="text/css" property="stylesheet" rel="stylesheet" href="css/style.css" />
+        <script src="js/jquery.js"></script>
+        <script src="js/unslider-min.js"></script>
+        <script src="js/my_scripts.js"></script>
+        <script>
+
+            function TryLogin() {
+                console.log($('#loginForm input[type=email]').val());
+                LoginAttempt($('#loginForm input[type=email]').val(), $('#loginForm input[type=password]').val());
+
+            }
+
+            IsLoggedIn(function () { });
+        </script>
 </body>
 </html>

@@ -1,0 +1,936 @@
+/*
+Temafärg: #55bb33
+Kontrast: #9933bb
+Temaljus: #92db79
+TemaMörk: #82bb33
+
+tema-20: 	 #77c95c
+tema+20:	 #449629
+kontrast-20: #ac5cc9
+kontrast+20: #792996
+
+Font: Open sans
+*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+*{
+	margin: 0;
+	padding: 0;
+}
+html, body{
+	height: 100%;
+}
+body{
+	font-family: 'Open Sans', sans-serif;
+}
+a{
+	text-decoration: none;
+	outline: none;
+}
+input[type=text]{
+	font-family: helvetica;
+}
+.overlay{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.8);
+	position: fixed;
+		z-index: 9998;
+	display: none;
+	
+}
+.overlayContent{
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+	#overlayTextBox{
+		display: inline-block;
+		background: #FFF;
+		padding: 20px;
+		position: relative;
+		width: 400px;
+	}
+		.overlayClose{
+			width: 40px;
+			height: 40px;
+			position: absolute;
+				top: 5px;
+				right: 5px;
+			background: url(../img/icons/close.svg) no-repeat;			
+			transition: transform .1s linear;
+		}
+		.overlayClose:hover{
+			cursor: pointer;
+			transform: rotate(15deg);
+		}
+	#overlayTextBox div{
+		overflow: auto;
+	}
+	#overlayTextBox form{
+		padding-top: 20px;
+	}
+	#overlayTextBox input{
+		display: block;
+		padding: 3px 6px;
+		margin: 12px auto;
+		border: none;
+		width: 80%;
+		height: 34px;
+		box-shadow: 0 0 3px #000;
+		outline: none;
+		transition: box-shadow .1s linear;
+	}
+	#overlayTextBox input:focus{
+		box-shadow: 0 0 5px #008c00;
+	}
+	#overlayTextBox input[type=submit]{
+		width: 80%;
+		background-color: #aa9100;
+		border: 1px solid #000;
+		font-weight: bold;
+		margin-top: 40px;
+	}
+	#overlayTextBox input[type=submit]:hover{
+		cursor: pointer;
+		box-shadow: 0 0 5px #008c00;
+	}
+	#overlayTextBox p{
+		display: inline-block;
+		float: left;
+		margin-top: 30px;
+		color: #008c00;
+		transition: color .1s linear;
+		text-decoration: underline;
+	}
+	#overlayTextBox p:hover{
+		cursor: pointer;
+		color: #aa9100;
+		text-decoration: none;
+	}
+        #addContactInfo,
+		#registerForm,
+		#forgottenForm,
+		#overlayTextBox #toggleLogin{
+			display: none;
+		}
+		#overlayTextBox p:nth-child(2){
+			float: right;
+			
+		}
+
+/* CSS for order-view */		
+#orderFix{
+	display: block;
+	overflow-y: scroll;
+}
+#overlayOrders{
+	display: none;
+}
+	#overlayOrdersBox{
+		display: block;
+		margin: auto;
+		background: #FFF;
+		padding: 20px;
+		position: relative;
+		width: 80%;
+		max-width: 800px;
+	}
+		.orderBox{
+			min-height: 50px;
+			padding: 25px 10px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			
+		}
+			.orderBox:nth-of-type(even){
+				background: #f7f7f7;
+			}
+			.orderBox:nth-of-type(even):hover{
+				cursor: pointer;
+				background: #b3ff99;
+			}
+			.orderBox:nth-of-type(odd):hover{
+				cursor: pointer;
+				background: #99ffff;
+			}
+			#overlayOrdersBox #orderHeader{
+				font-weight: bold;
+				border-bottom: 3px solid #aa9100;
+				background: #e6e6e6;
+			}
+			#overlayOrdersBox #orderHeader:hover{
+				cursor: default;
+			}
+			.orderBox div{
+				width: 23%;
+				text-align: center;
+			}
+			.orderNumber{
+				
+			}
+			.orderDate{
+				
+			}
+			.orderItems{
+				
+			}
+			.orderTotal{
+				
+			}
+
+/* CSS for cart-view */
+#cartFix{
+	display: block;
+	overflow-y: scroll;
+}
+#overlayCart{
+	display: none;
+}
+	#overlayCartBox{
+		display: block;
+		margin: auto;
+		background: #FFF;
+		padding: 20px;
+		position: relative;
+		width: 80%;
+		max-width: 800px;
+	}
+		.overlayLine{
+			border: 1px solid #aa9100;
+		}
+		.cartArticle{
+			min-height: 50px;
+			padding: 25px 10px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			
+		}
+			.cartProdImg{
+				width: 15%;
+			}
+				.cartProdImg img{
+					width: 100%;
+				}
+			.cartProdDesc{
+				width: 40%;
+			}
+				.cartProdDescExtra{
+					display: block;
+					font-style: italic;
+				}
+			.cartProdQuanBox{
+				width: 25%;
+				text-align: center;
+				display: flex;
+				flex-wrap: wrap;
+				
+			}
+				.cartIncreaseQuan,
+				.cartDecreaseQuan{
+					width: calc(20% - 2px);
+					height: 30px;
+					line-height: 30px;
+					vertical-align: center;
+					text-align: center;
+					background: #aa9100;
+					border: 1px solid #000;
+					transition: background .1s linear;
+							user-select: none;
+						-ms-user-select: none;
+					   -moz-user-select: none;
+					-webkit-user-select: none;
+				}
+				.cartIncreaseQuan:hover,
+				.cartDecreaseQuan:hover{
+					cursor: pointer;
+					background: #CCC;
+				}
+				.cartProdQuan{
+					width: 60%;
+					height: 30px;
+					line-height: 30px;
+					vertical-align: middle;
+					text-align: center;
+					border: none;
+					border-top: 1px solid #000;
+					border-bottom: 1px solid #000;
+				}
+				.cartTrashItem{
+					width: 30px;
+					height: 30px;
+					margin: 30px auto 0 auto;
+					background-image: url(../img/icons/bin.svg);
+					background-repeat: no-repeat;
+					background-position: center center;
+					transition: transform .1s linear;
+				}
+					.cartTrashItem:hover{
+						cursor: pointer;
+						transform: scale(1.2);
+					}
+			.cartProdPriceTotalBox{
+				width: 5%;
+				text-align: right;
+			}
+				.cartProdPriceDiscount{
+					display: block;
+					color: #b30000;
+				}
+		#cartSumBox{
+			padding: 25px 5px;
+			text-align: right;
+			font-weight: bold;
+		}
+			#cartSumBox div{
+				padding: 5px 0;
+			}
+			#cartSumBox hr{
+				border: 1px dotted #CCC;
+			}
+			#cartSumBox span:first-child{
+				float: left;
+			}
+			#cartSum{
+				text-align: right;
+			}
+			#cartTax{
+				
+			}
+			#cartDeliveryCost{
+				
+			}
+			#cartTotal span{
+				font-size: 20px;
+			}
+			#cartTotal:last-child{
+				border-bottom: 3px double #aa9100;
+			}
+		#cartEndStep{
+			height: 40px;
+			padding: 30px 0 150px 0;
+		}
+			#cartEmptyCart,
+			#cartSendOrder{
+				float: left;
+				display: inline-block;
+				height: 30px;
+				padding: 6px 12px;
+				background: #b30000;
+				box-shadow: 2px 2px 0 #000;
+				color: #FFF;
+				text-align: center;
+				line-height: 30px;
+				vertical-align: middle;
+				transition: background .1s linear, box-shadow .1s linear;
+			}
+				#cartEmptyCart:hover,
+				#cartSendOrder:hover{
+					cursor: pointer;
+					background: #ff0000;
+					box-shadow: -2px -2px 0 #000;
+				}
+			#cartSendOrder{
+				float: right;
+				background: #00aa3c;
+				font-weight: bold;
+			}
+				#cartSendOrder:hover{
+					background: #aa9100;
+				}
+/* END cart-view */
+
+#mainContainer{
+	min-height: 100%;
+}
+	header{
+		padding: 30px 0;
+	}
+	#headerContent{
+		max-width: 1000px;
+		margin: auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: stretch;
+		flex-wrap: wrap;
+	}
+		#logoBox{
+			width: calc(33% - 10px);
+			padding: 20px 5px;
+			background-image: url(../img/icons/logo.svg);
+			background-repeat: no-repeat;
+		}
+		#searchBox{
+			width: 34%;
+		}
+			#searchBox input[type=text], #searchBoxMobile input[type=text]{
+				border: none;
+				height: 40px;
+				padding: 0 46px 0 6px;
+				width: calc(100% - 60px);
+				box-shadow: 0 0 3px #000;
+				margin-top: 20px;
+			}
+				#searchBox input[type=submit], #searchBoxMobile input[type=submit]{
+					width: 30px;
+					height: 30px;
+					padding: 5px;
+					margin: 5px 5px 5px -40px;
+					background: none;
+					background-color: #82bb33;
+					background-image: url(../img/icons/search.svg);
+					background-repeat: no-repeat;
+					background-origin: content-box;
+					border: none;
+				}
+				#searchBox input[type=submit]:hover, #searchBoxMobile input[type=submit]:hover{
+					cursor: pointer;
+					box-shadow: inset -1px -1px 1px #000;
+				}
+		#searchBoxMobile{
+			display: none;
+			width: 70%;
+		}
+		#accountBox{
+			width: 33%;
+		}
+			#loginButton{
+				width: 40%;
+				height: calc(100% - 7px);
+				float: left;
+				text-align: center;
+				display: inline-block;
+				transition: background .1s linear;
+				margin: 0 0 0 20px;
+				padding-top: 7px;
+				border-radius: 20px;
+			}
+			#loginButton:hover{
+				cursor: pointer;
+				background: #cecece;
+			}
+				#loginButton img{
+					width: 20px;
+					margin-bottom: -6px;
+				}
+				#loginButton p{
+					padding: 0 6px 3px 6px;
+					margin: 0;
+					transition: background-color .1s linear;
+				}
+				#loginButton:hover p{
+					color: #000;
+				}
+			#mainCart{
+				width: calc(60% - 40px);
+				float: left;
+				height: 100%;
+				transition: background-color .1s linear;
+				position: relative;
+				display: inline-block;
+				margin-left: 20px;
+				border-radius: 20px;
+			}
+			#mainCart:hover{
+				cursor: pointer;
+				background-color: #cecece;
+			}
+				#inCart{
+					width: calc(100% - 50px);
+					height: 100%;
+					font-size: 16px;
+					text-align: right;
+					position: absolute;
+						top: calc(50% - 8px);
+				}
+				#mainCart:hover #inCart{
+					color: #000;
+				}
+				#cartImg{
+					margin: 5px;
+					width: 40px;
+					height: calc(100% - 10px);
+					float: right;
+					background-image: url(../img/icons/cart.svg);
+					background-repeat: no-repeat;
+					background-size: auto;
+					background-position: center center;
+				}
+	#navBox{
+		background-color: #82bb33;
+		background-image: url(../img/structure/rulerWhite.png), url(../img/structure/rulerWhite180.png);
+		background-repeat: repeat-x;
+		background-position: bottom, top;
+		padding: 13px 0;
+		box-shadow: 0 0 6px #000;
+	}
+		nav{
+			max-width: 1000px;
+			margin: auto;
+			text-align: center;
+			padding: 20px 0;
+			transition: color .1s linear;
+		}
+			nav a{
+				font-weight: bold;
+				margin: 3px 23px;
+				color: #9933bb;
+				padding: 10px 20px;
+				border-radius: 20px;
+				transition: color .1s linear;
+			}
+			nav a:hover{
+				margin: 0 20px;
+				border: 3px solid #00953d;
+				color: #FFF;
+			}
+			#hamburger{
+				width: 30px;
+				padding: 8px;
+				margin: 0 auto;
+				background: #00953d;
+				border-radius: 3px;
+				display: none;
+			}
+			#hamburger:hover{
+				cursor: pointer;
+				padding: 5px;
+				margin: 3px auto;
+			}
+				.hamburgerLine{
+					margin: 5px 0;
+					height: 3px;
+					background: #9933bb;
+					width: 100%;
+				}
+	main{
+	}
+	#mainContent{
+		max-width: 1000px;
+		margin: auto;
+	}
+		main h2{
+			padding: 30px 0 0 0;
+		}
+		#sliderBox{
+			margin: 10px 0 20px 0;
+			position: relative;
+		}
+			#sliderBox img{
+				width: calc(100% - 6px);
+				border-top: 3px solid #000;
+				border-bottom: 3px solid #000;
+			}
+		.containerFourItems{
+			display: flex;
+			justify-content: space-between;
+			align-items: stretch;
+			flex-wrap: wrap;
+		}
+			.productBox{
+				width: calc(22% - 20px);
+				margin: 10px 0 20px 0;
+				padding: 10px;
+				box-shadow: 0 0 3px #888;
+				border-radius: 5px;
+				display: flex;
+				flex-direction: column;
+			}
+				.productBox img{
+					width: 100%;
+					transition: background-color .1s linear;
+				}
+				.productBox img:hover{
+					cursor: pointer;
+					background-color: #eee;
+				}
+				.productName{
+					margin: 5px 0 5px 0;
+				}
+				.productName:hover{
+					cursor: pointer;
+				}
+				/* Used by myScript to change background-color of image */
+				.prodHoverColor{
+					background: #eee;
+				}
+				.productPrice{
+					margin: 0 0 5px 0;
+					font-weight: bold;
+					color: #d90000;
+				}
+				.productBox form{
+					overflow:auto;
+					margin-top: auto;
+				}
+					.productBox select{
+						width: calc(100% - 50px);
+						display: block;
+						float: left;
+						padding: 9px;
+						font-size: 14px;
+						border: 1px dotted #00aa3c;
+					}
+					.productBox select:disabled{
+						/*
+						background: #FFF;
+						border: none;
+						*/
+						display: none;
+					}
+					.productBox input[type=submit]{
+						width: 40px;
+						height: 40px;
+						float: right;
+						background-color: #FFF;
+						background-image: url(../img/icons/cart.svg);
+						background-size: 80%;
+						background-repeat: no-repeat;
+						background-position: center center;
+						transition: background-color .1s linear;
+					}
+					.productBox input[type=submit]:hover{
+						cursor: pointer;
+					}
+	footer{
+		margin-top: 60px;
+		padding-top: 60px;
+		background-color: #00953d;
+		background-image: url(../img/structure/rulerBot.png);
+		background-repeat: repeat-x;
+		background-position: top;
+				user-select: none;
+			-ms-user-select: none;
+		   -moz-user-select: none;
+		-webkit-user-select: none;
+	}
+		footer hr{
+			border: 1px dashed #aa9100;
+			margin: 40px 0;
+		}
+	#footerContent{
+		max-width: 1000px;
+		margin: auto;
+	}
+		.containerThreeItems{
+			display: flex;
+			justify-content: space-between;
+			align-items: stretch;
+		}
+			.containerThreeItems div{
+				width: calc(30% - 20px);
+				padding: 10px;
+			}
+			.containerThreeItems > div > h3{
+				color: #FFF;
+			}
+			#subscribeBox{
+				overflow: auto;
+			}
+				#subscribeBox input{
+					margin-top: 20px;
+					border: none;
+					display: block;
+					float: left;
+					padding: 6px 12px;
+					border-radius: 10px;
+					border: none;
+				}
+				#subscribeBox input[type=text]{
+					width: calc(75% - 24px);
+					height: 20px;
+				}
+				#subscribeBox input[type=submit]{
+					width: 30%;
+					height: 38px;
+					margin-top: 17px;
+					margin-left: -5%;
+					background: #9933bb;
+					border-left: 1px solid #000;
+					color: #FFF;
+					transition: background .1s linear;
+				}
+				#subscribeBox input[type=submit]:hover{
+					cursor: pointer;
+					background: #c279db;
+					color: #000;
+				}
+			#contactBox{
+			}
+				#contactBox a{
+					display: block;
+					color: #9933bb;
+					transition: color .1s linear;
+					margin: 3px 0;
+				}
+				#contactBox a:hover{
+					color: #000;
+				}
+			#socialmediaBox{
+			}
+				#socialmediaBox div{
+					padding: 0;
+					margin-top: 3px;
+				}
+					#socialmediaBox a{
+						display: block;
+						color: #9933bb;
+						background-position: left;
+						background-repeat: no-repeat;
+						margin-bottom: 15px;
+						height: 40px;
+						line-height: 40px;
+						vertical-align: middle;
+						padding-left: 50px;
+						display: inline-block;
+						transition: color .1s linear, background-image .1s linear;
+					}
+					#socialmediaBox a:nth-child(1){
+						background-image: url(../img/icons/facebook.svg);
+					}
+						#socialmediaBox a:nth-child(1):hover{
+							background-image: url(../img/icons/facebook_hover.svg);
+						}
+					#socialmediaBox a:nth-child(2){
+						background-image: url(../img/icons/instagram.svg);
+					}
+						#socialmediaBox a:nth-child(2):hover{
+							background-image: url(../img/icons/instagram_hover.svg);
+						}
+					#socialmediaBox a:nth-child(3){
+						background-image: url(../img/icons/twitter.svg);
+						margin-bottom: 0;
+					}
+						#socialmediaBox a:nth-child(3):hover{
+							background-image: url(../img/icons/twitter_hover.svg);
+							margin-bottom: 0;
+						}
+					#socialmediaBox a:hover{
+						color: #000;
+					}
+		footer h2{
+			text-align: center;
+			margin: 30px 0 10px 0;
+			color: #FFF;
+		}
+			#diagramBox{
+				margin: 0 0 30px 0;
+			}
+				#diagramContainer{
+					height: calc(100% - 20px);
+					width: 100%;
+					background-image: url(../img/icons/chart.svg);
+					background-repeat: no-repeat;
+					background-position: center center;
+				}
+				#diagramBox p{
+					text-align: center;
+					font-weight: bold;
+					font-family: helvetica;
+					padding: 6px 0 0 28px;
+				}
+			#paymentBox{
+				text-align: center;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-wrap: wrap;
+			}
+				#paymentBox a{
+					margin: 10px;
+					transition: color .1s linear;
+					width: calc(50% - 30px);
+					background: rgba(255,255,255,0.6);
+					border-radius: 20px;
+					padding: 5px;
+					transition: background .1s linear;
+				}
+				#paymentBox a:hover{
+					background: rgba(255,255,255,1.0);
+				}
+					#paymentBox img{
+						width: 100%;
+					}
+			#referenceBox{
+				
+			}
+				#referenceBox .starCounter{
+					width: 100%;
+					display: flex;
+					justify-content: space-around;
+					align-items: stretch;
+					padding: 10px 0;
+				}
+					.star{
+						width: 15%;
+					}
+				#referenceBox h3{
+					font-family: helvetica;
+					margin-left: 4%;
+				}
+				#referenceBox p{
+					font-family: helvetica;
+					margin-left: 4%;
+				}
+		#endLine{
+			padding: 0 0 30px 0;
+			text-align: center;
+			font-weight: bold;
+			color: #FFF;
+		}
+		
+/* Theme color breakout - excluding @media elements */
+
+	/* Main color */
+#navBox,
+#subscribeBox input[type="submit"]:hover{
+	background-color: #00aa3c;
+}
+#contactBox a:hover, 
+#socialmediaBox a:hover,
+#loginButton p,
+#inCart{
+	color: #00aa3c;
+}
+
+
+	/* Contrast color */
+nav a,
+#subscribeBox input[type="submit"]:hover,
+#contactBox a, 
+#socialmediaBox a{
+	color: #000;
+}
+.unslider-nav ol li.unslider-active, 
+#subscribeBox input[type="submit"],
+#loginButton:hover,
+#mainCart:hover,
+.productBox input[type=submit]:hover{
+	background-color: #aa9100;
+}
+
+
+
+	/* Dark color */
+footer,
+#hamburger{
+	background-color: #004418;
+}
+nav a:hover{
+	border-color: #004418;
+}
+
+
+
+	/* Light color */
+nav a:hover{
+	color: #00dd4e;
+}
+#searchBox input[type=submit], 
+#searchBoxMobile input[type=submit],
+.hamburgerLine{
+	background-color: #00dd4e;
+}
+
+
+
+	/* Black */
+#subscribeBox input[type="submit"]{
+	color: #000;
+}
+	/* White */
+
+	/* Elements that require specific actions to manipulate */	
+	/*
+		SVGs:
+			-logo.svg
+			-search.svg
+			-profile.svg
+			-cart.svg
+			-star.svg
+			-star_half.svg
+			-star_blank.svg
+		PNGs:
+			-
+	*/
+	
+/* END Theme */
+		
+@media (max-width: 768px){
+		
+		#logoBox{
+			background-image: url(../img/icons/logo.svg);
+			background-position: 10px;
+		}
+		#logoBox, #accountBox{
+			width: calc(50% - 10px);
+		}
+		#searchBox{
+			display: none;
+		}
+		#searchBoxMobile{
+			display: block;
+			margin: auto;
+		}
+		#navBox{
+			position: relative;
+		}
+		nav{
+			display: none;
+		}
+			/* Hard code colors in theme */
+			nav a{
+				width: 90%;
+				display: block;
+				margin: 10px auto;
+				padding: 6px 0;
+				background: #ddbd00;
+				border: 3px solid #aa9100;
+				border-radius: 12px;
+				transition: background .1s linear;
+			}
+			nav a:hover{
+				background: #aa9100;
+				color: #000;
+				margin: 10px auto;
+			}
+		#hamburger{
+			display: block;
+		}
+	#mainContent{
+		width: 86%;
+	}
+	.containerThreeItems{
+		flex-wrap: wrap;
+	}
+		.containerThreeItems div:first-child{
+			width: calc(100% - 30px);
+			margin-bottom: 30px;
+		}
+			#subscribeBox h3{
+				text-align: center;
+				font-size: 24px;
+			}
+		#footerContent:first-child > .containerThreeItems > div:first-child > form{
+			width: 70%;
+			margin: auto;
+		}
+		#footerContent:first-child > .containerThreeItems > div:first-child{
+			min-height: 100px;
+		}
+		.containerThreeItems div{
+			width: calc(50% - 20px);
+		}
+			.productBox{
+				width: calc(46% - 10px);
+				margin: 10px 0 20px 0;
+				padding: 5px;
+				box-shadow: 0 0 3px #888;
+			}
+			
+				#paymentBox a{
+					width: calc(50% - 30px);
+				}
+}

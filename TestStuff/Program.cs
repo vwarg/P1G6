@@ -29,9 +29,9 @@ namespace TestStuff
             int aid = Adress.AddAdress(a);
             UserInfo ui = new UserInfo("Test", "Testsson", "0", " ", aid, aid);
             User u = SQL.AddUser("test@email.com", "PASSWO", ui);
-            User tst = SQL.GetUserByEmail("toast@email.com");
+            User tst = SQL.GetUserByEmail("test@email.com");
             Console.WriteLine($"User has password PASSWO? {SQL.Login(tst, "PASSWO")}");
-            tst = SQL.GetUserByEmail("toast@email.com");
+
             tst = SQL.GetUserByEmail("test@email.com");
             tst = SQL.GetUserByEmail("test@email.com");
             Console.WriteLine($"Fetched 4 users.");

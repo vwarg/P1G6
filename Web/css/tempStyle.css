@@ -1,0 +1,29 @@
+#searchBox input[type=text], #searchBoxMobile input[type=text]{
+	border: none;
+	height: 40px;
+	padding: 0 48px 0 6px;
+	width: calc(100% - 60px);
+	box-shadow: 0 0 3px #000;
+	margin-top: 20px;
+}
+#searchBox span, #searchBoxMobile span{
+	padding: 5px;
+	background-color: #82bb33;
+	margin-left: -48px;
+}
+#searchBox span:hover, #searchBoxMobile span:hover{
+	cursor: pointer;
+	box-shadow: inset 1px 1px 1px #000;
+}
+	#searchBox input[type=submit], #searchBoxMobile input[type=submit]{
+		width: 20px;
+		height: 20px;
+		margin: 5px;
+		background: none;
+		background-image: url(../img/icons/search.svg);
+		background-origin: content-box;
+		border: none;
+	}
+	#searchBox input[type=submit]:hover, #searchBoxMobile input[type=submit]:hover{
+		cursor: pointer;
+	}
