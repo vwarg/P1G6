@@ -410,11 +410,28 @@ namespace EshopSQL
             }
             return l;
         }
+        public static List<Product> UpdateCurrentPricesForProducts(List<Product> lst, DateTime dt)
+        {
+            List<Product> l = new List<Product>();
+            foreach (var p in lst)
+            {
+                l.Add(UpdateCurrentPricesForProduct(p, dt));
+            }
+            return l;
+        }
         public static Product UpdateCurrentPricesForProduct(Product p)
         {
             return UpdateCurrentPricesForProduct(p.ID);
         }
+        public static Product UpdateCurrentPricesForProduct(Product p, DateTime dt)
+        {
+            return UpdateCurrentPricesForProduct(p.ID, dt);
+        }
         public static Product UpdateCurrentPricesForProduct(int productId)
+        {
+            return UpdateCurrentPricesForProduct(productId, DateTime.Now);
+        }
+        public static Product UpdateCurrentPricesForProduct(int productId, DateTime dt)
         {
 
             Product prod = Product.GetProductById(productId);
@@ -423,7 +440,7 @@ namespace EshopSQL
             try
             {
                 myConnection.Open();
-                SqlCommand getModifiers = new SqlCommand($"select pm.modifierPercent AS pct, pm.modifierAbsolute AS abs from PriceModification as pm INNER JOIN PriceModToProduct as pmp ON pmp.modifierID = pm.ID WHERE pmp.productID = {productId} AND dateStarts <= GETDATE() AND dateEnds >= GETDATE()", myConnection);
+                SqlCommand getModifiers = new SqlCommand($"select pm.modifierPercent AS pct, pm.modifierAbsolute AS abs from PriceModification as pm INNER JOIN PriceModToProduct as pmp ON pmp.modifierID = pm.ID WHERE pmp.productID = {productId} AND dateStarts <= {dt} AND dateEnds >= {dt}", myConnection);
                 SqlDataReader modReader = getModifiers.ExecuteReader();
                 while (modReader.Read())
                 {
