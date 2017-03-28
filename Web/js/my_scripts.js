@@ -1,4 +1,13 @@
-$(document).ready(function(){
+$(document).ready(function () {
+    // Internal anchor scroll
+    $('a[href^=\\#]:not([href=\\#])').on('click', function () {
+        var element = $($(this).attr('href'));
+        $('html,body').animate({ scrollTop: element.offset().top - 40 }, 'normal', 'swing');
+        return false;
+    });
+    // END Internal anchor
+
+
 	// Login show/hide
 	$('#loginButton').on('click', function(){
 		// Hide scrollbar when overlay is active

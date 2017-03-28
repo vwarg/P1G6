@@ -329,91 +329,91 @@
                 </nav>
             </div>
         </div>
-        <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <div id="footerContent">
-                    <div class="containerThreeItems">
-                        <div id="subscribeBox">
-                            <h3>Preummerera på nyhetsbrevet</h3>
-                            <form>
-                                <input type="text" name="subscriptionEmail" placeholder="Ange din e-post" />
-                                <input type="submit" name="subscriptionConfirm" value="Aktivera" />
-                            </form>
-                        </div>
-                        <div id="contactBox">
-                            <h3>Kundservice</h3>
-                            <a href="#">- Hjälp</a>
-                            <a href="#">- Butiker</a>
-                            <a href="#">- Mitt konto</a>
-                            <a href="#">- Frakt</a>
-                            <a href="#">- Om oss</a>
-                            <a href="#">- Kontakta oss</a>
-                        </div>
-                        <div id="socialmediaBox">
-                            <h3>Vi finns på</h3>
-                            <div>
-                                <a href="#" target="_blank">Facebook</a>
-                                <a href="#" target="_blank">Instagram</a>
-                                <a href="https://twitter.com/KontorsprylarAB" target="_blank">Twitter</a>
-                            </div>
+
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <footer>
+            <div id="footerContent">
+                <div class="containerThreeItems">
+                    <div id="subscribeBox">
+                        <h3>Preummerera på nyhetsbrevet</h3>
+                        <form>
+                            <input type="text" name="subscriptionEmail" placeholder="Ange din e-post" />
+                            <input type="submit" name="subscriptionConfirm" value="Aktivera" />
+                        </form>
+                    </div>
+                    <div id="contactBox">
+                        <h3>Kundservice</h3>
+                        <a href="Help.aspx">- Hjälp</a>
+                        <a href="Storelocation.aspx">- Butiker</a>
+                        <a href="#">- Mitt konto</a>
+                        <a href="Help.aspx#q2">- Frakt</a>
+                        <a href="About.aspx">- Om oss</a>
+                        <a href="Contact.aspx">- Kontakta oss</a>
+                    </div>
+                    <div id="socialmediaBox">
+                        <h3>Vi finns på</h3>
+                        <div>
+                            <a href="#" target="_blank">Facebook</a>
+                            <a href="#" target="_blank">Instagram</a>
+                            <a href="https://twitter.com/KontorsprylarAB" target="_blank">Twitter</a>
                         </div>
                     </div>
-
-                    <hr />
-                    <h2>Vi är bäst och säkra</h2>
-
-                    <div class="containerThreeItems">
-                        <div id="diagramBox">
-                            <div id="diagramContainer"></div>
-                            <p>Försäljning 2016</p>
-                        </div>
-                        <div id="paymentBox">
-                            <a href="https://www.visa.se/" target="_blank" title="Visa">
-                                <img src="img/icons/logos/visa.svg" alt="Visa" /></a>
-                            <a href="https://www.mastercard.se/sv-se/konsument.html" target="_blank" title="Mastercard">
-                                <img src="img/icons/logos/mastercard.svg" alt="Mastercard" /></a>
-                            <a href="https://www.paypal.com/se/home" target="_blank" title="Paypal">
-                                <img src="img/icons/logos/paypal.svg" alt="Paypal" /></a>
-                            <a href="http://www.bitcoin.se/" target="_blank" title="Bitcoin">
-                                <img src="img/icons/logos/bitcoin.svg" alt="Bitcoin" /></a>
-                        </div>
-                        <div id="referenceBox">
-                            <div class="starCounter">
-                                <img class="star" src="img/icons/star.svg" alt="*" />
-                                <img class="star" src="img/icons/star.svg" alt="*" />
-                                <img class="star" src="img/icons/star.svg" alt="*" />
-                                <img class="star" src="img/icons/star_half.svg" alt="*" />
-                                <img class="star" src="img/icons/star_blank.svg" alt="*" />
-                            </div>
-                            <h3>Säker källa - 2017</h3>
-                            <p>2755 röster</p>
-                        </div>
-                    </div>
-
-                    <hr />
-                    <p id="endLine">&copy; Grupp 6 - 2017</p>
                 </div>
-            </footer>
-        </div>
+
+                <hr />
+                <h2>Vi är bäst och säkra</h2>
+
+                <div class="containerThreeItems">
+                    <div id="diagramBox">
+                        <div id="diagramContainer"></div>
+                        <p>Försäljning 2016</p>
+                    </div>
+                    <div id="paymentBox">
+                        <a href="https://www.visa.se/" target="_blank" title="Visa">
+                            <img src="img/icons/logos/visa.svg" alt="Visa" /></a>
+                        <a href="https://www.mastercard.se/sv-se/konsument.html" target="_blank" title="Mastercard">
+                            <img src="img/icons/logos/mastercard.svg" alt="Mastercard" /></a>
+                        <a href="https://www.paypal.com/se/home" target="_blank" title="Paypal">
+                            <img src="img/icons/logos/paypal.svg" alt="Paypal" /></a>
+                        <a href="http://www.bitcoin.se/" target="_blank" title="Bitcoin">
+                            <img src="img/icons/logos/bitcoin.svg" alt="Bitcoin" /></a>
+                    </div>
+                    <div id="referenceBox">
+                        <div class="starCounter">
+                            <img class="star" src="img/icons/star.svg" alt="*" />
+                            <img class="star" src="img/icons/star.svg" alt="*" />
+                            <img class="star" src="img/icons/star.svg" alt="*" />
+                            <img class="star" src="img/icons/star_half.svg" alt="*" />
+                            <img class="star" src="img/icons/star_blank.svg" alt="*" />
+                        </div>
+                        <h3>Säker källa - 2017</h3>
+                        <p>2755 röster</p>
+                    </div>
+                </div>
+
+                <hr />
+                <p id="endLine">&copy; Grupp 6 - 2017</p>
+            </div>
+        </footer>
     </div>
+
     <link type="text/css" property="stylesheet" rel="stylesheet" href="css/unslider.css" />
-        <link type="text/css" property="stylesheet" rel="stylesheet" href="css/unslider-dots.css" />
-        <link type="text/css" property="stylesheet" rel="stylesheet" href="css/style.css" />
-        <script src="js/jquery.js"></script>
-        <script src="js/unslider-min.js"></script>
-        <script src="js/my_scripts.js"></script>
-        <script>
+    <link type="text/css" property="stylesheet" rel="stylesheet" href="css/unslider-dots.css" />
+    <link type="text/css" property="stylesheet" rel="stylesheet" href="css/style.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/unslider-min.js"></script>
+    <script src="js/my_scripts.js"></script>
+    <script>
 
-            function TryLogin() {
-                console.log($('#loginForm input[type=email]').val());
-                LoginAttempt($('#loginForm input[type=email]').val(), $('#loginForm input[type=password]').val());
+        function TryLogin() {
+            console.log($('#loginForm input[type=email]').val());
+            LoginAttempt($('#loginForm input[type=email]').val(), $('#loginForm input[type=password]').val());
 
-            }
+        }
 
-            IsLoggedIn(function () { });
-        </script>
+        IsLoggedIn(function () { });
+    </script>
 </body>
 </html>

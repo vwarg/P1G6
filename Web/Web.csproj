@@ -221,6 +221,10 @@
     <Content Include="img\slider\deluxe_pen.jpg" />
     <Content Include="img\slider\organized.jpg" />
     <Content Include="img\slider\productivity.jpg" />
+    <Content Include="img\staff\jonas.png" />
+    <Content Include="img\staff\madeleine.png" />
+    <Content Include="img\staff\tor.png" />
+    <Content Include="img\staff\viktor.png" />
     <Content Include="img\structure\rulerBot.png" />
     <Content Include="img\structure\rulerWhite.png" />
     <Content Include="img\structure\rulerWhite180.png" />
@@ -241,6 +245,8 @@
     <Content Include="Account\Web.config" />
     <Content Include="JSTester.html" />
     <Content Include="Scripts\LoginHandler.js" />
+    <Content Include="Storelocation.aspx" />
+    <Content Include="Help.aspx" />
     <Content Include="_services\Login\LogOut.aspx" />
     <Content Include="_services\Login\TryLogin.aspx" />
     <Content Include="_services\User\VerifyUser.aspx" />
@@ -450,6 +456,20 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Storelocation.aspx.cs">
+      <DependentUpon>Storelocation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Storelocation.aspx.designer.cs">
+      <DependentUpon>Storelocation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Help.aspx.cs">
+      <DependentUpon>Help.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help.aspx.designer.cs">
+      <DependentUpon>Help.aspx</DependentUpon>
     </Compile>
     <Compile Include="_services\Login\LogOut.aspx.cs">
       <DependentUpon>LogOut.aspx</DependentUpon>
