@@ -414,11 +414,18 @@ namespace EshopSQL
 
         public static List<Product> GetAllProducts()
         {
-            if(productCache.Count > 0)
+            if (productCache.Count > 0)
             {
                 return productCache;
             }
 
+            UpdateProductCache();
+
+            return productCache;
+        }
+
+        public static void UpdateProductCache()
+        {
             SqlConnection myConnection = new SqlConnection(source);
 
             try
@@ -457,8 +464,6 @@ namespace EshopSQL
             {
                 myConnection.Close();
             }
-
-            return productCache;
         }
 
         public static List<Product> UpdateCurrentPricesForProducts(List<Product> lst)
