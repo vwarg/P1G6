@@ -14,12 +14,17 @@ namespace Web._services.Products
         {
             var pList = SQL.GetAllProducts();
             var jsonStr = "[";
-            foreach (var p in pList)
+
+            if (pList.Count > 0)
             {
-                jsonStr += p.ToJson();
-                jsonStr += ",";
+                foreach (var p in pList)
+                {
+                    jsonStr += p.ToJson();
+                    jsonStr += ",";
+                }
+                jsonStr = jsonStr.Remove(jsonStr.Length - 2);
             }
-            jsonStr = jsonStr.Remove(jsonStr.Length - 2);
+
             jsonStr += "]";
             Response.ContentType = "application/json";
             Response.Write(jsonStr);
