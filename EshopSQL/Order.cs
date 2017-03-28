@@ -121,7 +121,7 @@ namespace HeftITGemer
             {
                 myConnection.Open();
 
-                SqlCommand updateOrder = new SqlCommand($"UPDATE OrderToProduct SET quantity += {quantityToAdd} WHERE productID = {productId} AND orderID = {orderId}", myConnection);
+                SqlCommand updateOrder = new SqlCommand($"UPDATE OrderToProduct SET quantity += {quantityToAdd}, price += {Product.GetProductById(productId).Price} WHERE productID = {productId} AND orderID = {orderId}", myConnection);
 
                 updateOrder.ExecuteNonQuery();
 

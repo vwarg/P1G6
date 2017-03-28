@@ -346,7 +346,8 @@ namespace EshopSQL
 
                 while (myReader.Read())
                 {
-                    o = new Order(myReader.GetInt32(0), myReader.GetInt32(1), myReader.GetInt32(2), myReader.GetInt32(3), myReader.GetFloat(4), myReader.GetDateTime(5), null, null, 0);//myReader.GetDateTime(6), myReader.GetDateTime(7), myReader.GetInt32(8));
+                    //                              ID	              userID	   billingadressID	    deliveryadressID	       total_price	                                        dateCreated	             status
+                    o = new Order(myReader.GetInt32(0), myReader.GetInt32(1), myReader.GetInt32(2), myReader.GetInt32(3), (float)Convert.ToDouble(myReader["total_price"]), myReader.GetDateTime(5), null, null, 0);//myReader.GetDateTime(6), myReader.GetDateTime(7), myReader.GetInt32(8));
                 }
 
             }

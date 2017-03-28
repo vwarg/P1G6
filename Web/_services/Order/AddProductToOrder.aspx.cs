@@ -37,7 +37,6 @@ namespace Web._services.Order
                 {
                     oid = ao.ID;
                 }
-                //
                 if(SQL.GetProductsInOrder(oid).Exists(pr => pr.ID == p.ID))
                 {
                     HeftITGemer.Order.IncreaseQuantityOfProduct(p.ID, oid, q);
