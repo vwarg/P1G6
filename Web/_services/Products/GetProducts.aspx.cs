@@ -12,7 +12,7 @@ namespace Web._services.Products
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var pList = SQL.GetAllProducts();
+            var pList = SQL.GetAllProducts().Where(p => p.Status == 1).ToList();
             var jsonStr = "[";
 
             if (pList.Count > 0)
@@ -20,7 +20,7 @@ namespace Web._services.Products
                 foreach (var p in pList)
                 {
                     jsonStr += p.ToJson();
-                    jsonStr += ",";
+                    jsonStr += ", ";
                 }
                 jsonStr = jsonStr.Remove(jsonStr.Length - 2);
             }
