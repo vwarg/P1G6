@@ -387,7 +387,7 @@
             <div id="footerContent">
                 <div class="containerThreeItems">
                     <div id="subscribeBox">
-                        <h3>Preummerera på nyhetsbrevet</h3>
+                        <h3>Prenumerera på nyhetsbrevet</h3>
                         <form>
                             <input type="text" name="subscriptionEmail" placeholder="Ange din e-post" />
                             <input type="submit" name="subscriptionConfirm" value="Aktivera" />

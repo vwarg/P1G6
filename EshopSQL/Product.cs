@@ -87,11 +87,23 @@ namespace HeftITGemer
 
                 while (myReader.Read())
                 {
-                    product = new Product((int)myReader["ID"], myReader["name"].ToString(), myReader["short_description"].ToString(),
-                            myReader["description"].ToString(), (int)myReader["parentProduct"], (float)myReader["price"],
-                            (int)myReader["countPerUnit"], (int)myReader["quantity"], myReader["comment"].ToString(),
-                            myReader["image"].ToString(), myReader["video"].ToString(), (int)myReader["status"], (int)myReader["manufacturerID"],
-                            myReader["manufacturer_productnumber"].ToString(), (int)myReader["categoryID"]);
+                    var tmp = (int)myReader["countPerUnit"];
+                    product = new Product();
+                    product.ID = (int)myReader["ID"];
+                    product.Name = myReader["name"].ToString();
+                    product.ShortDescription = myReader["short_description"].ToString();
+                    product.Description = myReader["description"].ToString();
+                    product.ParentProduct = (int)myReader["parentProduct"];
+                    product.Price = (float)Convert.ToDouble(myReader["price"]);
+                    product.CountPerUnit = (int)myReader["countPerUnit"];
+                    product.Quantity = (int)myReader["quantity"];
+                    product.Comment = myReader["comment"].ToString();
+                    product.Image = myReader["image"].ToString();
+                    product.Video = myReader["video"].ToString();
+                    product.Status = (int)myReader["status"];
+                    product.ManufacturerID = (int)myReader["manufacturerID"];
+                    product.ManufacturerProductNumber = myReader["manufacturer_productnumber"].ToString();
+                    product.CategoryID = (int)myReader["categoryID"];
                 }
             }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
