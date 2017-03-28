@@ -13,7 +13,7 @@ namespace EshopSQL
     /// <summary>
     /// SQL
     /// </summary>
-    public class SQL
+    public static class SQL
     {
         const string source = "Data Source =.; Initial Catalog = EHandel; Integrated Security = True";
         private static List<User> userCache = new List<User>();
