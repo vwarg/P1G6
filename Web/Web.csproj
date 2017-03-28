@@ -232,6 +232,7 @@
     <Content Include="js\angular.js" />
     <Content Include="js\jquery.js" />
     <Content Include="js\my_scripts.js" />
+    <Content Include="js\ProductManager.js" />
     <Content Include="js\unslider-min.js" />
     <Content Include="Content\HTML\logo.png" />
     <Content Include="Content\HTML\tema_blue.png" />
@@ -494,6 +495,13 @@
     </Compile>
     <Compile Include="_services\Products\GetProducts.aspx.designer.cs">
       <DependentUpon>GetProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_services\User\AddUserInfo.aspx.cs">
+      <DependentUpon>AddUserInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_services\User\AddUserInfo.aspx.designer.cs">
+      <DependentUpon>AddUserInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="_services\User\RegisterUser.aspx.cs">
       <DependentUpon>RegisterUser.aspx</DependentUpon>

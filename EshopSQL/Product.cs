@@ -259,6 +259,10 @@ namespace HeftITGemer
             json += $"\"Description\": \"{Description}\",";
             json += $"\"Price\": \"{Price}\",";
             json += $"\"CountPerUnit\": \"{CountPerUnit}\",";
+            if(ParentProduct > 0)
+            {
+                json += $"\"ParentProductID\": \"{ParentProduct}\",";
+            }
             json += $"\"Quantity\": \"{Quantity}\",";
             json += $"\"Image\": \"{Image}\",";
             json += $"\"Video\": \"{Video}\",";
