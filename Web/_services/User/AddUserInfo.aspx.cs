@@ -14,9 +14,12 @@ namespace Web._services.User
         {
             if (Session["User"] != null)
             {
-                HeftITGemer.User u = (HeftITGemer.User)Session["User"];
-                Response.Write($"{u.ID}\r\n");
-                UserInfo.AddUserInfo(u.Info.Firstname, u.Info.Lastname, u.Info.Phone, u.Info.Companyname, u.Info.DeliveryadressID, u.Info.BillingadressID);
+                //HeftITGemer.User u = (HeftITGemer.User)Session["User"];
+                UserInfo userinfo = new UserInfo(Request.Form["firstname"], Request.Form["lastname"], Request.Form["phone"], Request.Form["companyname"],-1,-1);                
+                //UserInfo.AddUserInfo(u.Info.Firstname, u.Info.Lastname, u.Info.Phone, u.Info.Companyname, u.Info.DeliveryadressID, u.Info.BillingadressID);
+                int uiid = UserInfo.AddUserInfo(userinfo);
+
+                Response.Write($"{userinfo.ID}\r\n");
                 Response.StatusCode = 200;
                 Response.End();
             }
