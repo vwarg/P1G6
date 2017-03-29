@@ -11,7 +11,10 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            /*if((HeftITGemer.User)Session["User"] == null || ((HeftITGemer.User)Session["User"]).Status != 2)
+            {
+                Response.Redirect("/");
+            }*/
         }
     }
 }

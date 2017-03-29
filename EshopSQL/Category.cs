@@ -127,5 +127,16 @@ namespace HeftITGemer
             catch (Exception ex) { Console.WriteLine(ex.Message); }
             finally { myConnection.Close(); }
         }
+
+        public string ToJson()
+        {
+            var json = "{";
+            json += $"\"ID\": \"{ID}\",";
+            json += $"\"Name\": \"{Name}\",";
+            json += $"\"Description\": \"{Description}\",";
+            json += $"\"ParentCategory\": \"{ParentCategory}\"";
+            json += "}";
+            return json;
+        }
     }
 }

@@ -495,6 +495,70 @@ namespace EshopSQL
             }
         }
 
+        public static List<Category> GetAllCategories()
+        {
+            List<Category> l = new List<Category>();
+            SqlConnection myConnection = new SqlConnection(source);
+
+            try
+            {
+                myConnection.Open();
+
+                SqlCommand getCats = new SqlCommand($"select * from Category", myConnection);
+                SqlDataReader myReader = getCats.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    var c = new Category((int)myReader["ID"], myReader["name"].ToString(), myReader["description"].ToString(), (int)myReader["parentCategory"]);
+                    l.Add(c);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+
+            return l;
+        }
+
+        public static List<Manufacturer> GetAllManufacturers()
+        {
+            List<Manufacturer> l = new List<Manufacturer>();
+            SqlConnection myConnection = new SqlConnection(source);
+
+            try
+            {
+                myConnection.Open();
+
+                SqlCommand getMfrs = new SqlCommand($"select * from Manufacturer", myConnection);
+                SqlDataReader myReader = getMfrs.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    var m = new Manufacturer((int)myReader["ID"], myReader["name"].ToString(), myReader["url"].ToString());
+                    l.Add(m);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+
+            return l;
+        }
+
+
+
         public static List<Product> UpdateCurrentPricesForProducts(List<Product> lst)
         {
             return UpdateCurrentPricesForProducts(lst, DateTime.Now);
