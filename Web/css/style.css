@@ -1084,6 +1084,72 @@ nav a:hover{
 			background: #aa9100;
 			box-shadow: -2px -2px 0 #000;
 		}
+/* manageorders.html */
+#manageOrdersSection{
+}
+	#manageOrdersSection h3{
+		margin: 50px 0 20px 0;
+	}
+		#manageOrdersSection #orderHeader{
+			font-weight: bold;
+			border-bottom: 3px solid #aa9100;
+			background: #e6e6e6;
+		}
+		#manageOrdersSection #orderHeader:hover{
+			cursor: default;
+		}
+		#manageOrdersSection > .orderBox > div{
+			width: 19%;
+			text-align: center;
+		}
+			.oNAdmin p{
+				display: inline-block;
+				border: 1px solid #000;
+				padding: 3px 6px;
+				background: #aa9100;
+				color: #FFF;
+				box-shadow: 2px 2px 0 #000;
+			}
+			.oNAdmin p:hover{
+				box-shadow: inset 2px 2px 0 #000;
+			}
+		#orderStatusBox{
+			overflow: auto;
+			padding: 30px 5px 60px 5px;
+		}
+			#orderDeliverd,
+			#orderFulfilled{
+				float: left;
+				display: inline-block;
+				height: 30px;
+				padding: 6px 12px;
+				background: #00aa3c;
+				font-weight: bold;
+				box-shadow: 2px 2px 0 #000;
+				color: #FFF;
+				text-align: center;
+				line-height: 30px;
+				vertical-align: middle;
+				transition: background .1s linear, box-shadow .1s linear;
+			}
+			#orderDeliverd{
+				background: #aa9100;
+				float: right;
+			}
+			#orderDeliverd:hover,
+			#orderFulfilled:hover{
+				cursor: pointer;
+				box-shadow: -2px -2px 0 #000;
+			}
+		
+		
+/* manageusers.html */
+#manageUsersSection{
+}
+	#manageUsersSection h3{
+		margin: 50px 0 0 0;
+	}
+
 
 
 		
