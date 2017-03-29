@@ -89,7 +89,7 @@
                         <input name="city" placeholder="Stad" required />
                         <input name="street" placeholder="Gata" required />
                         <input name="zip" placeholder="Postnummer" required />
-                        <input name="phone" placeholder="Teledon (ej obligatorisk)" />
+                        <input name="phone" placeholder="Telefon (ej obligatorisk)" />
                         <input name="department" placeholder="Avdelning (ej obligatorisk)" />
 
                         <input type="button" name="sendRegisterRequest" value="Registrera konto" />

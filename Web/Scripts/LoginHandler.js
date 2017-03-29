@@ -12,7 +12,7 @@
 
 function RegUserOk(callbackOnFail) {
     $.get("/_services/User/RegisterUser").done(function (data) {
-        LoginSuccessful();
+        IsLoggedIn();
     }).fail(function () {
         callbackOnFail();
     });

@@ -47,14 +47,15 @@ input[type=text]{
     #loginFix{
 		display: block;
 		overflow-y: scroll;
+        text-align: center;
 	}
 	#overlayTextBox{
 		display: inline-block;
 		background: #FFF;
 		padding: 20px;
 		position: relative;
-            left: calc(50% - 200px);
-		width: 400px;
+		width: 90%;
+            max-width: 400px;
 	}
 		.overlayClose{
 			width: 40px;
