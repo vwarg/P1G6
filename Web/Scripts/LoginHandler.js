@@ -8,7 +8,7 @@
 }
 
 //posta till RegisterUser se att allt är bra och attt det inte finns något skräp
-////om allt går bra kör isloadin
+////om allt går bra kör isloggedin
 
 function RegUserOk(callbackOnFail) {
     $.get("/_services/User/RegisterUser").done(function (data) {
