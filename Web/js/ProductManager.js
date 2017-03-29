@@ -33,7 +33,7 @@ function GetProducts() {
               RenderProducts(data);
           })
           .fail(function () {
-              console.log("OOPS! (GetProducts())");
+              //console.log("OOPS! (GetProducts())");
           });
 }
 
@@ -48,7 +48,7 @@ function GetProductListOnly() {
               }
           })
           .fail(function () {
-              console.log("OOPS! (GetProductListOnly())");
+              //console.log("OOPS! (GetProductListOnly())");
           });
 }
 
@@ -63,7 +63,7 @@ function GetCategoryList() {
               }
           })
           .fail(function () {
-              console.log("OOPS! (GetCategoryList())");
+              //console.log("OOPS! (GetCategoryList())");
           });
 }
 
@@ -78,7 +78,7 @@ function GetManufacturerList() {
               }
           })
           .fail(function () {
-              console.log("OOPS! (GetManufacturerList())");
+              //console.log("OOPS! (GetManufacturerList())");
           });
 }
 
@@ -97,7 +97,7 @@ function PagedGet(productsPerPage, offset) {
           RenderProductsPaged(data, productsPerPage, offset);
       })
       .fail(function () {
-          console.log("OOPS! (PagedGet("+productsPerPage+", "+offset+"))");
+          //console.log("OOPS! (PagedGet("+productsPerPage+", "+offset+"))");
       });
 }
 
@@ -112,8 +112,8 @@ function RenderProductsPaged(productsArray, perPage, offset) {
         var name = productsArray[i].Name;
         var pid = productsArray[i].ID;
         var price = productsArray[i].Price.replace(",", ".");
-        var divContent = '<div class="productBox"><img src="' + imageUrl + '" alt="" /><p class="productName">' + name + '</p><p class="productPrice">' + parseFloat(price).toFixed(2).replace(".", ",") + ':-</p><form>';
-        divContent += '<select name="variation" disabled><option selected="selected" disabled>...</option></select><input type="button" name="addToCart" value="+" onclick="AddToCart('+pid+', '+', false);" /></form></div>';
+        var divContent = '<div class="productBox" id="product_' + pid + '"><img src="/img/products/' + imageUrl + '" alt="" /><p class="productName">' + name + '</p><p class="productPrice">' + parseFloat(price).toFixed(2).replace(".", ",") + ':-</p><form>';
+        divContent += '<select name="variation" disabled><option selected="selected" disabled>...</option></select><input type="button" name="addToCart" value="+" onclick="AddToCart('+pid+', false);" /></form></div>';
         parent.html(parent.html() + divContent);
     }
     for (var i = 0; i < children.length; i++) {
@@ -123,7 +123,7 @@ function RenderProductsPaged(productsArray, perPage, offset) {
         parentProductDivSelect.html(parentProductDivSelect.html() + '<option value="' + child.ID + '">' + child.Name + '</option>');
     }
 }
-
+var cartObj = {};
 function AddToCart(pid, decrease) {
     var q = 1;
     if (decrease) {
@@ -133,13 +133,21 @@ function AddToCart(pid, decrease) {
     if (!selectedVariation) {
         selectedVariation = pid;
     }
+
     var jqxhr = $.post("/_services/Order/AddProductToOrder", {productID: pid, variation: selectedVariation, quantity: q})
       .done(function () {
-          //TODO
-          console.log("YAY");
+          if (!cartObj[pid + ""]) {
+              cartObj[pid + ""] = 1;
+          }
+          else {
+            cartObj[pid + ""] += q;
+          }
+
+          GetCart();
+
       })
       .fail(function () {
-          console.log("OOPS! (AddToCart("+pid+", "+selectedVariation+", "+decrease+"))");
+          //console.log("OOPS! (AddToCart("+pid+", "+selectedVariation+", "+decrease+"))");
       });
 }
 
@@ -151,10 +159,11 @@ function AddProduct() {
     var jqxhr = $.post("/_services/Product/AddProduct", obj)
       .done(function () {
           //TODO
-          console.log("YAY");
+          //console.log("YAY");
+          alert("ny produkt tillagd!");
       })
       .fail(function () {
-          console.log("OOPS! (AddProduct())");
+          //console.log("OOPS! (AddProduct())");
       });
 }
 
@@ -169,8 +178,49 @@ function GetOrderList(user) {
           RenderOrders(data);
       })
       .fail(function () {
-          console.log("OOPS! (GetOrderList(" + user + "))");
+          //console.log("OOPS! (GetOrderList(" + user + "))");
       });
+}
+
+function GetCart() {
+
+    var jqxhr = $.getJSON("/_services/Order/GetCurrentOrder")
+      .done(function (data) {
+          $(".cartArticle").remove();
+          for (var i = 0; i < data.Products.length; i++) {
+              var product = data.Products[i];
+              var pid = product.ID;
+              if (!cartObj[pid + ""]) {
+                  cartObj[pid + ""] = parseInt(product.NumberInOrder);
+              }
+              var cartItemHtml = '<div class="cartArticle"> \
+                        <div class="cartProdImg"> \
+                            <img src="/img/products/'+ product.Image + '" alt="Produkt" /> \
+                        </div> \
+                        <div class="cartProdDesc"> \
+                            '+ product.Name + ' \
+                        </div> \
+                        <div class="cartProdQuanBox"> \
+                            <div class="cartDecreaseQuan" onclick="AddToCart('+ pid + ', true)">-</div> \
+                            <input type="text" maxlength="3" value="'+ cartObj[pid + ""] + '" class="cartProdQuan" /> \
+                            <div class="cartIncreaseQuan" onclick="AddToCart(' + pid + ', false)">+</div> \
+                            <div class="cartTrashItem"></div> \
+                        </div> \
+                        <div class="cartProdPriceTotalBox"> \
+                            <p class="cartProdPriceTotal">'+ parseFloat(product.Price).toFixed(2) + '</p> \
+                            <span class="cartProdPriceDiscount"></span> \
+                        </div> \
+                    </div><hr class="overlayLine" />';
+              //$("#overlayCartBox").append
+              $(cartItemHtml).insertBefore("#cartSumBox");
+          }
+          /*
+           */
+      })
+      .fail(function () {
+          console.log("OOPS! (GetCart())");
+      });
+    
 }
 
 function RenderOrders(orderArray) {
@@ -205,7 +255,7 @@ function GetProductsInOrder(orderId) {
               RenderProducts(data);
           })
           .fail(function () {
-              console.log("OOPS! (GetProductsInOrder("+orderId+"))");
+              //console.log("OOPS! (GetProductsInOrder("+orderId+"))");
           });
 }
 

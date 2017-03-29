@@ -271,7 +271,33 @@ namespace HeftITGemer
             json += $"\"Description\": \"{Description}\",";
             json += $"\"Price\": \"{Price}\",";
             json += $"\"CountPerUnit\": \"{CountPerUnit}\",";
-            if(ParentProduct > 0)
+            if (ParentProduct > 0)
+            {
+                json += $"\"ParentProductID\": \"{ParentProduct}\",";
+            }
+            json += $"\"Quantity\": \"{Quantity}\",";
+            json += $"\"Image\": \"{Image}\",";
+            json += $"\"Video\": \"{Video}\",";
+            json += $"\"Status\": \"{Status}\",";
+            json += $"\"ManufacturerName\": \"{Manufacturer.Name}\",";
+            json += $"\"ManufacturerURL\": \"{Manufacturer.Url}\",";
+            json += $"\"CategoryID\": \"{CategoryID}\"";
+
+            json += "}";
+            return json;
+        }
+
+        public string ToJson(int num)
+        {
+            var json = "{";
+            json += $"\"ID\": \"{ID}\",";
+            json += $"\"Name\": \"{Name}\",";
+            json += $"\"ShortDescription\": \"{ShortDescription}\",";
+            json += $"\"Description\": \"{Description}\",";
+            json += $"\"Price\": \"{Price}\",";
+            json += $"\"CountPerUnit\": \"{CountPerUnit}\",";
+            json += $"\"NumberInOrder\": \"{num}\",";
+            if (ParentProduct > 0)
             {
                 json += $"\"ParentProductID\": \"{ParentProduct}\",";
             }

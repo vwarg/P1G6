@@ -27,6 +27,7 @@
     <script src="js/unslider-min.js"></script>
     <script src="js/my_scripts.js"></script>
     <script src="Scripts/LoginHandler.js"></script>
+    <script src="js/ProductManager.js"></script>
     <script>
 
         function TryLogin() {
@@ -34,6 +35,7 @@
             LoginAttempt($('#loginForm input[type=email]').val(), $('#loginForm input[type=password]').val());
 
         }
+
 
         IsLoggedIn(function () { });
     </script>
@@ -120,7 +122,7 @@
                     <div class="overlayClose" id="closeCart"></div>
                     <h2>Din varukorg</h2>
                     <hr class="overlayLine" />
-                    <div class="cartArticle">
+                    <!-- <div class="cartArticle">
                         <div class="cartProdImg">
                             <img src="img/products/paperclips.png" alt="Paperclips" />
                         </div>
@@ -162,7 +164,7 @@
                             <span class="cartProdPriceDiscount"></span>
                         </div>
                     </div>
-                    <!-- Ingen <hr /> eftersom det fortfarande är samma "varutyp" -->
+                    <!-- Ingen <hr /> eftersom det fortfarande är samma "varutyp" --> <!--
                     <div class="cartArticle">
                         <div class="cartProdImg">
                             <img src="img/products/binder.png" alt="Binder" />
@@ -205,7 +207,7 @@
                             <p class="cartProdPriceTotal">49,90</p>
                             <span class="cartProdPriceDiscount">-4,99</span>
                         </div>
-                    </div>
+                    </div> -->
                     <hr class="overlayLine" />
                     <div id="cartSumBox">
                         <div id="cartSum">
