@@ -265,6 +265,8 @@
     <Content Include="Storelocation.aspx" />
     <Content Include="Help.aspx" />
     <Content Include="addproduct.aspx" />
+    <Content Include="manageorders.aspx" />
+    <Content Include="manageusers.aspx" />
     <Content Include="_services\Login\LogOut.aspx" />
     <Content Include="_services\Login\TryLogin.aspx" />
     <Content Include="_services\Order\AddProductToOrder.aspx" />
@@ -510,6 +512,20 @@
     </Compile>
     <Compile Include="addproduct.aspx.designer.cs">
       <DependentUpon>addproduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="manageorders.aspx.cs">
+      <DependentUpon>manageorders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="manageorders.aspx.designer.cs">
+      <DependentUpon>manageorders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="manageusers.aspx.cs">
+      <DependentUpon>manageusers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="manageusers.aspx.designer.cs">
+      <DependentUpon>manageusers.aspx</DependentUpon>
     </Compile>
     <Compile Include="_services\Login\LogOut.aspx.cs">
       <DependentUpon>LogOut.aspx</DependentUpon>
