@@ -123,9 +123,6 @@ input[type=text]{
 		#overlayTextBox p:nth-child(2){
 			float: right;
 		}
-            #registerForm h5{
-                margin-left: calc(10% - 6px);
-            }
 
 /* CSS for order-view */		
 #orderFix{
