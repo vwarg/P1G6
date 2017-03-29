@@ -44,12 +44,18 @@ input[type=text]{
 	justify-content: center;
 	align-items: center;
 }
+    #loginFix{
+		display: block;
+		overflow-y: scroll;
+        text-align: center;
+	}
 	#overlayTextBox{
 		display: inline-block;
 		background: #FFF;
 		padding: 20px;
 		position: relative;
-		width: 400px;
+        width: 90%;
+		max-width: 400px;
 	}
 		.overlayClose{
 			width: 40px;
@@ -84,14 +90,14 @@ input[type=text]{
 	#overlayTextBox input:focus{
 		box-shadow: 0 0 5px #008c00;
 	}
-	#overlayTextBox input[type=submit]{
+	#overlayTextBox input[type=button]{
 		width: 80%;
 		background-color: #aa9100;
 		border: 1px solid #000;
 		font-weight: bold;
 		margin-top: 40px;
 	}
-	#overlayTextBox input[type=submit]:hover{
+	#overlayTextBox input[type=button]:hover{
 		cursor: pointer;
 		box-shadow: 0 0 5px #008c00;
 	}
@@ -116,8 +122,10 @@ input[type=text]{
 		}
 		#overlayTextBox p:nth-child(2){
 			float: right;
-			
 		}
+            #registerForm h5{
+                margin-left: calc(10% - 6px);
+            }
 
 /* CSS for order-view */		
 #orderFix{
@@ -641,7 +649,8 @@ input[type=text]{
 						*/
 						display: none;
 					}
-					.productBox input[type=button]{
+					.productBox input[type=button],
+                    .productBox input[type=submit]{
 						width: 40px;
 						height: 40px;
 						float: right;
@@ -652,7 +661,8 @@ input[type=text]{
 						background-position: center center;
 						transition: background-color .1s linear;
 					}
-					.productBox input[type=button]:hover{
+					.productBox input[type=button]:hover,
+                    .productBox input[type=submit]:hover{
 						cursor: pointer;
 					}
 	footer{
@@ -733,7 +743,7 @@ input[type=text]{
 			}
 				#socialmediaBox div{
 					padding: 0;
-					margin-top: 3px;
+					margin-top: 8px;
 				}
 					#socialmediaBox a{
 						display: block;
@@ -845,8 +855,7 @@ input[type=text]{
 /* Theme color breakout - excluding @media elements */
 
 	/* Main color */
-#navBox,
-#subscribeBox input[type="submit"]:hover{
+#navBox{
 	background-color: #00aa3c;
 }
 #contactBox a:hover, 
@@ -859,9 +868,7 @@ input[type=text]{
 
 	/* Contrast color */
 nav a,
-#subscribeBox input[type="submit"]:hover,
-#contactBox a, 
-#socialmediaBox a{
+#subscribeBox input[type="submit"]:hover{
 	color: #000;
 }
 .unslider-nav ol li.unslider-active, 
@@ -886,12 +893,15 @@ nav a:hover{
 
 
 	/* Light color */
-nav a:hover{
+nav a:hover,
+#contactBox a,
+#socialmediaBox a{
 	color: #00dd4e;
 }
 #searchBox input[type=submit], 
 #searchBoxMobile input[type=submit],
-.hamburgerLine{
+.hamburgerLine,
+#subscribeBox input[type=submit]:hover{
 	background-color: #00dd4e;
 }
 
@@ -902,7 +912,9 @@ nav a:hover{
 	color: #000;
 }
 	/* White */
-
+footer{
+    color: #CCC;
+}
 	/* Elements that require specific actions to manipulate */	
 	/*
 		SVGs:
@@ -1275,6 +1287,12 @@ nav a:hover{
 			width: 70%;
 			margin: auto;
 		}
+            #diagramContainer{
+                margin-bottom: 0;
+            }
+            #diagramBox p{
+                margin-bottom: 100px;
+            }
 		#footerContent:first-child > .containerThreeItems > div:first-child{
 			min-height: 100px;
 		}
