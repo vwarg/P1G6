@@ -1047,6 +1047,7 @@ nav a:hover{
 		margin: 50px 0;
 	}
 		#addProductSection input[type=text],
+        #addProductSection select,
 		#addProductSection textarea{
 			display: block;
 			padding: 3px 6px;
@@ -1058,7 +1059,11 @@ nav a:hover{
 			outline: none;
 			transition: box-shadow .1s linear;
 		}
+        #addProductSection select{
+			width: calc(80% + 12px);
+		}
 		#addProductSection input[type=text]:focus,
+        #addProductSection select:focus,
 		#addProductSection textarea:focus{
 			box-shadow: 0 0 3px #aa9100;
 		}
