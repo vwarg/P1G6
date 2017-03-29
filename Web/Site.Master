@@ -347,7 +347,7 @@
                     <div class="hamburgerLine"></div>
                 </div>
                 <nav>
-                    <a href="#">Hem</a>
+                    <a href="/">Hem</a>
                     <a href="/Productlist">Produkter</a>
                     <!-- <a href="#">Spotlight</a>
                     <a href="#">Kampanjer</a> -->
