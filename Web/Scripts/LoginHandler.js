@@ -11,13 +11,6 @@
 //posta till RegisterUser se att allt är bra och attt det inte finns något skräp
 ////om allt går bra kör isloggedin
 
-function RegUserOk(callbackOnFail) {
-    $.get("/_services/User/RegisterUser").done(function (data) {
-        IsLoggedIn();
-    }).fail(function () {
-        callbackOnFail();
-    });
-}
 
 
 function LoginAttempt(email, password) {
@@ -34,51 +27,42 @@ function LoginAttempt(email, password) {
     });
 }
 
-function Register() {
-
+function AddUserInfo(firstname, lastname, phone, companyname, adressID) {
+    console.log("fick in " + firstname + " & " + lastname + " & " + phone + " & " + companyname);
+    var jqau = $.post("/_services/User/AddUserInfo", { firstname: firstname, lastname: lastname, phone: phone, companyname: companyname, billingadressID: adressID, deliveryadressID: adressID })
+              .done(function (data) {
+                  RegisterUser($("#email").val(), $("#password").val(), parseInt(data));
+              })
+              .fail(function () {
+                  LoginFailed();
+              });
+}
+function registerButtonClick() {
+    AddAdress($("#country").val(), $("#city").val(), $("#street").val(), $("#zip").val(), $("#phone").val(), $("#department").val());
+}
+function AddAdress(country, city, street, zip, phone, department) {
+    console.log("fick in " + country + " & " + city + " & " + street + " & " + zip + " & " + phone + " & " + department);
+    var jqaa = $.post("/_services/User/AddAdress", { country: country, city: city, street: street, zip: zip, phone: phone, department: department })
+          .done(function (data) {
+              AddUserInfo($("#firstname").val(), $("#lastname").val(), $("#phone").val(), $("#companyname").val(), parseInt(data));
+          })
+          .fail(function () {
+              LoginFailed();
+          });
 }
 
 function RegisterUser(email, password, contactInfo) {
     console.log("fick in " + email + " & " + password + " & " + contactInfo);
-    RegUserOk(function () {
-        var jqru = $.post("/_services/Login/RegisterUser", { email: email, password: password, contactInfo: contactInfo })
-              .done(function () {
-                  IsLoggedIn(function () { console.log("Något hände"); });
-                  $('#overlayLogin').stop().fadeToggle();
-              })
-              .fail(function () {
-                  LoginFailed();
-              });
-    });
+    var jqru = $.post("/_services/User/RegisterUser", { email: email, password: password, contactInfo: contactInfo })
+          .done(function () {
+              //IsLoggedIn(function () { console.log("Något hände"); });
+              $('#overlayLogin').stop().fadeToggle();
+          })
+          .fail(function () {
+              LoginFailed();
+          });
 }
 
-function AddUserInfo(firstname, lastname, phone, companyname) {
-    console.log("fick in " + firstname + " & " + lastname + " & " + phone + " & " + companyname);
-    RegUserOk(function () {
-        var jqau = $.post("/_services/Login/AddUserInfo", { firstname: firstname, password: password })
-              .done(function () {
-                  IsLoggedIn(function () { console.log("Mistakes were made."); });
-                  $('#overlayLogin').stop().fadeToggle();
-              })
-              .fail(function () {
-                  LoginFailed();
-              });
-    });
-}
-
-function AddAdress(country, city, street, zip, phone, department) {
-    console.log("fick in " + country + " & " + city + " & " + street + " & " + zip + " & " + phone + " & " + department);
-    RegUserOk(function () {
-        var jqaa = $.post("/_services/Login/AddAdress", { country: country, city: city, street: street, zip: zip, phone: phone, department: department})
-              .done(function () {
-                  IsLoggedIn(function () { console.log("Mistakes were made."); });
-                  $('#overlayLogin').stop().fadeToggle();
-              })
-              .fail(function () {
-                  LoginFailed();
-              });
-    });
-}
 
 function LoginSuccessful() {
     //$("#result").text("Successful.");
