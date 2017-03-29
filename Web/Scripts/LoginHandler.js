@@ -34,10 +34,24 @@ function LoginAttempt(email, password) {
     });
 }
 
+function RegisterUser(email, password, contactInfo) {
+    console.log("fick in " + email + " & " + password + " & " + contactInfo);
+    RegUserOk(function () {
+        var jqru = $.post("/_services/Login/RegisterUser", { email: email, password: password, contactInfo: contactInfo })
+              .done(function () {
+                  IsLoggedIn(function () { console.log("Något hände"); });
+                  $('#overlayLogin').stop().fadeToggle();
+              })
+              .fail(function () {
+                  LoginFailed();
+              });
+    });
+}
+
 function AddUserInfo(firstname, lastname, phone, companyname) {
     console.log("fick in " + firstname + " & " + lastname + " & " + phone + " & " + companyname);
     RegUserOk(function () {
-        var jqau = $.post("/_services/Login/AddUserInfo", { email: firstname, password: password })
+        var jqau = $.post("/_services/Login/AddUserInfo", { firstname: firstname, password: password })
               .done(function () {
                   IsLoggedIn(function () { console.log("Mistakes were made."); });
                   $('#overlayLogin').stop().fadeToggle();
@@ -61,21 +75,6 @@ function AddAdress(country, city, street, zip, phone, department) {
               });
     });
 }
-
-function RegisterUser(email, password, contactInfo) {
-    console.log("fick in " + email + " & " + password + " & " + contactInfo);
-    RegUserOk(function () {
-        var jqru = $.post("/_services/Login/RegisterUser", { email: email, password: password, contactInfo: contactInfo })
-              .done(function () {
-                  IsLoggedIn(function () { console.log("Något hände"); });
-                  $('#overlayLogin').stop().fadeToggle();
-              })
-              .fail(function () {
-                  LoginFailed();
-              });
-    });
-}
-
 
 function LoginSuccessful() {
     //$("#result").text("Successful.");
