@@ -34,6 +34,10 @@ function LoginAttempt(email, password) {
     });
 }
 
+function Register() {
+
+}
+
 function RegisterUser(email, password, contactInfo) {
     console.log("fick in " + email + " & " + password + " & " + contactInfo);
     RegUserOk(function () {
