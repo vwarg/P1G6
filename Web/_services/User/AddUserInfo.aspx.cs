@@ -15,10 +15,8 @@ namespace Web._services.User
             if (Session["User"] != null)
             {
                 HeftITGemer.User u = (HeftITGemer.User)Session["User"];
-                // !!!! FIXME !!!!
-                UserInfo userinfo = new UserInfo(Request.Form["firstname"], Request.Form["lastname"], Request.Form["phone"], Request.Form["companyname"], Convert.ToInt32(Request.Form["billingadressID"]), Convert.ToInt32(Request.Form["deliveryadressID"])); //adress FÅR EJ vara -1. MÅSTE ha ID tack vare FK.
-                // !!!! FIXME !!!!
-                //UserInfo.AddUserInfo(u.Info.Firstname, u.Info.Lastname, u.Info.Phone, u.Info.Companyname, u.Info.DeliveryadressID, u.Info.BillingadressID);
+                UserInfo userinfo = new UserInfo(Request.Form["firstname"], Request.Form["lastname"], Request.Form["phone"], Request.Form["companyname"], Convert.ToInt32(Request.Form["billingadressID"]), Convert.ToInt32(Request.Form["deliveryadressID"])); 
+
                 
                 int uiid = UserInfo.AddUserInfo(userinfo);
                 u.Contactinfo = uiid;

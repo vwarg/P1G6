@@ -76,32 +76,32 @@
                     </form>
                     <form id="registerForm">
                         <h5>Skapa inloggning</h5>
-                        <input type="email" name="email" placeholder="E-post" required />
-                        <input type="password" name="password" placeholder="Lösenord" required />
+                        <input type="email" name="email" placeholder="E-post" id="email" required />
+                        <input type="password" name="password" id="password" placeholder="Lösenord" required />
                         <input type="password" name="password" placeholder="Upprepa lösenordet" required />
-                        <%--<input type="button" name="sendRegisterRequest" value="Registrera konto" />--%>
+                        <!--<input type="button" name="sendRegisterRequest" value="Registrera konto" />-->
 
                         <h5>Kontaktinfo</h5>
-                        <input name="firstName" placeholder="Förnamn" required />
-                        <input name="lastName" placeholder="Efternamn" required />
-                        <%--<input type="submit" name="sendRegisterRequest" value="Ange kontaktinfo" />--%>
+                        <input name="firstName" placeholder="Förnamn" id="firstname"required />
+                        <input name="lastName" placeholder="Efternamn" id="lastname" required />
+                        <!--<input type="submit" name="sendRegisterRequest" value="Ange kontaktinfo" />-->
 
                         <h5>Adress</h5>
-                        <input name="country" placeholder="Land" required />
-                        <input name="city" placeholder="Stad" required />
-                        <input name="street" placeholder="Gata" required />
-                        <input name="zip" placeholder="Postnummer" required />
-                        <input name="phone" placeholder="Teledon (ej obligatorisk)" />
-                        <input name="department" placeholder="Avdelning (ej obligatorisk)" />
+                        <input name="country" id="country" placeholder="Land" required />
+                        <input name="city" id="city" placeholder="Stad" required />
+                        <input name="street" id="street" placeholder="Gata" required />
+                        <input name="zip" id="zip" placeholder="Postnummer" required />
+                        <input name="phone" id="phone" placeholder="Teledon (ej obligatorisk)" />
+                        <input name="department" id="department" placeholder="Avdelning (ej obligatorisk)" />
 
-                        <input type="button" name="sendRegisterRequest" value="Registrera konto" />
+                        <input type="button" name="sendRegisterRequest" value="Registrera konto" onclick="registerButtonClick()" />
                     </form>
 
-                    <%--<form id="addContactInfo">
+                    <!--<form id="addContactInfo">
                         <input name="firstName" placeholder="Förnamn" required />
                         <input name="lastName" placeholder="Efternamn" required />
                         <input type="button" name="sendRegisterRequest" value="Ange kontaktinfo" />
-                    </form>--%>
+                    </form>--!>
 
                     <form id="forgottenForm">
                         <input type="email" name="email" placeholder="E-post" required />
