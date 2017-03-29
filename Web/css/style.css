@@ -84,14 +84,14 @@ input[type=text]{
 	#overlayTextBox input:focus{
 		box-shadow: 0 0 5px #008c00;
 	}
-	#overlayTextBox input[type=submit]{
+	#overlayTextBox input[type=button]{
 		width: 80%;
 		background-color: #aa9100;
 		border: 1px solid #000;
 		font-weight: bold;
 		margin-top: 40px;
 	}
-	#overlayTextBox input[type=submit]:hover{
+	#overlayTextBox input[type=button]:hover{
 		cursor: pointer;
 		box-shadow: 0 0 5px #008c00;
 	}

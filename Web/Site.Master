@@ -76,16 +76,16 @@
                         <input type="email" name="email" placeholder="E-post" required />
                         <input type="password" name="password" placeholder="Lösenord" required />
                         <input type="password" name="password" placeholder="Upprepa lösenordet" required />
-                        <input type="submit" name="sendRegisterRequest" value="Registrera konto" />
+                        <input type="button" name="sendRegisterRequest" value="Registrera konto" />
                     </form>
                     <form id="addContactInfo">
                         <input name="firstName" placeholder="Förnamn" required />
                         <input name="lastName" placeholder="Efternamn" required />
-                        <input type="submit" name="sendRegisterRequest" value="Ange kontaktinfo" />
+                        <input type="button" name="sendRegisterRequest" value="Ange kontaktinfo" />
                     </form>
                     <form id="forgottenForm">
                         <input type="email" name="email" placeholder="E-post" required />
-                        <input type="submit" name="sendNewPasswordRequest" value="Begär nytt lösenord" />
+                        <input type="button" name="sendNewPasswordRequest" value="Begär nytt lösenord" />
                     </form>
                     <div>
                         <p id="toggleLogin">Logga in</p>
