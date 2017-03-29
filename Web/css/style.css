@@ -859,9 +859,7 @@ input[type=text]{
 
 	/* Contrast color */
 nav a,
-#subscribeBox input[type="submit"]:hover,
-#contactBox a, 
-#socialmediaBox a{
+#subscribeBox input[type="submit"]:hover{
 	color: #000;
 }
 .unslider-nav ol li.unslider-active, 
@@ -894,6 +892,10 @@ nav a:hover{
 .hamburgerLine{
 	background-color: #00dd4e;
 }
+#contactBox a,
+#socialmediaBox a{
+    color: #00dd4e;
+}
 
 
 
@@ -902,7 +904,9 @@ nav a:hover{
 	color: #000;
 }
 	/* White */
-
+footer{
+    color: #CCC;
+}
 	/* Elements that require specific actions to manipulate */	
 	/*
 		SVGs:
