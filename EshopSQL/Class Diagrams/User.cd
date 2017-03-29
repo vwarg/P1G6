@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HeftITGemer.Adress">
+    <Position X="10.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAIIAAAECAAAEAJAAAAACAIAIAAAAAA=</HashCode>
+      <FileName>Adress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HeftITGemer.User">
+    <Position X="5.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAEACAAkgAEAAAAAAAAAAAAAAACAAAAAEAIAAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HeftITGemer.UserInfo">
+    <Position X="7.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAgCECQAAAAgAIMAAAAAABAAAAAIIBAAAAAIAAAIAA=</HashCode>
+      <FileName>UserInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

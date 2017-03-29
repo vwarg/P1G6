@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HeftITGemer.Category">
+    <Position X="12.25" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQggAIAAAAAIAQAAAAAAAAAAAAAAAAgAAg=</HashCode>
+      <FileName>Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HeftITGemer.Manufacturer">
+    <Position X="4.25" Y="1" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAJAAAAgAIAAAAAAAQAAAAAAAAACQAAAAAAAAA=</HashCode>
+      <FileName>Manufacturer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HeftITGemer.Order">
+    <Position X="9.75" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEgAACkAAAAgAIAAAAAAAgAAAgAQAEAABAEACABBAA=</HashCode>
+      <FileName>Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HeftITGemer.OrderToProduct">
+    <Position X="9.75" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAAAABAAAQAAgAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>OrderToProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HeftITGemer.PriceModification">
+    <Position X="14.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEACAAAAgAQAAAAAAAAAACAAAAACAIAAAAAAAAA=</HashCode>
+      <FileName>PriceModification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HeftITGemer.PriceModToProduct">
+    <Position X="14.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAgAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PriceModToProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HeftITGemer.Product">
+    <Position X="7.25" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAkQACAGARgggAIAAAAAQESAAAAAABAAIIAAgAAAIQg=</HashCode>
+      <FileName>Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EshopSQL.SQL">
+    <Position X="0.5" Y="1" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AEAOAAAEAAAEAgIAtAAgAAAAAQAAAAAkAAAQAEAgiAA=</HashCode>
+      <FileName>SQL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

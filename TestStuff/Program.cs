@@ -50,7 +50,7 @@ namespace TestStuff
 
             #region CALCS //OK
             //Miniräknare 
-            int casio = Product.AddProduct("CASIO miniräknare", "En grym miniräknare", "En grym miniräknare. Kan räkna upp till 100", -1, 49.90f, 1, 1, "", "", "", 1, manufacturers[1], "-", miniraknare);
+            int casio = Product.AddProduct("CASIO miniräknare", "En grym miniräknare", "En grym miniräknare. Kan räkna upp till 100", -1, 49.90f, 1, 1, "", "calculator.png", "", 1, manufacturers[1], "-", miniraknare);
             {
                 products.Add(casio);
                 Product.AddProduct("Enkel", "Enkel", "Enkel miniräknare. Kan räkna upp till 100", casio, 49.90f, 1, 1, "", "calc_simple.png", "", 1, manufacturers[1], "M1", miniraknare);

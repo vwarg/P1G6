@@ -12,10 +12,11 @@ namespace Web._services.Products
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if ((HeftITGemer.User)Session["User"] == null || ((HeftITGemer.User)Session["User"]).Status != 1)
+            if ((HeftITGemer.User)Session["User"] == null || ((HeftITGemer.User)Session["User"]).Status < 2)
             {
                 Response.StatusCode = 403;
                 Response.End();
+                return;
             }
             
             Product.AddProduct(Request.Form["name"], 

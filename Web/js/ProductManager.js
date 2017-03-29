@@ -158,4 +158,55 @@ function AddProduct() {
       });
 }
 
+function GetOrderList(user) {
+    var params = {};
+    if (user) {
+        params.uid = user;
+    }
+
+    var jqxhr = $.getJSON("/_services/Products/GetOrders", params)
+      .done(function (data) {
+          RenderOrders(data);
+      })
+      .fail(function () {
+          console.log("OOPS! (GetOrderList(" + user + "))");
+      });
+}
+
+function RenderOrders(orderArray) {
+    var hdr = $("#orderHeader");
+    for (var i = 0; i < orderArray.length; i++) {
+        var order = orderArray[i];
+        var htmlStr = '<hr class="overlayLine" />\
+                <div class="orderBox"> \
+					<div class="orderNumber"> \
+						<p>'+ order.ID + '</p> \
+					</div> \
+					<div class="orderDate"> \
+						<p>'+ order.DateCreated + '</p> \
+					</div> \
+					<div class="orderItems"> \
+						<p>'+ order.NumProducts + '</p> \
+					</div> \
+					<div class="orderTotal"> \
+						<p>'+ order.TotalPrice + 'p</p> \
+					</div> \
+					<div class="orderStatus"> \
+						<p>'+ order.Status + '</p> \
+					</div> \
+				</div>';
+        hdr.parent().append(htmlStr);
+    }
+}
+
+function GetProductsInOrder(orderId) {
+    var jqxhr = $.getJSON("/_services/Order/GetProductsInOrder", { oid: oid })
+          .done(function (data) {
+              RenderProducts(data);
+          })
+          .fail(function () {
+              console.log("OOPS! (GetProductsInOrder("+orderId+"))");
+          });
+}
+
 
