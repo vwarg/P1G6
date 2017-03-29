@@ -13,25 +13,10 @@ namespace Web._services.User
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] != null)
-            {
-                HeftITGemer.User u = (HeftITGemer.User)Session["User"];
+            int uid = SQL.AddUser(Request.Form["email"], Request.Form["password"], Convert.ToInt32(Request.Form["contactInfo"]));
+            HeftITGemer.User u = SQL.GetUserByID(uid);
+            Session["User"] = u;
 
-                int uid = SQL.AddUser(Request.Form["email"], Request.Form["password"], Convert.ToInt32(Request.Form["contactInfo"]));
-
-                u.ID = uid;
-
-                Session["User"] = u;
-                Response.Write($"{uid} \r\n");
-                Response.StatusCode = 200;
-                Response.End();
-            }
-            else
-            {
-                Response.StatusCode = 403;
-                Response.Write("-1\r\n");
-                Response.End();
-            }
         }
     }
 }

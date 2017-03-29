@@ -22,14 +22,18 @@ namespace Web._services.User
                 u.Contactinfo = uiid;
 
                 Session["User"] = u;
-                Response.Write($"{userinfo.ID}\r\n");
+                Response.Write($"{uiid}\r\n");
                 Response.StatusCode = 200;
                 Response.End();
             }
             else
             {
-                Response.StatusCode = 403;
-                Response.Write("-1\r\n");
+                UserInfo userinfo = new UserInfo(Request.Form["firstname"], Request.Form["lastname"], Request.Form["phone"], Request.Form["companyname"], Convert.ToInt32(Request.Form["billingadressID"]), Convert.ToInt32(Request.Form["deliveryadressID"]));
+                
+                int uiid = UserInfo.AddUserInfo(userinfo);
+
+                Response.Write($"{uiid}\r\n");
+                Response.StatusCode = 200;
                 Response.End();
             }
         }

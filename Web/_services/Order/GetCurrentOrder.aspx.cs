@@ -25,10 +25,13 @@ namespace Web._services.Order
             }
 
             var o = EshopSQL.SQL.GetActiveOrders(uid);
-            
-            
-            var jsonStr = o.ToJson(true);
-            
+            var jsonStr = "{ }";
+            if (o != null)
+            {
+                jsonStr = o.ToJson(true);
+            }
+
+            Response.StatusCode = 200;
             Response.ContentType = "application/json";
             Response.Write(jsonStr);
             Response.End();

@@ -31,7 +31,7 @@ namespace Web._services.Order
             {
                 foreach (var o in oList)
                 {
-                    jsonStr += o.ToJson();
+                    jsonStr += o.ToJson(true);
                     jsonStr += ", ";
                 }
                 jsonStr = jsonStr.Remove(jsonStr.Length - 2);

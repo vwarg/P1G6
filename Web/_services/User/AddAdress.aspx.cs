@@ -24,14 +24,17 @@ namespace Web._services.User
                 ui.DeliveryadressID = baid;
 
                 Session["User"] = ui;
-                Response.Write($"{adress.ID} \r\n");
+                Response.Write($"{baid} \r\n");
                 Response.StatusCode = 200;
                 Response.End();
             }
             else
             {
-                Response.StatusCode = 403;
-                Response.Write("-1\r\n");
+                Adress adress = new Adress(Request.Form["country"], Request.Form["city"], Request.Form["street"], Request.Form["zip"], Request.Form["phone"], Request.Form["department"]);
+
+                int baid = Adress.AddAdress(adress);
+                Response.Write($"{baid} \r\n");
+                Response.StatusCode = 200;
                 Response.End();
             }
         }

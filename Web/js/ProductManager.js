@@ -13,7 +13,7 @@ function RenderProducts(productsArray) {
             var pid = productsArray[i].ID;
             var price = productsArray[i].Price.replace(",", ".");
             var divContent = '<div class="productBox" id="product_' + pid + '"><img src="/img/products/' + imageUrl + '" alt="" /><p class="productName">' + name + '</p><p class="productPrice">' + parseFloat(price).toFixed(2).replace(".", ",") + ':-</p><form>';
-            divContent += '<select name="variation" disabled></select><input type="button" name="addToCart" value="+" onclick="AddToCart(' + pid + ', false);" /></form></div>';
+            divContent += '<select name="variation" disabled></select><button class="hvr-ripple-out" name="addToCart" onclick="AddToCart(' + pid + ', false);">+</button></form></div>';
             parent.html(parent.html() + divContent);
         }
         
@@ -173,7 +173,7 @@ function GetOrderList(user) {
         params.uid = user;
     }
 
-    var jqxhr = $.getJSON("/_services/Products/GetOrders", params)
+    var jqxhr = $.getJSON("/_services/Order/GetOrders")
       .done(function (data) {
           RenderOrders(data);
       })
@@ -239,10 +239,7 @@ function RenderOrders(orderArray) {
 						<p>'+ order.NumProducts + '</p> \
 					</div> \
 					<div class="orderTotal"> \
-						<p>'+ order.TotalPrice + 'p</p> \
-					</div> \
-					<div class="orderStatus"> \
-						<p>'+ order.Status + '</p> \
+						<p>'+ order.TotalPrice + '</p> \
 					</div> \
 				</div>';
         hdr.parent().append(htmlStr);

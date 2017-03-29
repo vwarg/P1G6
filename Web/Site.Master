@@ -26,8 +26,8 @@
     <script src="js/jquery.js"></script>
     <script src="js/unslider-min.js"></script>
     <script src="js/my_scripts.js"></script>
-    <script src="Scripts/LoginHandler.js"></script>
     <script src="js/ProductManager.js"></script>
+    <script src="Scripts/LoginHandler.js"></script>
     <script>
 
         function TryLogin() {
@@ -305,51 +305,6 @@
                                 <p>Belopp</p>
                             </div>
                         </div>
-                        <hr class="overlayLine" />
-                        <div class="orderBox">
-                            <div class="orderNumber">
-                                <p>1337</p>
-                            </div>
-                            <div class="orderDate">
-                                <p>2017-01-22</p>
-                            </div>
-                            <div class="orderItems">
-                                <p>22</p>
-                            </div>
-                            <div class="orderTotal">
-                                <p>2408,00</p>
-                            </div>
-                        </div>
-                        <hr class="overlayLine" />
-                        <div class="orderBox">
-                            <div class="orderNumber">
-                                <p>1338</p>
-                            </div>
-                            <div class="orderDate">
-                                <p>2017-01-22</p>
-                            </div>
-                            <div class="orderItems">
-                                <p>22</p>
-                            </div>
-                            <div class="orderTotal">
-                                <p>2408,00</p>
-                            </div>
-                        </div>
-                        <hr class="overlayLine" />
-                        <div class="orderBox">
-                            <div class="orderNumber">
-                                <p>1339</p>
-                            </div>
-                            <div class="orderDate">
-                                <p>2017-01-22</p>
-                            </div>
-                            <div class="orderItems">
-                                <p>22</p>
-                            </div>
-                            <div class="orderTotal">
-                                <p>2408,00</p>
-                            </div>
-                        </div>
                     </div>
                     <hr class="overlayLine" />
                 </div>
@@ -373,7 +328,7 @@
                             <p>Logga in</p>
                         </div>
                         <div id="mainCart">
-                            <div id="inCart">923</div>
+                            <div id="inCart">Varukorg</div>
                             <div id="cartImg"></div>
                         </div>
                     </div>
@@ -394,8 +349,8 @@
                 <nav>
                     <a href="#">Hem</a>
                     <a href="/Productlist">Produkter</a>
-                    <a href="#">Spotlight</a>
-                    <a href="#">Kampanjer</a>
+                    <!-- <a href="#">Spotlight</a>
+                    <a href="#">Kampanjer</a> -->
                 </nav>
             </div>
         </div>
@@ -417,7 +372,7 @@
                         <h3>Kundservice</h3>
                         <a href="Help.aspx">- Hjälp</a>
                         <a href="Storelocation.aspx">- Butiker</a>
-                        <a href="#">- Mitt konto</a>
+                        <!-- <a href="/">- Mitt konto</a> -->
                         <a href="Help.aspx#q2">- Frakt</a>
                         <a href="About.aspx">- Om oss</a>
                         <a href="Contact.aspx">- Kontakta oss</a>

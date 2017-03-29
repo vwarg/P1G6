@@ -56,6 +56,7 @@ function RegisterUser(email, password, contactInfo) {
     var jqru = $.post("/_services/User/RegisterUser", { email: email, password: password, contactInfo: contactInfo })
           .done(function () {
               //IsLoggedIn(function () { console.log("Något hände"); });
+              LoginSuccessful();
               $('#overlayLogin').stop().fadeToggle();
           })
           .fail(function () {
@@ -74,6 +75,8 @@ function LoginSuccessful() {
         $('#overlayTextBox form').hide();
         $('#addContactInfo').slideToggle();
         $('#overlayTextBox p').hide();
+        GetOrderList();
+        $('#overlayOrders').slideToggle();
     });
 }
 

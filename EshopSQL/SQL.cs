@@ -199,7 +199,7 @@ namespace EshopSQL
                     contactID.Value = userInfo;
 
                     SqlParameter newPassword = new SqlParameter("@password", SqlDbType.VarChar);
-                    newPassword.Value = password;
+                    newPassword.Value = PasswordHelper.GetHash(password);
 
                     SqlParameter newUserID = new SqlParameter("@newID", SqlDbType.Int);
                     newUserID.Direction = ParameterDirection.Output;
