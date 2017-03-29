@@ -13,10 +13,6 @@ namespace Web._services.User
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //User:: Request.Form["email"], Request.Form["password"]
-            //UserInfo:: se AddUserInfo
-            //Adress:: _minst_ en, se Adress();
-
             if (Session["User"] != null)
             {
                 HeftITGemer.User u = (HeftITGemer.User)Session["User"];

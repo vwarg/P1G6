@@ -270,6 +270,7 @@
     <Content Include="_services\Login\LogOut.aspx" />
     <Content Include="_services\Login\TryLogin.aspx" />
     <Content Include="_services\Order\AddProductToOrder.aspx" />
+    <Content Include="_services\Order\GetCurrentOrder.aspx" />
     <Content Include="_services\Order\GetOrders.aspx" />
     <Content Include="_services\Order\GetProductsInOrder.aspx" />
     <Content Include="_services\Products\AddProduct.aspx" />
@@ -550,6 +551,13 @@
     </Compile>
     <Compile Include="_services\Order\AddProductToOrder.aspx.designer.cs">
       <DependentUpon>AddProductToOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_services\Order\GetCurrentOrder.aspx.cs">
+      <DependentUpon>GetCurrentOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_services\Order\GetCurrentOrder.aspx.designer.cs">
+      <DependentUpon>GetCurrentOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="_services\Order\GetOrders.aspx.cs">
       <DependentUpon>GetOrders.aspx</DependentUpon>
