@@ -2,6 +2,7 @@
     $.get("/_services/User/VerifyUser").done(function (data) {
         LoginSuccessful();
         console.log("DITT ID ÄR " + data);
+        GetCart();
     }).fail(function () {
         callbackOnFail();
     });

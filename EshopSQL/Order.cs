@@ -128,7 +128,7 @@ namespace HeftITGemer
             {
                 myConnection.Open();
 
-                SqlCommand updateOTP = new SqlCommand($"UPDATE OrderToProduct SET quantity += {quantityToAdd}, price += {Product.GetProductById(productId).Price} WHERE productID = {productId} AND orderID = {orderId}", myConnection);
+                SqlCommand updateOTP = new SqlCommand($"UPDATE OrderToProduct SET quantity += {quantityToAdd}, price += {Product.GetProductById(productId).Price.ToString().Replace(',','.')} WHERE productID = {productId} AND orderID = {orderId}", myConnection);
 
                 updateOTP.ExecuteNonQuery();
 
@@ -214,7 +214,7 @@ namespace HeftITGemer
         }
         #endregion
 
-        public string ToJson()
+        public string ToJson(bool withProducts = false)
         {
             var json = "{";
             json += $"\"ID\": {ID},";
@@ -222,11 +222,41 @@ namespace HeftITGemer
             json += $"\"BillingAdressID\": {BillingAdressID},";
             json += $"\"DeliveryAdressID\": {DeliveryAdressID},";
             json += $"\"TotalPrice\": {TotalPrice},";
-            json += $"\"DateCreated\": {DateCreated},";
-            json += $"\"DateProcessed\": {DateProcessed},";
-            json += $"\"DateFulfilled\": {DateFulfilled},";
+            json += $"\"DateCreated\": \"{DateCreated}\",";
+            json += $"\"DateProcessed\": \"{DateProcessed}\",";
+            json += $"\"DateFulfilled\": \"{DateFulfilled}\",";
             json += $"\"NumProducts\": {SQL.GetProductsInOrder(this).Count},";
             json += $"\"Status\": {Status}";
+            if (withProducts)
+            {
+                json += ",";
+                json += "\"Products\": [";
+                var pList = SQL.GetProductsInOrder(ID);
+                var pDict = new Dictionary<Product, int>();
+                foreach (var p in pList)
+                {
+                    if(pDict.Keys.Count(y => y.ID == p.ID) == 0)
+                    {
+                        pDict.Add(p, pList.Count(x => x.ID == p.ID));
+                    }
+
+                }
+                bool isFirst = true;
+                foreach (var qq in pDict)
+                {
+                    var p = qq.Key;
+                    if (isFirst)
+                    {
+                        isFirst = false;
+                    }
+                    else
+                    {
+                        json += ",";
+                    }
+                    json += p.ToJson(qq.Value);
+                }
+                json += "]";
+            }
             json += "}";
             return json;
         }
