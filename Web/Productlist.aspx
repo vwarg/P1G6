@@ -5,6 +5,12 @@
     <script>
         setTimeout(GetProducts, 500);
     </script>
-    <div class="containerFourItems">
-    </div>
+    <main>
+        <div id="mainContent">
+            <h2>Produkter</h2>
+
+            <div class="containerFourItems"></div>
+        </div>
+
+    </main>
 </asp:Content>

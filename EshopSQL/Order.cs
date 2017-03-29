@@ -22,11 +22,11 @@ namespace HeftITGemer
         public int DeliveryAdressID { get; set; }
         public float TotalPrice { get; set; }
         public DateTime DateCreated { get; set; }
-        public DateTime DateProcessed { get; set; }
-        public DateTime DateFulfilled { get; set; }
+        public DateTime? DateProcessed { get; set; }
+        public DateTime? DateFulfilled { get; set; }
         public int Status { get; set; }
 
-        public Order (int id, int userId, int billingAdressID, int deliveryAdressID, float totalPrice, DateTime dateCreated, DateTime dateProcessed, DateTime dateFulfilled, int status)
+        public Order (int id, int userId, int billingAdressID, int deliveryAdressID, float totalPrice, DateTime dateCreated, DateTime? dateProcessed, DateTime? dateFulfilled, int status)
         {
             ID = id;
             UserID = userId;
@@ -54,12 +54,12 @@ namespace HeftITGemer
                 myCommand.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter newUserId = new SqlParameter("@userId", SqlDbType.Int);
-                newUserId.Value = user;
+                newUserId.Value = user.ID;
 
                 SqlParameter newBillingAdressId = new SqlParameter("@billingAdressId", SqlDbType.Int);
                 newBillingAdressId.Value = user.Info.BillingadressID;
 
-                SqlParameter newDeliveryAdressID = new SqlParameter("@deliveryAdressID", SqlDbType.Int);
+                SqlParameter newDeliveryAdressID = new SqlParameter("@deliveryAdressId", SqlDbType.Int);
                 newDeliveryAdressID.Value = user.Info.DeliveryadressID;
 
                 SqlParameter newOrderId = new SqlParameter("@newOrderId ", SqlDbType.Int);
@@ -105,7 +105,14 @@ namespace HeftITGemer
                 myCommand.Parameters.Add(newQuantity);
 
                 myCommand.ExecuteNonQuery();
-                                
+
+                SqlCommand updateOTP = new SqlCommand($"UPDATE OrderToProduct SET price = {SQL.GetAllProducts().First(p => p.ID == productId).Price.ToString().Replace(',', '.')} WHERE productID = {productId} AND orderID = {orderId}", myConnection);
+
+                updateOTP.ExecuteNonQuery();
+
+                SqlCommand updateOrder = new SqlCommand($"UPDATE Orders SET total_price += {Product.GetProductById(productId).Price} WHERE ID = {orderId}", myConnection);
+
+                updateOrder.ExecuteNonQuery();
             }
             catch (Exception ex) { Console.WriteLine(ex.Message); }
             finally { myConnection.Close(); }
@@ -121,7 +128,11 @@ namespace HeftITGemer
             {
                 myConnection.Open();
 
-                SqlCommand updateOrder = new SqlCommand($"UPDATE OrderToProduct SET quantity += {quantityToAdd} WHERE productID = {productId} AND orderID = {orderId}", myConnection);
+                SqlCommand updateOTP = new SqlCommand($"UPDATE OrderToProduct SET quantity += {quantityToAdd}, price += {Product.GetProductById(productId).Price} WHERE productID = {productId} AND orderID = {orderId}", myConnection);
+
+                updateOTP.ExecuteNonQuery();
+
+                SqlCommand updateOrder = new SqlCommand($"UPDATE Orders SET total_price += {Product.GetProductById(productId).Price} WHERE ID = {orderId}", myConnection);
 
                 updateOrder.ExecuteNonQuery();
 
@@ -202,5 +213,22 @@ namespace HeftITGemer
 
         }
         #endregion
+
+        public string ToJson()
+        {
+            var json = "{";
+            json += $"\"ID\": {ID},";
+            json += $"\"UserID\": {UserID},";
+            json += $"\"BillingAdressID\": {BillingAdressID},";
+            json += $"\"DeliveryAdressID\": {DeliveryAdressID},";
+            json += $"\"TotalPrice\": {TotalPrice},";
+            json += $"\"DateCreated\": {DateCreated},";
+            json += $"\"DateProcessed\": {DateProcessed},";
+            json += $"\"DateFulfilled\": {DateFulfilled},";
+            json += $"\"NumProducts\": {SQL.GetProductsInOrder(this).Count},";
+            json += $"\"Status\": {Status}";
+            json += "}";
+            return json;
+        }
     }
 }

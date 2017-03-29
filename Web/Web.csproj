@@ -264,15 +264,24 @@
     <Content Include="Scripts\LoginHandler.js" />
     <Content Include="Storelocation.aspx" />
     <Content Include="Help.aspx" />
+    <Content Include="addproduct.aspx" />
+    <Content Include="manageorders.aspx" />
+    <Content Include="manageusers.aspx" />
     <Content Include="_services\Login\LogOut.aspx" />
     <Content Include="_services\Login\TryLogin.aspx" />
     <Content Include="_services\Order\AddProductToOrder.aspx" />
+    <Content Include="_services\Order\GetOrders.aspx" />
+    <Content Include="_services\Order\GetProductsInOrder.aspx" />
+    <Content Include="_services\Products\AddProduct.aspx" />
+    <Content Include="_services\Products\GetManufacturers.aspx" />
+    <Content Include="_services\Products\GetCategories.aspx" />
     <Content Include="_services\Products\GetProducts.aspx" />
     <Content Include="_services\User\AddAdress.aspx" />
     <Content Include="_services\User\AddUserInfo.aspx" />
     <Content Include="_services\User\RegisterUser.aspx" />
     <Content Include="_services\User\VerifyUser.aspx" />
     <Content Include="img\icons\logo.ai" />
+    <Content Include="ClassDiagramWeb.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -500,6 +509,27 @@
     <Compile Include="Help.aspx.designer.cs">
       <DependentUpon>Help.aspx</DependentUpon>
     </Compile>
+    <Compile Include="addproduct.aspx.cs">
+      <DependentUpon>addproduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addproduct.aspx.designer.cs">
+      <DependentUpon>addproduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="manageorders.aspx.cs">
+      <DependentUpon>manageorders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="manageorders.aspx.designer.cs">
+      <DependentUpon>manageorders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="manageusers.aspx.cs">
+      <DependentUpon>manageusers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="manageusers.aspx.designer.cs">
+      <DependentUpon>manageusers.aspx</DependentUpon>
+    </Compile>
     <Compile Include="_services\Login\LogOut.aspx.cs">
       <DependentUpon>LogOut.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -520,6 +550,41 @@
     </Compile>
     <Compile Include="_services\Order\AddProductToOrder.aspx.designer.cs">
       <DependentUpon>AddProductToOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_services\Order\GetOrders.aspx.cs">
+      <DependentUpon>GetOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_services\Order\GetOrders.aspx.designer.cs">
+      <DependentUpon>GetOrders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_services\Order\GetProductsInOrder.aspx.cs">
+      <DependentUpon>GetProductsInOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_services\Order\GetProductsInOrder.aspx.designer.cs">
+      <DependentUpon>GetProductsInOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_services\Products\AddProduct.aspx.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_services\Products\AddProduct.aspx.designer.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_services\Products\GetManufacturers.aspx.cs">
+      <DependentUpon>GetManufacturers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_services\Products\GetManufacturers.aspx.designer.cs">
+      <DependentUpon>GetManufacturers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_services\Products\GetCategories.aspx.cs">
+      <DependentUpon>GetCategories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_services\Products\GetCategories.aspx.designer.cs">
+      <DependentUpon>GetCategories.aspx</DependentUpon>
     </Compile>
     <Compile Include="_services\Products\GetProducts.aspx.cs">
       <DependentUpon>GetProducts.aspx</DependentUpon>

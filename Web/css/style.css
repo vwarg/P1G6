@@ -421,6 +421,9 @@ input[type=text]{
 		#searchBox{
 			width: 34%;
 		}
+        #searchBox form, #searchBoxMobile form{
+			position: relative;
+		}
 			#searchBox input[type=text], #searchBoxMobile input[type=text]{
 				border: none;
 				height: 40px;
@@ -433,7 +436,9 @@ input[type=text]{
 					width: 30px;
 					height: 30px;
 					padding: 5px;
-					margin: 5px 5px 5px -40px;
+					position: absolute;
+					    top: 25px;
+					    right: 13px;
 					background: none;
 					background-color: #82bb33;
 					background-image: url(../img/icons/search.svg);
@@ -636,7 +641,7 @@ input[type=text]{
 						*/
 						display: none;
 					}
-					.productBox input[type=submit]{
+					.productBox input[type=button]{
 						width: 40px;
 						height: 40px;
 						float: right;
@@ -647,7 +652,7 @@ input[type=text]{
 						background-position: center center;
 						transition: background-color .1s linear;
 					}
-					.productBox input[type=submit]:hover{
+					.productBox input[type=button]:hover{
 						cursor: pointer;
 					}
 	footer{
@@ -1031,6 +1036,182 @@ nav a:hover{
 		background: #aa9100;
 		box-shadow: -2px -2px 0 #000;
 	}
+
+/* addproduct.html */
+#addProductSection{
+}
+	#addProductSection h3{
+		margin: 50px 0 0 0;
+	}
+	#addProductSection form{
+		margin: 50px 0;
+	}
+		#addProductSection input[type=text],
+        #addProductSection select,
+		#addProductSection textarea{
+			display: block;
+			padding: 3px 6px;
+			margin: 12px auto;
+			border: none;
+			width: 80%;
+			height: 34px;
+			box-shadow: 0 0 3px #000;
+			outline: none;
+			transition: box-shadow .1s linear;
+		}
+        #addProductSection select{
+			width: calc(80% + 12px);
+		}
+		#addProductSection input[type=text]:focus,
+        #addProductSection select:focus,
+		#addProductSection textarea:focus{
+			box-shadow: 0 0 3px #aa9100;
+		}
+		#addProductSection textarea{
+			resize: none;
+			height: 100px;
+			font-family: helvetica;
+			font-size: 14px;
+		}
+		#addProductSection input[type=submit]{
+			margin: auto;
+			display: block;
+			border: none;
+			padding: 3px 6px;
+			box-shadow: 2px 2px 0 #000;
+			color: #000;
+			line-height: 30px;
+			vertical-align: middle;
+			transition: background .1s linear, box-shadow .1s linear;
+		}
+		#addProductSection input[type=submit]:hover{	
+			cursor: pointer;
+			background: #aa9100;
+			box-shadow: -2px -2px 0 #000;
+		}
+/* manageorders.html */
+#manageOrdersSection{
+}
+	#manageOrdersSection h3{
+		margin: 50px 0 20px 0;
+	}
+		#manageOrdersSection #orderHeader{
+			font-weight: bold;
+			border-bottom: 3px solid #aa9100;
+			background: #e6e6e6;
+		}
+		#manageOrdersSection #orderHeader:hover{
+			cursor: default;
+		}
+		#manageOrdersSection > .orderBox > div{
+			width: 19%;
+			text-align: center;
+		}
+			.oNAdmin p{
+				display: inline-block;
+				border: 1px solid #000;
+				padding: 3px 6px;
+				background: #aa9100;
+				color: #FFF;
+				box-shadow: 2px 2px 0 #000;
+			}
+			.oNAdmin p:hover{
+				box-shadow: inset 2px 2px 0 #000;
+			}
+		#orderStatusBox{
+			overflow: auto;
+			padding: 30px 5px 60px 5px;
+		}
+			#orderDeliverd,
+			#orderFulfilled{
+				float: left;
+				display: inline-block;
+				height: 30px;
+				padding: 6px 12px;
+				background: #00aa3c;
+				font-weight: bold;
+				box-shadow: 2px 2px 0 #000;
+				color: #FFF;
+				text-align: center;
+				line-height: 30px;
+				vertical-align: middle;
+				transition: background .1s linear, box-shadow .1s linear;
+			}
+			#orderDeliverd{
+				background: #aa9100;
+				float: right;
+			}
+			#orderDeliverd:hover,
+			#orderFulfilled:hover{
+				cursor: pointer;
+				box-shadow: -2px -2px 0 #000;
+			}
+		
+		
+/* manageusers.html */
+#manageUsersSection{
+}
+	#manageUsersSection h3{
+		margin: 50px 0 0 0;
+	}
+	#userListBox{
+		margin: 40px 0;
+	}
+		.userListItems{
+			padding: 25px 10px;
+			display: flex;
+			justify-content: space-between;
+			align-items: stretch;
+		}
+			.userListItems div{
+				width: 20%;
+				white-space: wrap;
+			}
+				.userListItems div:nth-child(4){
+					font-style: italic;
+				}
+				.userListItems div:nth-child(5),
+				.userListItems div:nth-child(6){
+					text-align: center;
+					width: 9%;
+				}
+			#userListHeaders{
+				font-weight: bold;
+			}
+				.userListItems:nth-of-type(even){
+					background: #f7f7f7;
+				}
+				.userListItems:nth-of-type(even):hover{
+					cursor: pointer;
+					background: #b3ff99;
+				}
+				.userListItems:nth-of-type(odd):hover{
+					cursor: pointer;
+					background: #99ffff;
+				}
+				#userListHeaders{
+					font-weight: bold;
+					border-bottom: 3px solid #aa9100;
+					background: #e6e6e6;
+				}
+				#userListHeaders:hover{
+					cursor: default;
+				}
+				.userRemoveAction{
+					display: inline-block;
+					border: 1px solid #000;
+					padding: 3px 6px;
+					background: #aa9100;
+					color: #FFF;
+					box-shadow: 2px 2px 0 #000;
+					width: 16px;
+					height: 16px;
+					transition: background .1s linear;
+				}
+				.userRemoveAction:hover{
+					box-shadow: inset 2px 2px 0 #000;
+					background: #b30000;
+				}
 
 
 

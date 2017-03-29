@@ -334,6 +334,10 @@ namespace EshopSQL
 
         public static Order GetActiveOrders(User u)
         {
+            return GetActiveOrders(u.ID);
+        }
+        public static Order GetActiveOrders(int uid)
+        {
             Order o = null;
             SqlConnection myConnection = new SqlConnection(source);
 
@@ -341,12 +345,13 @@ namespace EshopSQL
             {
                 myConnection.Open();
 
-                SqlCommand getOrder = new SqlCommand($"select * from Orders where userID = '{u.ID}' AND status = 0", myConnection);
+                SqlCommand getOrder = new SqlCommand($"select * from Orders where userID = {uid} AND status = 0", myConnection);
                 SqlDataReader myReader = getOrder.ExecuteReader();
 
                 while (myReader.Read())
                 {
-                    o = new Order(myReader.GetInt32(0), myReader.GetInt32(1), myReader.GetInt32(2), myReader.GetInt32(3), myReader.GetFloat(4), myReader.GetDateTime(5), myReader.GetDateTime(6), myReader.GetDateTime(7), myReader.GetInt32(8));
+                    //                              ID	              userID	   billingadressID	    deliveryadressID	       total_price	                                        dateCreated	             status
+                    o = new Order(myReader.GetInt32(0), myReader.GetInt32(1), myReader.GetInt32(2), myReader.GetInt32(3), (float)Convert.ToDouble(myReader["total_price"]), myReader.GetDateTime(5), null, null, 0);//myReader.GetDateTime(6), myReader.GetDateTime(7), myReader.GetInt32(8));
                 }
 
             }
@@ -359,6 +364,41 @@ namespace EshopSQL
                 myConnection.Close();
             }
             return o;
+        }
+        public static List<Order> GetOrders(User u)
+        {
+            return GetOrders(u.ID);
+        }
+        public static List<Order> GetOrders(int uid)
+        {
+            List<Order> l = new List<Order>();
+            
+            SqlConnection myConnection = new SqlConnection(source);
+
+            try
+            {
+                myConnection.Open();
+
+                SqlCommand getOrder = new SqlCommand($"select * from Orders where userID = {uid}", myConnection);
+                SqlDataReader myReader = getOrder.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    //                              ID	              userID	   billingadressID	    deliveryadressID	       total_price	                                        dateCreated	             status
+                    Order o = new Order(myReader.GetInt32(0), myReader.GetInt32(1), myReader.GetInt32(2), myReader.GetInt32(3), (float)Convert.ToDouble(myReader["total_price"]), myReader.GetDateTime(5), null, null, 0);//myReader.GetDateTime(6), myReader.GetDateTime(7), myReader.GetInt32(8));
+                    l.Add(o);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            return l;
         }
 
         public static bool Login(User u, string enteredPassword)
@@ -493,6 +533,70 @@ namespace EshopSQL
                 myConnection.Close();
             }
         }
+
+        public static List<Category> GetAllCategories()
+        {
+            List<Category> l = new List<Category>();
+            SqlConnection myConnection = new SqlConnection(source);
+
+            try
+            {
+                myConnection.Open();
+
+                SqlCommand getCats = new SqlCommand($"select * from Category", myConnection);
+                SqlDataReader myReader = getCats.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    var c = new Category((int)myReader["ID"], myReader["name"].ToString(), myReader["description"].ToString(), (int)myReader["parentCategory"]);
+                    l.Add(c);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+
+            return l;
+        }
+
+        public static List<Manufacturer> GetAllManufacturers()
+        {
+            List<Manufacturer> l = new List<Manufacturer>();
+            SqlConnection myConnection = new SqlConnection(source);
+
+            try
+            {
+                myConnection.Open();
+
+                SqlCommand getMfrs = new SqlCommand($"select * from Manufacturer", myConnection);
+                SqlDataReader myReader = getMfrs.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    var m = new Manufacturer((int)myReader["ID"], myReader["name"].ToString(), myReader["url"].ToString());
+                    l.Add(m);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+
+            return l;
+        }
+
+
 
         public static List<Product> UpdateCurrentPricesForProducts(List<Product> lst)
         {
