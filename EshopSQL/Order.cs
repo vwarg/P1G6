@@ -213,5 +213,32 @@ namespace HeftITGemer
 
         }
         #endregion
+
+        public string ToJson()
+        {
+            var json = "{";
+            /*
+            public int ID { get; set; }
+            public int UserID { get; set; }
+            public int BillingAdressID { get; set; }
+            public int DeliveryAdressID { get; set; }
+            public float TotalPrice { get; set; }
+            public DateTime DateCreated { get; set; }
+            public DateTime? DateProcessed { get; set; }
+            public DateTime? DateFulfilled { get; set; }
+            public int Status { get; set; }
+            */
+            json += $"\"ID\": {ID},";
+            json += $"\"UserID\": {UserID},";
+            json += $"\"BillingAdressID\": {BillingAdressID},";
+            json += $"\"DeliveryAdressID\": {DeliveryAdressID},";
+            json += $"\"TotalPrice\": {TotalPrice},";
+            json += $"\"DateCreated\": {DateCreated},";
+            json += $"\"DateProcessed\": {DateProcessed},";
+            json += $"\"DateFulfilled\": {DateFulfilled},";
+            json += $"\"Status\": {Status}";
+            json += "}";
+            return json;
+        }
     }
 }
