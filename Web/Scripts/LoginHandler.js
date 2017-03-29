@@ -10,13 +10,13 @@
 //posta till RegisterUser se att allt är bra och attt det inte finns något skräp
 ////om allt går bra kör isloadin
 
-//function RegUserOk(callbackOnFail) {
-//    $.get("/_services/User/RegisterUser").done(function (data) {
-//        Fields();
-//    }).fail(function () {
-//        callbackOnFail();
-//    });
-//}
+function RegUserOk(callbackOnFail) {
+    $.get("/_services/User/RegisterUser").done(function (data) {
+        LoginSuccessful();
+    }).fail(function () {
+        callbackOnFail();
+    });
+}
 
 
 function LoginAttempt(email, password) {
@@ -33,47 +33,47 @@ function LoginAttempt(email, password) {
     });
 }
 
-//function AddUserInfo(firstname, lastname, phone, companyname) {
-//    console.log("fick in " + firstname + " & " + lastname + " & " + phone + " & " + companyname);
-//    IsLoggedin(function () {
-//        var jqau = $.post("/_services/Login/AddUserInfo", { email: firstname, password: password })
-//              .done(function () {
-//                  IsLoggedIn(function () { console.log("Mistakes were made."); });
-//                  $('#overlayLogin').stop().fadeToggle();
-//              })
-//              .fail(function () {
-//                  LoginFailed();
-//              });
-//    });
-//}
+function AddUserInfo(firstname, lastname, phone, companyname) {
+    console.log("fick in " + firstname + " & " + lastname + " & " + phone + " & " + companyname);
+    RegUserOk(function () {
+        var jqau = $.post("/_services/Login/AddUserInfo", { email: firstname, password: password })
+              .done(function () {
+                  IsLoggedIn(function () { console.log("Mistakes were made."); });
+                  $('#overlayLogin').stop().fadeToggle();
+              })
+              .fail(function () {
+                  LoginFailed();
+              });
+    });
+}
 
-//function AddAdress(country, city, street, zip, phone, department) {
-//    console.log("fick in " + country + " & " + city + " & " + street + " & " + zip + " & " + phone + " & " + department);
-//    IsLoggedin(function () {
-//        var jqaa = $.post("/_services/Login/AddAdress", { country: country, city: city, street: street, zip: zip, phone: phone, department: department})
-//              .done(function () {
-//                  IsLoggedIn(function () { console.log("Mistakes were made."); });
-//                  $('#overlayLogin').stop().fadeToggle();
-//              })
-//              .fail(function () {
-//                  LoginFailed();
-//              });
-//    });
-//}
+function AddAdress(country, city, street, zip, phone, department) {
+    console.log("fick in " + country + " & " + city + " & " + street + " & " + zip + " & " + phone + " & " + department);
+    RegUserOk(function () {
+        var jqaa = $.post("/_services/Login/AddAdress", { country: country, city: city, street: street, zip: zip, phone: phone, department: department})
+              .done(function () {
+                  IsLoggedIn(function () { console.log("Mistakes were made."); });
+                  $('#overlayLogin').stop().fadeToggle();
+              })
+              .fail(function () {
+                  LoginFailed();
+              });
+    });
+}
 
-//function RegisterUser(email, password, contactInfo) {
-//    console.log("fick in " + email + " & " + password + " & " + contactInfo);
-//    RegUserOk(function () {
-//        var jqru = $.post("/_services/Login/RegisterUser", { email: email, password: password, contactInfo: contactInfo })
-//              .done(function () {
-//                  IsLoggedIn(function () { console.log("Något hände"); });
-//                  $('#overlayLogin').stop().fadeToggle();
-//              })
-//              .fail(function () {
-//                  LoginFailed();
-//              });
-//    });
-//}
+function RegisterUser(email, password, contactInfo) {
+    console.log("fick in " + email + " & " + password + " & " + contactInfo);
+    RegUserOk(function () {
+        var jqru = $.post("/_services/Login/RegisterUser", { email: email, password: password, contactInfo: contactInfo })
+              .done(function () {
+                  IsLoggedIn(function () { console.log("Något hände"); });
+                  $('#overlayLogin').stop().fadeToggle();
+              })
+              .fail(function () {
+                  LoginFailed();
+              });
+    });
+}
 
 
 function LoginSuccessful() {
