@@ -270,6 +270,9 @@
     <Content Include="_services\Login\LogOut.aspx" />
     <Content Include="_services\Login\TryLogin.aspx" />
     <Content Include="_services\Order\AddProductToOrder.aspx" />
+    <Content Include="_services\Products\AddProduct.aspx" />
+    <Content Include="_services\Products\GetManufacturers.aspx" />
+    <Content Include="_services\Products\GetCategories.aspx" />
     <Content Include="_services\Products\GetProducts.aspx" />
     <Content Include="_services\User\AddAdress.aspx" />
     <Content Include="_services\User\AddUserInfo.aspx" />
@@ -544,6 +547,27 @@
     </Compile>
     <Compile Include="_services\Order\AddProductToOrder.aspx.designer.cs">
       <DependentUpon>AddProductToOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_services\Products\AddProduct.aspx.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_services\Products\AddProduct.aspx.designer.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_services\Products\GetManufacturers.aspx.cs">
+      <DependentUpon>GetManufacturers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_services\Products\GetManufacturers.aspx.designer.cs">
+      <DependentUpon>GetManufacturers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_services\Products\GetCategories.aspx.cs">
+      <DependentUpon>GetCategories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_services\Products\GetCategories.aspx.designer.cs">
+      <DependentUpon>GetCategories.aspx</DependentUpon>
     </Compile>
     <Compile Include="_services\Products\GetProducts.aspx.cs">
       <DependentUpon>GetProducts.aspx</DependentUpon>

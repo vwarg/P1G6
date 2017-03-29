@@ -26,6 +26,16 @@ namespace HeftITGemer
             Url = url;
         }
 
+        public string ToJson()
+        {
+            var json = "{";
+            json += $"\"ID\": \"{ID}\",";
+            json += $"\"Name\": \"{Name}\",";
+            json += $"\"Url\": \"{Url}\"";
+            json += "}";
+            return json;
+        }
+
         public Manufacturer() { }
 
         public static Manufacturer GetManufacturerById(int manufacturerId)

@@ -37,6 +37,60 @@ function GetProducts() {
           });
 }
 
+function GetProductListOnly() {
+    var jqxhr = $.getJSON("/_services/Products/GetProducts")
+          .done(function (data) {
+              for (var i = 0; i < data.length; i++) {
+                  var p = data[i];
+                  var ppSel = $("#parentProductSelect");
+                  var htmlString = '<option value="' + p.ID + '">' + p.Name + '</option>';
+                  ppSel.html(ppSel.html() + htmlString);
+              }
+          })
+          .fail(function () {
+              console.log("OOPS! (GetProductListOnly())");
+          });
+}
+
+function GetCategoryList() {
+    var jqxhr = $.getJSON("/_services/Products/GetCategories")
+          .done(function (data) {
+              for (var i = 0; i < data.length; i++) {
+                  var c = data[i];
+                  var cidSel = $("#categoryIDSelect");
+                  var htmlString = '<option value="' + c.ID + '">' + c.Name + '</option>';
+                  cidSel.html(cidSel.html() + htmlString);
+              }
+          })
+          .fail(function () {
+              console.log("OOPS! (GetCategoryList())");
+          });
+}
+
+function GetManufacturerList() {
+    var jqxhr = $.getJSON("/_services/Products/GetManufacturers")
+          .done(function (data) {
+              for (var i = 0; i < data.length; i++) {
+                  var m = data[i];
+                  var mSel = $("#manufacturerIDSelect");
+                  var htmlString = '<option value="' + m.ID + '">' + m.Name + '</option>';
+                  mSel.html(mSel.html() + htmlString);
+              }
+          })
+          .fail(function () {
+              console.log("OOPS! (GetManufacturerList())");
+          });
+}
+
+function ___getstuff() {
+    GetProductListOnly();
+    GetManufacturerList();
+    GetCategoryList();
+}
+
+
+
+
 function PagedGet(productsPerPage, offset) {
     var jqxhr = $.getJSON("/_services/Products/GetProducts")
       .done(function (data) {
@@ -86,6 +140,21 @@ function AddToCart(pid, decrease) {
       })
       .fail(function () {
           console.log("OOPS! (AddToCart("+pid+", "+selectedVariation+", "+decrease+"))");
+      });
+}
+
+function AddProduct() {
+    var obj = {};
+    $("#addProductForm").find("input[type!=submit], textarea").each(function (i, o) {
+        obj[$(o).attr("name")] = $(o).val();
+    });
+    var jqxhr = $.post("/_services/Product/AddProduct", obj)
+      .done(function () {
+          //TODO
+          console.log("YAY");
+      })
+      .fail(function () {
+          console.log("OOPS! (AddProduct())");
       });
 }
 
