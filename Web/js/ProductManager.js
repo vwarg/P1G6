@@ -153,7 +153,7 @@ function AddToCart(pid, decrease) {
 
 function AddProduct() {
     var obj = {};
-    $("#addProductForm").find("input[type!=submit], textarea").each(function (i, o) {
+    $("#addProductForm").find("input[type!=submit], textarea, select").each(function (i, o) {
         obj[$(o).attr("name")] = $(o).val();
     });
     var jqxhr = $.post("/_services/Product/AddProduct", obj)

@@ -70,7 +70,7 @@ function LoginSuccessful() {
     console.log("ALLT GICK BRA!!");
 
     $('body').css('overflowY', 'auto');
-    $('#loginButton p').text("Mitt konto");
+    $('#loginButton p').text("Ordrar");
     $('#loginButton').on('click', function () {
         $('#overlayTextBox form').hide();
         $('#addContactInfo').slideToggle();

@@ -372,7 +372,7 @@
                         <h3>Kundservice</h3>
                         <a href="Help.aspx">- Hjälp</a>
                         <a href="Storelocation.aspx">- Butiker</a>
-                        <!-- <a href="/">- Mitt konto</a> -->
+                        <a href="/addproduct">- Lägg till produkt</a>
                         <a href="Help.aspx#q2">- Frakt</a>
                         <a href="About.aspx">- Om oss</a>
                         <a href="Contact.aspx">- Kontakta oss</a>
