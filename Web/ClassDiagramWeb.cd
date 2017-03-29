@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Web._services.Login.LogOut" Collapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>_services\Login\LogOut.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web._services.Login.TryLogin" Collapsed="true">
+    <Position X="10" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>_services\Login\TryLogin.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web._services.Order.AddProductToOrder" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>_services\Order\AddProductToOrder.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web._services.Products.AddProduct" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>_services\Products\AddProduct.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web._services.Products.GetCategories" Collapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>_services\Products\GetCategories.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web._services.Products.GetManufacturers" Collapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>_services\Products\GetManufacturers.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web._services.Products.GetProducts" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>_services\Products\GetProducts.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web._services.User.AddAdress" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>_services\User\AddAdress.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web._services.User.AddUserInfo" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>_services\User\AddUserInfo.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web._services.User.RegisterUser" Collapsed="true">
+    <Position X="8.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>_services\User\RegisterUser.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web._services.User.VerifyUser" Collapsed="true">
+    <Position X="11.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>_services\User\VerifyUser.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.About" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>About.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.WebForm3" Collapsed="true">
+    <Position X="4.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>addproduct.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.BundleConfig" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.EmailService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Web.SmsService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Web.ApplicationUserManager" Collapsed="true">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.ApplicationSignInManager" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.RouteConfig" Collapsed="true">
+    <Position X="13.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Startup" Collapsed="true">
+    <Position X="8.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAgAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\Startup.Auth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Contact" Collapsed="true">
+    <Position X="13.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Contact.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web._Default" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Default.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Global" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.WebForm2" Collapsed="true">
+    <Position X="3" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Help.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.WebForm4" Collapsed="true">
+    <Position X="6.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>manageorders.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.WebForm5" Collapsed="true">
+    <Position X="8.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>manageusers.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.IdentityHelper" Collapsed="true">
+    <Position X="13.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwSAAAAAAAAAAQAABAAgAAAAAAAAIAAgAAACAAAgAAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Productlist" Collapsed="true">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Productlist.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.SiteMaster" Collapsed="true">
+    <Position X="4.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQKBAAAAIAAEAAABAAAAAAIAAAA=</HashCode>
+      <FileName>Site.Master.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Site_Mobile" Collapsed="true">
+    <Position X="3" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAACAAAAAIAAAIAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Site.Mobile.Master.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.WebForm1" Collapsed="true">
+    <Position X="13.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Storelocation.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.ViewSwitcher" Collapsed="true">
+    <Position X="13.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEIAAIA=</HashCode>
+      <FileName>ViewSwitcher.ascx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Account.AddPhoneNumber" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAQCAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Account\AddPhoneNumber.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Account.Confirm" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAIIAEAA=</HashCode>
+      <FileName>Account\Confirm.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Account.ForgotPassword" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CQAAIAAAACCAAAAAAAAAAAAAAAAAAAAAAAAACAIAAAA=</HashCode>
+      <FileName>Account\Forgot.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Account.Lockout" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Account\Lockout.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Account.Login" Collapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAQAAACCAAAAAAAAAAAAQAAAAABACAAAAAAIgAAA=</HashCode>
+      <FileName>Account\Login.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Account.Manage" Collapsed="true">
+    <Position X="8.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAADAgAAgUAAAAAAQABAIAAAAQABAAAAAAIkAAA=</HashCode>
+      <FileName>Account\Manage.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Account.ManageLogins" Collapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAABEAAAAQAAAAABAAAAAAAAAAAAAAAAAAIEAAA=</HashCode>
+      <FileName>Account\ManageLogins.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Account.ManagePassword" Collapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAhAAABAACQAAAAANAAAAAAAAAAAAAABAABAgIkAIA=</HashCode>
+      <FileName>Account\ManagePassword.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Account.OpenAuthProviders" Collapsed="true">
+    <Position X="13.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAACAAAAAAAIAAAIAAAA=</HashCode>
+      <FileName>Account\OpenAuthProviders.ascx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Account.Register" Collapsed="true">
+    <Position X="4.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAACAAAAAIAAAAAAAAAAAAAAACAAAAAAAAIAA=</HashCode>
+      <FileName>Account\Register.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Account.RegisterExternalLogin" Collapsed="true">
+    <Position X="6.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAgAIACAAAAACAAAAAAAAAAAAIwAAA=</HashCode>
+      <FileName>Account\RegisterExternalLogin.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Account.ResetPassword" Collapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAACAACAAAAAAAAAAAAAAAAAAAAACAAAAAIAAIAA=</HashCode>
+      <FileName>Account\ResetPassword.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Account.ResetPasswordConfirmation" Collapsed="true">
+    <Position X="11.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Account\ResetPasswordConfirmation.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Account.TwoFactorAuthenticationSignIn" Collapsed="true">
+    <Position X="11.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gQIAgAAAIACEAAAIABAgAAAEABAAAAAAAAAAAAIIABA=</HashCode>
+      <FileName>Account\TwoFactorAuthenticationSignIn.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Account.VerifyPhoneNumber" Collapsed="true">
+    <Position X="10" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAgQAAAAAAAAAAAAAABAAIAAAA=</HashCode>
+      <FileName>Account\VerifyPhoneNumber.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Models.ApplicationUser" Collapsed="true">
+    <Position X="6.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Web.Models.ApplicationDbContext" Collapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

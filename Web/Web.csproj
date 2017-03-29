@@ -279,6 +279,7 @@
     <Content Include="_services\User\RegisterUser.aspx" />
     <Content Include="_services\User\VerifyUser.aspx" />
     <Content Include="img\icons\logo.ai" />
+    <Content Include="ClassDiagramWeb.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
