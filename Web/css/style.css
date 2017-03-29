@@ -44,11 +44,16 @@ input[type=text]{
 	justify-content: center;
 	align-items: center;
 }
+    #loginFix{
+		display: block;
+		overflow-y: scroll;
+	}
 	#overlayTextBox{
 		display: inline-block;
 		background: #FFF;
 		padding: 20px;
 		position: relative;
+            left: calc(50% - 200px);
 		width: 400px;
 	}
 		.overlayClose{
@@ -116,8 +121,10 @@ input[type=text]{
 		}
 		#overlayTextBox p:nth-child(2){
 			float: right;
-			
 		}
+            #registerForm h5{
+                margin-left: calc(10% - 6px);
+            }
 
 /* CSS for order-view */		
 #orderFix{

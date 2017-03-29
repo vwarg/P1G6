@@ -64,7 +64,7 @@
     </form>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="overlay" id="overlayLogin">
-            <div class="overlayContent">
+            <div class="overlayContent" id="loginFix">
                 <div id="overlayTextBox">
                     <div class="overlayClose" id="closeLogin"></div>
                     <form id="loginForm">
