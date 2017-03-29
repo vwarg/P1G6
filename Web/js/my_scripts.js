@@ -298,4 +298,9 @@ $(document).ready(function () {
 	    $('#orderContactInfo').show();
 	    $('#billingAdressBox').show();
 	});
+
+    // Admin users
+	$('.userRemoveAction').on('click', function () {
+	    // Remove user..
+	});
 });

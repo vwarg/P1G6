@@ -1154,6 +1154,64 @@ nav a:hover{
 	#manageUsersSection h3{
 		margin: 50px 0 0 0;
 	}
+	#userListBox{
+		margin: 40px 0;
+	}
+		.userListItems{
+			padding: 25px 10px;
+			display: flex;
+			justify-content: space-between;
+			align-items: stretch;
+		}
+			.userListItems div{
+				width: 20%;
+				white-space: wrap;
+			}
+				.userListItems div:nth-child(4){
+					font-style: italic;
+				}
+				.userListItems div:nth-child(5),
+				.userListItems div:nth-child(6){
+					text-align: center;
+					width: 9%;
+				}
+			#userListHeaders{
+				font-weight: bold;
+			}
+				.userListItems:nth-of-type(even){
+					background: #f7f7f7;
+				}
+				.userListItems:nth-of-type(even):hover{
+					cursor: pointer;
+					background: #b3ff99;
+				}
+				.userListItems:nth-of-type(odd):hover{
+					cursor: pointer;
+					background: #99ffff;
+				}
+				#userListHeaders{
+					font-weight: bold;
+					border-bottom: 3px solid #aa9100;
+					background: #e6e6e6;
+				}
+				#userListHeaders:hover{
+					cursor: default;
+				}
+				.userRemoveAction{
+					display: inline-block;
+					border: 1px solid #000;
+					padding: 3px 6px;
+					background: #aa9100;
+					color: #FFF;
+					box-shadow: 2px 2px 0 #000;
+					width: 16px;
+					height: 16px;
+					transition: background .1s linear;
+				}
+				.userRemoveAction:hover{
+					box-shadow: inset 2px 2px 0 #000;
+					background: #b30000;
+				}
 
 
 
